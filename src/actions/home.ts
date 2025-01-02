@@ -4,6 +4,8 @@ import { auth } from "@/auth";
 import { cookies } from "next/headers";
 
 export async function getHomeWallpaper() {
+  console.log("hi", process.env.SERVER_URL);
+  console.log("hi2", process.env.NEXT_PUBLIC_SERVER_URL);
   const res = await fetch(`${process.env.SERVER_URL}/home`, {
     cache: "no-store",
     next: {

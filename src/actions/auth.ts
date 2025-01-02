@@ -6,6 +6,8 @@ import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
 export async function login(email: string, password: string) {
+  console.log("hi", process.env.SERVER_URL);
+  console.log("hi2", process.env.NEXT_PUBLIC_SERVER_URL);
   const res = await fetch(`${process.env.SERVER_URL}/auth/login`, {
     headers: {
       "Content-Type": "application/json",
