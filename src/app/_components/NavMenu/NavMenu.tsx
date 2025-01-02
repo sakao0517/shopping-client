@@ -11,6 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { CategoryType } from "@/type/type";
 import { getCategory } from "@/actions/category";
 import { AnimatePresence, motion } from "motion/react";
+import { mainColor } from "@/app/_config/ColorSetting";
 
 export default function NavMenu() {
   const { data: categoryData } = useQuery<CategoryType>({
@@ -57,7 +58,7 @@ export default function NavMenu() {
                 setNavOn(false);
               }}
             >
-              <BsXLg size={24} color="black" />
+              <BsXLg size={24} color={`${mainColor}`} />
             </span>
           </div>
           <div className={styles.main}>

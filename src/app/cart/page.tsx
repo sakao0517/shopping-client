@@ -9,6 +9,7 @@ import EmptyCart from "./_components/EmptyCart/EmptyCart";
 import { useRouter } from "next/navigation";
 import CartCard from "./_components/CartCard/CartCard";
 import { BsQuestionCircle } from "react-icons/bs";
+import { mainColor } from "@/app/_config/ColorSetting";
 
 export default function Cart() {
   const { data: products } = useQuery({
@@ -65,7 +66,7 @@ export default function Cart() {
             <div className={styles.shippingMain}>
               <span>Shipping</span>
               <BsQuestionCircle
-                color="black"
+                color={`${mainColor}`}
                 size={12}
                 className={styles.shippingIcon}
                 onClick={() => {

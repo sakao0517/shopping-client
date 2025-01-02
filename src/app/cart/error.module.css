@@ -1,23 +1,29 @@
-.notFound {
+.error {
   width: 100%;
   height: 100dvh;
   padding: 96px 0;
 }
 .main {
-  padding: 25px 5%;
+  padding: 0 5%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 32px;
 }
-.goHome {
+.top {
+  margin: 25px 0;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.goHome > p > a {
-  border-bottom: 1px solid var(--main-color);
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center a {
+  border-bottom: 1px solid var(--font-color);
 }
 @media (max-width: 768px) {
   .main {
-    padding: 25px 20px;
+    padding: 0 20px;
   }
 }

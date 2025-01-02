@@ -24,7 +24,7 @@
 }
 .searchBar > button {
   cursor: pointer;
-  flex-basis: 10%;
+  flex-basis: 15%;
   border: none;
   background-color: transparent;
   padding: 5px;
@@ -33,11 +33,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin: 25px 0;
+  margin-top: 40px;
   padding: 0 2.5%;
 }
 .null {
-  margin: 40px 0;
+  margin-top: 40px;
   padding: 0 5%;
   text-align: center;
 }
@@ -50,5 +50,8 @@
   }
   .null {
     padding: 0 10px;
+  }
+  .searchBar > button {
+    flex-basis: 30%;
   }
 }

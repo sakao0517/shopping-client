@@ -26,9 +26,9 @@
     margin-right: 0;
   }
   .mainOrderCenterDate {
-    flex-basis: 20%;
+    flex-basis: 25%;
   }
   .mainOrderCenterTotal {
-    flex-basis: 20%;
+    flex-basis: 25%;
   }
 }

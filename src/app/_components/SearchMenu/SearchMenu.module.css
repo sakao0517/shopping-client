@@ -62,4 +62,7 @@
   .searchBar {
     width: 90%;
   }
+  .searchBar > button {
+    flex-basis: 30%;
+  }
 }

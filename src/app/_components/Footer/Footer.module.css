@@ -43,5 +43,6 @@
   }
   .topMenu {
     justify-content: flex-start;
+    flex-direction: column;
   }
 }

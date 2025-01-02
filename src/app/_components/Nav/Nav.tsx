@@ -9,6 +9,7 @@ import { UserType } from "@/type/type";
 import { getUserInfo } from "@/actions/auth";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+import { mainColor } from "@/app/_config/ColorSetting";
 
 export default function Nav() {
   const [width, setWidth] = useState<number | undefined>();
@@ -40,7 +41,7 @@ export default function Nav() {
                   setNavOn(true);
                 }}
               >
-                <AiOutlineMenu size={24} color="black" />
+                <AiOutlineMenu size={24} color={`${mainColor}`} />
               </span>
             )
           ) : (

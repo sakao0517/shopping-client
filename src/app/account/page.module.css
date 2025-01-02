@@ -135,10 +135,10 @@
     margin-right: 0;
   }
   .mainTopDate {
-    flex-basis: 20%;
+    flex-basis: 25%;
   }
   .mainTopTotal {
-    flex-basis: 20%;
+    flex-basis: 25%;
   }
   .addressModal {
     width: 100%;

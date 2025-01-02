@@ -10,6 +10,7 @@ import { BsX } from "react-icons/bs";
 import DaumPostcodeEmbed from "react-daum-postcode";
 import OrderCard from "./_components/OrderCard/OrderCard";
 import DeleteButton from "./_components/DeleteButton/DeleteButton";
+import { mainColor } from "@/app/_config/ColorSetting";
 
 export default function Account() {
   const queryClient = useQueryClient();
@@ -245,7 +246,7 @@ export default function Account() {
           />
           <BsX
             size={width !== undefined ? (width > 767 ? "24" : "28") : "24"}
-            color="black"
+            color={`${mainColor}`}
             onClick={() => {
               setAddressModal(false);
             }}

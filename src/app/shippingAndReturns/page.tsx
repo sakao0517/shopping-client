@@ -7,7 +7,7 @@ export default function ShippingAndReturns() {
         <div className={styles.top}>
           <span>Shipping And Returns</span>
         </div>
-        <div>
+        <div className={styles.center}>
           <p>Shipping</p>
           <br />
           <p>

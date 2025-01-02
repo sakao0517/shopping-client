@@ -14,8 +14,11 @@
   justify-content: center;
   align-items: center;
 }
+.center {
+  margin-top: 40px;
+}
 @media (max-width: 768px) {
   .main {
-    padding: 25px 20px;
+    padding: 0 20px;
   }
 }

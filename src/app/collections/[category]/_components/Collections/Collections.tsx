@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import ProductCard from "@/app/_components/ProductCard/ProductCart";
 import { useRouter } from "next/navigation";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import { mainColor } from "@/app/_config/ColorSetting";
 
 interface CollectionsResponse {
   products: ProductType[];
@@ -72,7 +73,7 @@ export default function Collections({
               router.push(`/collections/${category}?page=${prevFirstPage}`);
             }}
           >
-            <AiOutlineLeft size={12} color="black" />
+            <AiOutlineLeft size={12} color={`${mainColor}`} />
           </span>
         )}
         {Array.from(
@@ -103,7 +104,7 @@ export default function Collections({
               router.push(`/collections/${category}?page=${nextFirstPage}`);
             }}
           >
-            <AiOutlineRight size={12} color="black" />
+            <AiOutlineRight size={12} color={`${mainColor}`} />
           </span>
         )}
       </div>

@@ -11,6 +11,7 @@ import { getUserInfo } from "@/actions/auth";
 import { useRouter } from "next/navigation";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { getCategory } from "@/actions/category";
+import { mainColor } from "@/app/_config/ColorSetting";
 
 interface ProductResponse {
   products: ProductType[];
@@ -254,7 +255,7 @@ export default function Product() {
               setCurrentPage(prevFirstPage);
             }}
           >
-            <AiOutlineLeft size={12} color="black" />
+            <AiOutlineLeft size={12} color={`${mainColor}`} />
           </span>
         )}
         {Array.from(
@@ -285,7 +286,7 @@ export default function Product() {
               setCurrentPage(nextFirstPage);
             }}
           >
-            <AiOutlineRight size={12} color="black" />
+            <AiOutlineRight size={12} color={`${mainColor}`} />
           </span>
         )}
       </div>

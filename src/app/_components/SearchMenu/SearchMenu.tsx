@@ -5,6 +5,7 @@ import styles from "./SearchMenu.module.css";
 import { BsXLg } from "react-icons/bs";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { mainColor } from "@/app/_config/ColorSetting";
 
 export default function SearchMenu() {
   const { setNavOn } = useNavStore();
@@ -37,7 +38,7 @@ export default function SearchMenu() {
             setSearchOn(false);
           }}
         >
-          <BsXLg size={24} color="black" />
+          <BsXLg size={24} color={`${mainColor}`} />
         </span>
       </div>
       <div className={styles.main}>

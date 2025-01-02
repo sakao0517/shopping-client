@@ -7,7 +7,7 @@ export default function ShippingAndReturns() {
         <div className={styles.top}>
           <span>Legal</span>
         </div>
-        <div>
+        <div className={styles.center}>
           <p>Terms of Use</p>
           <br />
           <p>

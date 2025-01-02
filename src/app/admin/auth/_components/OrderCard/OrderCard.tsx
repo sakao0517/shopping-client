@@ -6,6 +6,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteAdminOrder, updateAdminUserOrder } from "@/actions/admin";
 import OrderProductCard from "../OrderProductCard/OrderProductCard";
 import { BsChevronUp } from "react-icons/bs";
+import { mainColor } from "@/app/_config/ColorSetting";
 dayjs.locale("ko");
 
 export default function OrderCard({ order }: { order: OrderType }) {
@@ -71,7 +72,7 @@ export default function OrderCard({ order }: { order: OrderType }) {
                   setIsClick(false);
                 }}
               >
-                <BsChevronUp color="black" size={20} />
+                <BsChevronUp color={`${mainColor}`} size={20} />
               </span>
             </div>
           )}

@@ -15,6 +15,7 @@ import {
 import { tmpOrder } from "@/actions/order";
 import { useRouter } from "next/navigation";
 import dayjs from "dayjs";
+import { mainColor } from "@/app/_config/ColorSetting";
 
 dayjs.locale("ko");
 
@@ -335,7 +336,7 @@ export default function Order() {
             <div className={styles.shippingMain}>
               <span>Shipping</span>
               <BsQuestionCircle
-                color="black"
+                color={`${mainColor}`}
                 size={12}
                 className={styles.shippingIcon}
                 onClick={() => {
@@ -386,7 +387,7 @@ export default function Order() {
           />
           <BsX
             size={width !== undefined ? (width > 767 ? "24" : "28") : "24"}
-            color="black"
+            color={`${mainColor}`}
             onClick={() => {
               setAddressModal(false);
             }}

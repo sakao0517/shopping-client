@@ -9,6 +9,7 @@ import AdminUserCard from "./_components/AdminUserCard/AdminUserCard";
 import { useRouter } from "next/navigation";
 import { getUserInfo } from "@/actions/auth";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import { mainColor } from "@/app/_config/ColorSetting";
 
 interface UserResponse {
   users: UserType[];
@@ -212,7 +213,7 @@ export default function Auth() {
               setCurrentPage(prevFirstPage);
             }}
           >
-            <AiOutlineLeft size={12} color="black" />
+            <AiOutlineLeft size={12} color={`${mainColor}`} />
           </span>
         )}
         {Array.from(
@@ -243,7 +244,7 @@ export default function Auth() {
               setCurrentPage(nextFirstPage);
             }}
           >
-            <AiOutlineRight size={12} color="black" />
+            <AiOutlineRight size={12} color={`${mainColor}`} />
           </span>
         )}
       </div>

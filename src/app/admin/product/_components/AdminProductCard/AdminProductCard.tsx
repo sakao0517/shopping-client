@@ -14,6 +14,7 @@ import {
 } from "@/actions/admin";
 import { getCategory } from "@/actions/category";
 import { BsChevronUp } from "react-icons/bs";
+import { mainColor } from "@/app/_config/ColorSetting";
 
 dayjs.locale("ko");
 
@@ -95,7 +96,7 @@ export default function AdminProductCard({
                     setIsClick(false);
                   }}
                 >
-                  <BsChevronUp color="black" size={20} />
+                  <BsChevronUp color={`${mainColor}`} size={20} />
                 </span>
                 <input
                   value={name}

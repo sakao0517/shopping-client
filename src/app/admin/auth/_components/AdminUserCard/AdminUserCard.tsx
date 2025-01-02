@@ -8,6 +8,7 @@ import { deleteAdminUser, updateAdminUser } from "@/actions/admin";
 import OrderCard from "../OrderCard/OrderCard";
 import dayjs from "dayjs";
 import { BsChevronUp } from "react-icons/bs";
+import { mainColor } from "@/app/_config/ColorSetting";
 
 export default function AdminUserCard({ user }: { user: UserType }) {
   const queryClient = useQueryClient();
@@ -71,7 +72,7 @@ export default function AdminUserCard({ user }: { user: UserType }) {
                     setIsClick(false);
                   }}
                 >
-                  <BsChevronUp color="black" size={20} />
+                  <BsChevronUp color={`${mainColor}`} size={20} />
                 </span>
                 <span onClick={() => setIsClick((prev) => !prev)}>
                   {user.email}

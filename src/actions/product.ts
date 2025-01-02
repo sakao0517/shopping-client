@@ -32,7 +32,6 @@ export async function getProduct(id: string) {
 }
 
 export async function getProductBySearch(q: string | null) {
-  console.log(`${process.env.SERVER_URL}/product/search?q=${q}`);
   if (!q) return [];
   const res = await fetch(`${process.env.SERVER_URL}/product/search?q=${q}`, {
     cache: "no-store",

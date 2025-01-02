@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ReactQueryClientProvider from "./config/ReactQueryClientProvider";
+import ReactQueryClientProvider from "./_config/ReactQueryClientProvider";
 import Nav from "./_components/Nav/Nav";
 import Footer from "./_components/Footer/Footer";
-import AuthSession from "./config/SessionProvider";
+import AuthSession from "./_config/SessionProvider";
 import NavMenu from "./_components/NavMenu/NavMenu";
 import SearchMenu from "./_components/SearchMenu/SearchMenu";
 

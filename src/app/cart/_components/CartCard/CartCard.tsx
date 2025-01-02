@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteCart, updateCart } from "@/actions/auth";
 import { BsXLg } from "react-icons/bs";
+import { mainColor } from "@/app/_config/ColorSetting";
 
 export default function CartCard({ product }: { product: CartProductType }) {
   const queryClient = useQueryClient();
@@ -105,7 +106,11 @@ export default function CartCard({ product }: { product: CartProductType }) {
               </div>
             ) : (
               <div className={styles.remove}>
-                <BsXLg size={18} color="black" onClick={handleRemoveClick} />
+                <BsXLg
+                  size={18}
+                  color={`${mainColor}`}
+                  onClick={handleRemoveClick}
+                />
               </div>
             )
           ) : (

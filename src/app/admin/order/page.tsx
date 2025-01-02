@@ -9,6 +9,7 @@ import OrderCard from "./_components/OrderCard/OrderCard";
 import { useRouter } from "next/navigation";
 import { getUserInfo } from "@/actions/auth";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import { mainColor } from "@/app/_config/ColorSetting";
 
 interface OrderResponse {
   orders: OrderType[];
@@ -199,7 +200,7 @@ export default function Order() {
               setCurrentPage(prevFirstPage);
             }}
           >
-            <AiOutlineLeft size={12} color="black" />
+            <AiOutlineLeft size={12} color={`${mainColor}`} />
           </span>
         )}
         {Array.from(
@@ -230,7 +231,7 @@ export default function Order() {
               setCurrentPage(nextFirstPage);
             }}
           >
-            <AiOutlineRight size={12} color="black" />
+            <AiOutlineRight size={12} color={`${mainColor}`} />
           </span>
         )}
       </div>
