@@ -1,20 +1,5 @@
 "use server";
 
-// export async function getAllProducts(category: string) {
-//   const res = await fetch(`${process.env.SERVER_URL}/product/all/${category}`, {
-//     cache: "no-store",
-//     next: {
-//       tags: ["products"],
-//     },
-//   });
-//   if (!res.ok) {
-//     const errorMessage = await res.json();
-//     throw new Error(errorMessage.message);
-//   }
-//   const products = await res.json();
-//   return products;
-// }
-
 export async function getProducts(category: string, currentPage: number) {
   const res = await fetch(
     `${process.env.SERVER_URL}/product/page/${category}?page=${currentPage}&length=${process.env.PAGE_PRODUCT_LIMIT}`,
@@ -47,6 +32,7 @@ export async function getProduct(id: string) {
 }
 
 export async function getProductBySearch(q: string | null) {
+  console.log(`${process.env.SERVER_URL}/product/search?q=${q}`);
   if (!q) return [];
   const res = await fetch(`${process.env.SERVER_URL}/product/search?q=${q}`, {
     cache: "no-store",
