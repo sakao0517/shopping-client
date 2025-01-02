@@ -249,7 +249,7 @@ export default function Account() {
                 width !== undefined
                   ? width > 767
                     ? "444px"
-                    : "100vh"
+                    : "100svh"
                   : "444px"
               }`,
             }}
