@@ -20,6 +20,7 @@ export default function Account() {
   });
   const [width, setWidth] = useState<number | undefined>();
   const [addressModal, setAddressModal] = useState<boolean>(false);
+  const [name, setName] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [address1, setAddress1] = useState<string>("");
   const [address2, setAddress2] = useState<string>("");
@@ -47,6 +48,7 @@ export default function Account() {
   const updateProfileMutate = useMutation({
     mutationFn: async () => {
       await updateProfile(
+        name,
         phone,
         address1,
         address2,
@@ -74,6 +76,7 @@ export default function Account() {
   };
   useEffect(() => {
     if (!userInfo) return;
+    setName(userInfo?.name);
     setPhone(userInfo?.phone);
     setZipcode(userInfo?.zipcode);
     setAddress1(userInfo?.address1);
@@ -107,7 +110,15 @@ export default function Account() {
         <div className={styles.mainCenter}>
           <div>
             <label>이름</label>
-            <span>{userInfo?.name}</span>
+            <input
+              required
+              maxLength={15}
+              placeholder="Name"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
           </div>
           <div>
             <label>휴대전화</label>

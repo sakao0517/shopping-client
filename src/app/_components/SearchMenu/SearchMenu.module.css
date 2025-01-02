@@ -29,7 +29,7 @@
 }
 .main {
   width: 100%;
-  min-height: 100dvh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,16 +41,23 @@
   flex-direction: row;
   border-bottom: 1px solid var(--main-color);
 }
-.searchBar > input {
+.searchBarInput {
+  display: flex;
   flex: 1;
+}
+.searchBarInput > input {
+  width: 100%;
   border: none;
 }
-.searchBar > input:focus {
+.searchBarInput > input:focus {
   outline: none;
 }
-.searchBar > button {
-  cursor: pointer;
+.searchBarButton {
+  display: flex;
   flex-basis: 20%;
+}
+.searchBarButton > button {
+  cursor: pointer;
   border: none;
   background-color: transparent;
   padding: 5px;

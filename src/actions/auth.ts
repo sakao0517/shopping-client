@@ -131,6 +131,7 @@ export async function getUserInfo() {
 }
 
 export async function updateProfile(
+  name: string,
   phone: string,
   address1: string,
   address2: string,
@@ -149,6 +150,7 @@ export async function updateProfile(
     },
     method: "PUT",
     body: JSON.stringify({
+      name,
       phone,
       address1,
       address2,

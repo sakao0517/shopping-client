@@ -10,21 +10,29 @@
   flex-direction: column;
 }
 .searchBar {
+  margin: 25px 5%;
   display: flex;
   flex-direction: row;
-  margin: 25px 5%;
   border-bottom: 1px solid var(--main-color);
 }
-.searchBar > input {
+.searchBarInput {
+  display: flex;
   flex: 1;
+}
+.searchBarInput > input {
+  width: 100%;
   border: none;
 }
-.searchBar > input:focus {
+.searchBarInput > input:focus {
   outline: none;
 }
-.searchBar > button {
-  cursor: pointer;
+.searchBarButton {
+  display: flex;
+  justify-content: center;
   flex-basis: 15%;
+}
+.searchBarButton > button {
+  cursor: pointer;
   border: none;
   background-color: transparent;
   padding: 5px;
@@ -34,7 +42,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   margin-top: 40px;
-  padding: 0 2.5%;
+  padding: 0 5%;
 }
 .null {
   margin-top: 40px;
@@ -46,12 +54,12 @@
     margin: 25px 20px;
   }
   .products {
-    padding: 0 10px;
+    padding: 0 20px;
   }
   .null {
-    padding: 0 10px;
+    padding: 0 20px;
   }
-  .searchBar > button {
-    flex-basis: 30%;
+  .searchBarButton {
+    flex-basis: 20%;
   }
 }

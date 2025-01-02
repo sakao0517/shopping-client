@@ -43,14 +43,18 @@ export default function SearchMenu() {
       </div>
       <div className={styles.main}>
         <form onSubmit={handleSubmit} className={styles.searchBar}>
-          <input
-            required
-            value={search || ""}
-            onChange={(e) => {
-              setSearch(e.target.value);
-            }}
-          />
-          <button type="submit">SEARCH</button>
+          <div className={styles.searchBarInput}>
+            <input
+              required
+              value={search || ""}
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+            />
+          </div>
+          <div className={styles.searchBarButton}>
+            <button type="submit">SEARCH</button>
+          </div>
         </form>
       </div>
     </div>

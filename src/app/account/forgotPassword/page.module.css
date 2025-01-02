@@ -1,6 +1,6 @@
 .forgotPassword {
   width: 100%;
-  height: 100dvh;
+  height: 100vh;
   padding: 96px 0;
 }
 .main {
@@ -59,7 +59,7 @@
 @media (max-width: 768px) {
   .forgotPassword {
     width: 100%;
-    height: 100dvh;
+    height: 100vh;
     padding: 96px 30px;
   }
   .inputSection {
