@@ -12,7 +12,10 @@ export async function getCategory() {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
   const category = await res.json();
   return category;
@@ -34,6 +37,9 @@ export async function updateCategory(id: string, newCategory: string[]) {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
 }

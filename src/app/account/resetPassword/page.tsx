@@ -19,10 +19,10 @@ function ResetPassword() {
       await resetPassword(newPassword, token);
       setIsResetPassword(true);
     } catch (error: any) {
-      if (error.message === "expired token") {
-        alert("비밀번호 변경은 메일을 받은 후 10분 안에 가능합니.");
-      } else if (error.message) {
-        alert(error.message);
+      if (error.digest === "expired token") {
+        alert("비밀번호 변경은 메일을 받은 후 10분 안에 가능합니다.");
+      } else if (error.digest) {
+        alert(error.digest);
       } else {
         alert("문제가 발생했습니다. 다시 시도하세요.");
       }

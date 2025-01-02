@@ -22,11 +22,11 @@ function Success() {
       try {
         await verifyOrder(orderId, Number(amount));
       } catch (error: any) {
-        if (error.message === "amount error") {
+        if (error.digest === "amount error") {
           alert("상품가격과 결제가격이 다릅니다.");
           return router.push("/order/fail");
-        } else if (error.message) {
-          alert(error.message);
+        } else if (error.digest) {
+          alert(error.digest);
           return router.push("/order/fail");
         } else {
           alert("결제에 문제가 발생했습니다.");
@@ -48,8 +48,8 @@ function Success() {
         const json = await confirmOrder(orderId, paymentKey, amount);
         if (json.orderId === orderId) setIsSuccess(true);
       } catch (error: any) {
-        if (error.message) {
-          alert(error.message);
+        if (error.digest) {
+          alert(error.digest);
           return router.push("/order/fail");
         } else {
           alert("문제가 발생했습니다. 다시 시도하세요.");

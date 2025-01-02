@@ -12,7 +12,10 @@ export async function getProducts(category: string, currentPage: number) {
   );
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
   const products = await res.json();
   return products;
@@ -25,7 +28,10 @@ export async function getProduct(id: string) {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
   const product = await res.json();
   return product;
@@ -38,7 +44,10 @@ export async function getProductBySearch(q: string | null) {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
   const products = await res.json();
   return products;

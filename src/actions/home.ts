@@ -12,7 +12,10 @@ export async function getHomeWallpaper() {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
   const wallpaper = await res.json();
   return wallpaper;
@@ -38,6 +41,9 @@ export async function updateHomeWallpaper(
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
 }

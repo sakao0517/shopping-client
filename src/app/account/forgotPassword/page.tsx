@@ -14,10 +14,10 @@ export default function ForgotPassword() {
       await forgotPassword(email);
       setIsSendEmail(true);
     } catch (error: any) {
-      if (error.message === "unregistered user") {
+      if (error.digest === "unregistered user") {
         alert("등록되지 않은 계정입니다.");
-      } else if (error.message) {
-        alert(error.message);
+      } else if (error.digest) {
+        alert(error.digest);
       } else {
         alert("문제가 발생했습니다. 다시 시도하세요.");
       }

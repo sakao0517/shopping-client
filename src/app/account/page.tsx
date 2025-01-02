@@ -11,6 +11,7 @@ import DaumPostcodeEmbed from "react-daum-postcode";
 import OrderCard from "./_components/OrderCard/OrderCard";
 import DeleteButton from "./_components/DeleteButton/DeleteButton";
 import { mainColor } from "@/app/_config/ColorSetting";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 export default function Account() {
   const queryClient = useQueryClient();
@@ -61,11 +62,11 @@ export default function Account() {
       queryClient.invalidateQueries({ queryKey: ["account"] });
       alert("회원 정보가 변경되었습니다.");
     },
-    onError: (error) => {
-      if (error.message === "get user error") {
+    onError: (error: any) => {
+      if (error.digest === "get user error") {
         alert("로그인을 다시 한 후에 시도하세요.");
-      } else if (error.message) {
-        alert(error.message);
+      } else if (error.digest) {
+        alert(error.digest);
       } else {
         alert("문제가 발생했습니다. 다시 시도하세요.");
       }
@@ -95,12 +96,12 @@ export default function Account() {
       if (window.innerWidth <= 767) {
         const body: HTMLBodyElement =
           window.document.getElementsByTagName("body")[0];
-        body.style.overflowY = "hidden";
+        disableBodyScroll(body);
       }
     } else {
       const body: HTMLBodyElement =
         window.document.getElementsByTagName("body")[0];
-      body.style.overflowY = "auto";
+      enableBodyScroll(body);
     }
   }, [addressModal]);
   return (

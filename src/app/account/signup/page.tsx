@@ -21,10 +21,10 @@ export default function Signup() {
       router.push("/account/signup/complete");
     },
     onError: (error: any) => {
-      if (error.message === "registered user") {
+      if (error.digest === "registered user") {
         alert("이미 가입된 계정입니다.");
-      } else if (error.message) {
-        alert(error.message);
+      } else if (error.digest) {
+        alert(error.digest);
       } else {
         alert("문제가 발생했습니다. 다시 시도하세요.");
       }

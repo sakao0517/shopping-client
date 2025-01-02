@@ -6,6 +6,7 @@ import { BsXLg } from "react-icons/bs";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { mainColor } from "@/app/_config/ColorSetting";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 export default function SearchMenu() {
   const { setNavOn } = useNavStore();
@@ -23,11 +24,11 @@ export default function SearchMenu() {
     if (searchOn) {
       const body: HTMLBodyElement =
         window.document.getElementsByTagName("body")[0];
-      body.style.overflowY = "hidden";
+      disableBodyScroll(body);
     } else {
       const body: HTMLBodyElement =
         window.document.getElementsByTagName("body")[0];
-      body.style.overflowY = "auto";
+      enableBodyScroll(body);
     }
   }, [searchOn]);
   return (

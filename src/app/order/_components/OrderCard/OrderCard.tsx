@@ -30,7 +30,7 @@ export default function OrderCard({ product }: { product: CartProductType }) {
           <span>{`₩${product?.price}`}</span>
         </div>
         <div className={styles.qtyAndRemove}>
-          <span>{product.cartStock.stock.qty}</span>
+          <span>{`수량: ${product.cartStock.stock.qty}`}</span>
         </div>
         <div className={styles.total}>{`₩${total}`}</div>
       </div>

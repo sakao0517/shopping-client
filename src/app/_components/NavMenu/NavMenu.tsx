@@ -12,6 +12,7 @@ import { CategoryType } from "@/type/type";
 import { getCategory } from "@/actions/category";
 import { AnimatePresence, motion } from "motion/react";
 import { mainColor } from "@/app/_config/ColorSetting";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 export default function NavMenu() {
   const { data: categoryData } = useQuery<CategoryType>({
@@ -29,11 +30,13 @@ export default function NavMenu() {
     if (navOn) {
       const body: HTMLBodyElement =
         window.document.getElementsByTagName("body")[0];
-      body.style.overflowY = "hidden";
+      // body.style.overflowY = "hidden";
+      disableBodyScroll(body);
     } else {
       const body: HTMLBodyElement =
         window.document.getElementsByTagName("body")[0];
-      body.style.overflowY = "auto";
+      // body.style.overflowY = "auto";
+      enableBodyScroll(body);
     }
   }, [navOn]);
   useEffect(() => {

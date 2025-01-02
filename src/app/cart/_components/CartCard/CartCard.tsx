@@ -23,15 +23,15 @@ export default function CartCard({ product }: { product: CartProductType }) {
       queryClient.invalidateQueries({ queryKey: ["account"] });
       queryClient.invalidateQueries({ queryKey: ["cart"] });
     },
-    onError: (error) => {
-      if (error.message === "get product size error") {
+    onError: (error: any) => {
+      if (error.digest === "get product size error") {
         alert("현재 존재하지 않거나 변경된 제품 사이즈입니다.");
-      } else if (error.message === "sold out") {
+      } else if (error.digest === "sold out") {
         alert("현재 품절된 상품입니다.");
-      } else if (error.message === "not enough qty") {
+      } else if (error.digest === "not enough qty") {
         alert("상품의 수량이 재고수량 보다 많습니다.");
       } else {
-        alert("문제가 발생했습니다. 다시 시도하세요.");
+        alert("상품의 수량이 재고수량 보다 많습니다.");
       }
     },
   });

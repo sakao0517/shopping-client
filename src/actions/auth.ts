@@ -46,7 +46,10 @@ export async function me() {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
   const me = await res.json();
   if (!me) {
@@ -81,7 +84,10 @@ export async function signup(
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
 }
 
@@ -104,7 +110,10 @@ export async function deleteUser() {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
 }
 
@@ -124,7 +133,10 @@ export async function getUserInfo() {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
   const userInfo = await res.json();
   return userInfo;
@@ -162,7 +174,10 @@ export async function updateProfile(
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
   revalidateTag("account");
 }
@@ -182,7 +197,10 @@ export async function getUserOrder(orderId: string | undefined) {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
   const userInfo = await res.json();
   const order = userInfo.orders.find(
@@ -208,7 +226,10 @@ export async function addToCart(productId: string, size: string) {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
   revalidateTag("products");
   revalidateTag(productId);
@@ -228,7 +249,10 @@ export async function getCartProduct() {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
   const products = await res.json();
   return products;
@@ -249,7 +273,10 @@ export async function updateCart(cartStock: Cart, qty: number) {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
   revalidateTag("account");
   revalidateTag("cart");
@@ -270,7 +297,10 @@ export async function deleteCart(cartStock: Cart) {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
   revalidateTag("account");
   revalidateTag("cart");
@@ -288,7 +318,10 @@ export async function forgotPassword(email: string) {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
 }
 
@@ -302,6 +335,9 @@ export async function resetPassword(password: string, token: string) {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
 }

@@ -64,6 +64,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  border-bottom: 1px solid var(--main-color);
 }
 .mainCenter label {
   display: block;
@@ -72,7 +73,6 @@
 }
 .mainCenter input {
   border: none;
-  border-bottom: 1px solid var(--main-color);
   width: 100%;
 }
 .mainCenter input:focus {
@@ -80,16 +80,13 @@
 }
 .zipcode {
   cursor: pointer;
-  border-bottom: 1px solid var(--main-color);
   width: 100%;
 }
 .address1 {
-  border-bottom: 1px solid var(--main-color);
   width: 100%;
 }
 .nullZipcode {
   cursor: pointer;
-  border-bottom: 1px solid var(--main-color);
   width: 100%;
   color: var(--graygray-color);
 }

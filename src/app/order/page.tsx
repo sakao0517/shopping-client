@@ -16,6 +16,7 @@ import { tmpOrder } from "@/actions/order";
 import { useRouter } from "next/navigation";
 import dayjs from "dayjs";
 import { mainColor } from "@/app/_config/ColorSetting";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 dayjs.locale("ko");
 
@@ -94,20 +95,24 @@ export default function Order() {
         cart: products,
       });
     } catch (error: any) {
-      if (error.message === "get product error") {
+      if (error.digest === "get product error") {
         alert("현재 존재하지 않거나 변경된 제품 사이즈가 포함되어 있습니다.");
         setBilling(false);
         return router.push("/cart");
-      } else if (error.message === "get product size error") {
+      } else if (error.digest === "get product size error") {
         alert("현재 존재하지 않거나 변경된 제품 사이즈가 포함되어 있습니다.");
         setBilling(false);
         return router.push("/cart");
-      } else if (error.message === "sold out") {
+      } else if (error.digest === "sold out") {
         alert("현재 품절된 상품이 포함되어 있습니다.");
         setBilling(false);
         return router.push("/cart");
-      } else if (error.message === "not enough qty") {
+      } else if (error.digest === "not enough qty") {
         alert("상품의 수량이 재고수량 보다 많은 제품이 포함되어 있습니다.");
+        setBilling(false);
+        return router.push("/cart");
+      } else if (error.digest) {
+        alert(error.digest);
         setBilling(false);
         return router.push("/cart");
       } else {
@@ -194,11 +199,11 @@ export default function Order() {
     if (billing) {
       const body: HTMLBodyElement =
         window.document.getElementsByTagName("body")[0];
-      body.style.overflowY = "hidden";
+      disableBodyScroll(body);
     } else {
       const body: HTMLBodyElement =
         window.document.getElementsByTagName("body")[0];
-      body.style.overflowY = "auto";
+      enableBodyScroll(body);
     }
   }, [billing]);
   useEffect(() => {
@@ -222,12 +227,12 @@ export default function Order() {
       if (window.innerWidth <= 767) {
         const body: HTMLBodyElement =
           window.document.getElementsByTagName("body")[0];
-        body.style.overflowY = "hidden";
+        disableBodyScroll(body);
       }
     } else {
       const body: HTMLBodyElement =
         window.document.getElementsByTagName("body")[0];
-      body.style.overflowY = "auto";
+      enableBodyScroll(body);
     }
   }, [addressModal]);
   return (

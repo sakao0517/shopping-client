@@ -12,7 +12,10 @@ export async function getProductPageSetting() {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
   const productPageSetting = await res.json();
   return productPageSetting;
@@ -37,6 +40,9 @@ export async function updateProductPageSetting(
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
 }

@@ -34,7 +34,10 @@ export async function tmpOrder(order: {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
 }
 
@@ -53,7 +56,10 @@ export async function verifyOrder(orderId: string, amount: number) {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
 }
 
@@ -79,7 +85,10 @@ export async function confirmOrder(
   const res = await fetch(url, options);
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
   const data = await res.json();
   return data;
@@ -100,7 +109,10 @@ export async function successOrder(orderId: string, paymentKey: string) {
   });
   if (!res.ok) {
     const errorMessage = await res.json();
-    throw new Error(errorMessage.message);
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
   }
   revalidateTag("account");
   revalidateTag("cart");
