@@ -1,0 +1,153 @@
+.order {
+  width: 100%;
+  min-height: 100dvh;
+  padding: 96px 0;
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  padding: 0 5%;
+  display: flex;
+  flex-direction: column;
+}
+.searchBar {
+  margin: 25px 0;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid var(--main-color);
+}
+.searchBar > select {
+  text-align: center;
+  cursor: pointer;
+  flex-basis: 10%;
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+}
+.searchBar > select:focus {
+  outline: none;
+}
+.searchBar > input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+}
+.searchBar > input:focus {
+  outline: none;
+}
+.searchBar > button {
+  cursor: pointer;
+  flex-basis: 10%;
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+}
+.top {
+  display: flex;
+  border: 1px solid var(--main-color);
+}
+.topOrder {
+  flex: 1;
+  padding: 5px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.topOrderStatus {
+  border-left: 1px solid var(--main-color);
+  flex-basis: 20%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+}
+.topOrderStatus > select {
+  text-align: center;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 1px;
+}
+.topName > span {
+  cursor: pointer;
+}
+.topMenu {
+  border-left: 1px solid var(--main-color);
+  flex-basis: 20%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+}
+.topMenu > span {
+  cursor: pointer;
+}
+.topMenu > select {
+  text-align: center;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 1px;
+}
+
+.selected {
+  color: red;
+}
+.page {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 25px 5%;
+  gap: 10px;
+}
+.selectPage {
+  border-bottom: 1px solid var(--main-color);
+}
+.page span {
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .topOrderStatus {
+    flex-direction: column;
+  }
+  .topMenu {
+    flex-direction: column;
+  }
+  .topMenuFinish {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 0 20px;
+  }
+  .searchBar > select {
+    flex-basis: 20%;
+  }
+  .searchBar > button {
+    flex-basis: 20%;
+  }
+  .topOrder {
+    display: none;
+  }
+  .topOrderStatus {
+    flex: 1;
+    border-left: none;
+    flex-direction: column;
+  }
+  .topMenu {
+    flex: 1;
+    flex-direction: column;
+  }
+  .topMenuFinish {
+    flex: 1;
+    flex-direction: column;
+  }
+  .page {
+    margin: 25px 20px;
+  }
+}

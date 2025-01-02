@@ -1,0 +1,8 @@
+.logoutButton {
+}
+.logoutButton > span {
+  border-bottom: 1px solid var(--main-color);
+}
+.logoutButton > span:hover {
+  cursor: pointer;
+}

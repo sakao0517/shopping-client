@@ -1,0 +1,34 @@
+.mainOrderCenter {
+  margin: 32px 0;
+  display: flex;
+  text-align: right;
+  width: 100%;
+}
+.mainOrderCenterOrder {
+  text-align: left;
+  margin-right: 24px;
+  flex: 1;
+}
+.mainOrderCenterOrder > a {
+  border-bottom: 1px solid var(--main-color);
+}
+.mainOrderCenterDate {
+  width: 180px;
+}
+.mainOrderCenterTotal {
+  width: 120px;
+}
+@media (max-width: 768px) {
+  .mainOrderCenter {
+    font-size: 1rem;
+  }
+  .mainOrderCenterOrder {
+    margin-right: 0;
+  }
+  .mainOrderCenterDate {
+    flex-basis: 20%;
+  }
+  .mainOrderCenterTotal {
+    flex-basis: 20%;
+  }
+}

@@ -1,0 +1,87 @@
+.main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.left {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.image {
+  display: flex;
+}
+.image img {
+  z-index: -1;
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 200/300;
+}
+.right {
+  height: 100%;
+  position: sticky;
+  top: 96px;
+  flex-basis: 50%;
+  padding: 0 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+.size {
+  flex-wrap: wrap;
+  display: flex;
+  gap: 20px;
+}
+.soldOut {
+  position: relative;
+  text-transform: uppercase;
+  color: var(--graygray-color);
+}
+.sizeSpan {
+  position: relative;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.selectSize {
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  left: 50%;
+  top: 1.5em;
+  transform: translate(-50%);
+  background-color: var(--main-color);
+}
+.button {
+  width: 100%;
+  height: 50px;
+  border: none;
+  background: var(--main-color);
+  color: #f9f9f9;
+}
+.button:hover {
+  cursor: pointer;
+  border: 3px solid var(--main-color);
+  background-color: #f9f9f9;
+  color: var(--font-color);
+}
+.error > span {
+  color: rgb(255, 0, 0);
+}
+.description span {
+  white-space: pre-wrap;
+}
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+  }
+  .right {
+    padding: 40px 20px;
+  }
+}

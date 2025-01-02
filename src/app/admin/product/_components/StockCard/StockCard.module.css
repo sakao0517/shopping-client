@@ -1,0 +1,40 @@
+.stockCard {
+  height: 45px;
+  min-height: 45px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+.size {
+  flex-basis: 40%;
+}
+.size input {
+  width: 100%;
+}
+.qty {
+  flex-basis: 40%;
+}
+.qty input {
+  width: 100%;
+}
+.stockCard button {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+  cursor: pointer;
+}
+.updateButton {
+  flex-basis: 10%;
+}
+.delete {
+  flex-basis: 10%;
+}
+@media (max-width: 768px) {
+  .updateButton {
+    flex-basis: 15%;
+  }
+  .delete {
+    flex-basis: 15%;
+  }
+}

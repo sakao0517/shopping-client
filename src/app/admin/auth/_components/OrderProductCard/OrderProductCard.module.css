@@ -1,0 +1,30 @@
+.orderProductCard {
+  height: 110px;
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+.orderDetailInfo {
+  flex: 1;
+}
+.orderDetailInfo > div {
+  white-space: normal;
+  word-break: break-all;
+}
+.orderDetailInfo > div > span {
+  cursor: pointer;
+}
+.orderDetailImg {
+  width: 66px;
+  min-width: 66px;
+  margin-right: 24px;
+  display: flex;
+  cursor: pointer;
+}
+.orderDetailImg > img {
+  z-index: -1;
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 200/300;
+}

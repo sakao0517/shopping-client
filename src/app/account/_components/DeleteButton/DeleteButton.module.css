@@ -1,0 +1,8 @@
+.deleteButton {
+}
+.deleteButton > span {
+  border-bottom: 1px solid var(--main-color);
+}
+.deleteButton > span:hover {
+  cursor: pointer;
+}

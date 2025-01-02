@@ -1,0 +1,49 @@
+.imageCard {
+  height: 110px;
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+.image {
+  width: 66px;
+  min-width: 66px;
+  margin-right: 24px;
+  display: flex;
+}
+.image img {
+  z-index: -1;
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 200/300;
+}
+.url {
+  flex: 1;
+}
+.url input {
+  width: 100%;
+}
+.imageCard button {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+  cursor: pointer;
+}
+.updateButton {
+  flex-basis: 10%;
+}
+.delete {
+  flex-basis: 10%;
+}
+@media (max-width: 768px) {
+  .image {
+    margin-right: 0;
+  }
+  .updateButton {
+    flex-basis: 15%;
+  }
+  .delete {
+    flex-basis: 15%;
+  }
+}

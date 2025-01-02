@@ -1,0 +1,70 @@
+.home {
+  width: 100%;
+  min-height: 100dvh;
+  padding: 96px 0;
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  padding: 0 5%;
+  display: flex;
+  flex-direction: column;
+}
+.mainMenu {
+  display: flex;
+  flex-direction: column;
+}
+.mainMenu > p {
+  margin: 20px 0;
+}
+.pcImg {
+  display: flex;
+  width: 100%;
+}
+.pcImg img {
+  width: 100%;
+  height: 56.25%;
+  object-fit: cover;
+  object-position: center;
+}
+.mobileImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.mobileImg img {
+  width: 39%;
+  height: 18%;
+  object-fit: cover;
+  object-position: center;
+}
+.input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.input input {
+  flex: 1;
+  margin: 20px 0;
+}
+.input > button {
+  cursor: pointer;
+  width: 100%;
+  height: 50px;
+  border: none;
+  background: var(--main-color);
+  color: #f9f9f9;
+}
+.input > button:hover {
+  cursor: pointer;
+  border: 3px solid var(--main-color);
+  background-color: #f9f9f9;
+  color: var(--font-color);
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 0 20px;
+  }
+}

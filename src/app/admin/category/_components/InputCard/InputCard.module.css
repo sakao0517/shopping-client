@@ -1,0 +1,19 @@
+.inputCard {
+  width: 100%;
+  display: flex;
+}
+.inputCard input {
+  flex: 1;
+}
+.inputCard button {
+  flex-basis: 10%;
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .inputCard button {
+    flex-basis: 15%;
+  }
+}

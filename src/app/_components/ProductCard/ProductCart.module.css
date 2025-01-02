@@ -1,0 +1,24 @@
+.productCard {
+  width: 25%;
+  /* padding: 0 2.5%; */
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.image {
+  display: flex;
+}
+.image > img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 200/300;
+}
+@media (max-width: 768px) {
+  .productCard {
+    width: 50%;
+    /* padding: 0 10px; */
+  }
+}

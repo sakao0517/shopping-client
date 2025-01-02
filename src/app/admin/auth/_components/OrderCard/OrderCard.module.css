@@ -1,0 +1,159 @@
+.orderCard {
+  width: 100%;
+}
+.main {
+  display: flex;
+  flex-direction: row;
+}
+.productCardClick {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: auto;
+}
+.productCard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 110px;
+  min-height: 110px;
+}
+.productCardIsClick {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.productCardIsClick > span {
+  cursor: pointer;
+}
+.orderInfoClick {
+  flex-basis: 60%;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  border-left: 1px solid var(--main-color);
+}
+.orderInfo {
+  flex-basis: 60%;
+  display: flex;
+  flex-direction: column;
+  height: 70px;
+  min-height: 70px;
+  border-left: 1px solid var(--main-color);
+}
+.orderInfoTop {
+  display: flex;
+  flex-direction: row;
+  height: 70px;
+  min-height: 70px;
+}
+.orderStatus {
+  flex-basis: calc(100% / 3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+.orderStatus > select {
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 1px;
+}
+.orderStatusSelect {
+  flex-basis: calc(100% / 3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  text-align: center;
+}
+.createdAt {
+  flex-basis: calc(100% / 3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  text-align: center;
+}
+.orderAmount {
+  flex-basis: calc(100% / 3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  text-align: center;
+}
+.orderInfoBottom {
+  display: flex;
+  flex-direction: column;
+}
+.orderInfoDetail {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5px;
+}
+.detailRow {
+  display: flex;
+  flex-direction: row;
+}
+.detailRow > label {
+  flex-basis: 20%;
+}
+.detailRow > input {
+  flex: 1;
+  width: 100%;
+}
+.orderInfoTip {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5px;
+  margin: 10px 0;
+}
+
+.orderInfoButton {
+  display: flex;
+}
+.orderInfoButton button {
+  cursor: pointer;
+  width: 50%;
+  height: 50px;
+  border: none;
+  background: var(--main-color);
+  color: #f9f9f9;
+}
+.orderInfoButton button:hover {
+  cursor: pointer;
+  border: 3px solid var(--main-color);
+  background-color: #f9f9f9;
+  color: var(--font-color);
+}
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+  }
+  .productCard {
+    flex: 0 0 auto;
+  }
+  .orderInfoClick {
+    flex: 1;
+    border: none;
+  }
+  .orderInfo {
+    flex: 1;
+    height: 70px;
+    border: none;
+  }
+  .orderInfoTop {
+    height: 70px;
+    min-height: 70px;
+  }
+  .orderInfoDetail > label {
+    flex-basis: 30%;
+  }
+}

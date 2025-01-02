@@ -1,0 +1,193 @@
+.adminUserCard {
+  width: 100%;
+  border-left: 1px solid var(--main-color);
+  border-right: 1px solid var(--main-color);
+  border-bottom: 1px solid var(--main-color);
+}
+.isClick {
+  border: 5px solid red;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.userInfo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 75px;
+  min-height: 75px;
+}
+.userInfoClick {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: auto;
+}
+.userInfoLeft {
+  height: 75px;
+  min-height: 75px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.userInfoLeft > span {
+  cursor: pointer;
+  display: flex;
+  cursor: pointer;
+  word-wrap: break-word; /* 긴 단어를 줄바꿈 */
+  word-break: break-all;
+}
+.emailIsClick {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  display: flex;
+  word-wrap: break-word; /* 긴 단어를 줄바꿈 */
+  word-break: break-all;
+}
+.emailIsClick > span {
+  cursor: pointer;
+}
+.upIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.userInfoRight {
+  width: 100%;
+  height: 75px;
+  min-height: 75px;
+  display: flex;
+  flex-basis: 60%;
+}
+.rightMenu {
+  flex-basis: calc(100% / 3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  display: flex;
+  cursor: pointer;
+  word-wrap: break-word; /* 긴 단어를 줄바꿈 */
+  word-break: break-all; /* 모든 문자에서 줄바꿈 가능 */
+  overflow-wrap: break-word;
+}
+.rightMenuName {
+  border-left: 1px solid var(--main-color);
+}
+.userInfoButtom {
+  display: flex;
+  flex-direction: column;
+}
+.userInfoDetail {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5px;
+  border-top: 1px solid var(--main-color);
+  border-bottom: 1px solid var(--main-color);
+}
+.detailRow {
+  display: flex;
+  flex-direction: row;
+}
+.detailRow > label {
+  flex-basis: 20%;
+}
+.detailRow > input {
+  flex: 1;
+  width: 100%;
+}
+.orderInfoTip {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5px;
+  margin: 10px 0;
+}
+.top {
+  display: flex;
+  border-bottom: 1px solid var(--main-color);
+}
+.topOrder {
+  flex: 1;
+  padding: 5px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.topMenu {
+  border-left: 1px solid var(--main-color);
+  flex-basis: 20%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+}
+.userInfoButton {
+  display: flex;
+}
+
+.userInfoButton > button {
+  cursor: pointer;
+  width: 50%;
+  height: 50px;
+  border: none;
+  background: var(--main-color);
+  color: #f9f9f9;
+}
+.userInfoButton button:hover {
+  cursor: pointer;
+  border: 3px solid var(--main-color);
+  background-color: #f9f9f9;
+  color: var(--font-color);
+}
+.isAdminButton {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .userInfoRight {
+    flex-basis: calc(100% / 1.5);
+  }
+  .rightMenuName {
+    border: none;
+  }
+  .rightMenu {
+    flex-basis: 50%;
+  }
+  .adminSelect {
+    display: none;
+  }
+  .topOrder {
+    display: none;
+  }
+  .topMenu {
+    flex: 1;
+  }
+
+  .userInfoButton > button {
+    width: calc(100% / 3);
+  }
+  .isAdminButton {
+    flex-basis: calc(100% / 3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+  }
+  .isisAdminButtonNew > select {
+    text-align: center;
+    cursor: pointer;
+    padding: 1px;
+  }
+}

@@ -1,0 +1,47 @@
+.footer {
+  background-color: transparent;
+  position: relative;
+  width: 100%;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 48px 5% 12px 5%;
+  gap: 12px;
+}
+.top {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+}
+.top span {
+  flex-basis: 15%;
+  cursor: pointer;
+}
+.topMenu {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.topMenu a {
+  padding-right: 16px;
+}
+.bottom {
+  font-size: 0.7rem;
+  align-self: flex-start;
+}
+@media (max-width: 768px) {
+  .main {
+    gap: 12px;
+  }
+  .top {
+    flex-direction: column-reverse;
+  }
+  .topMenu {
+    justify-content: flex-start;
+  }
+}

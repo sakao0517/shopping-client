@@ -1,0 +1,17 @@
+.shop {
+  width: 100%;
+  min-height: 100dvh;
+  padding: 96px 0;
+}
+.main {
+  padding: 25px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+@media (max-width: 768px) {
+  .main {
+    padding: 25px 20px;
+  }
+}
