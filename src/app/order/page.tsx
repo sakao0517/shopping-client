@@ -32,6 +32,7 @@ export default function Order() {
     queryFn: () => getUserInfo(),
   });
   const router = useRouter();
+  const [message, setMessage] = useState("");
   const [width, setWidth] = useState<number | undefined>();
   const [billing, setBilling] = useState(false);
   const [payment, setPayment] = useState<TossPaymentsPayment>();
@@ -73,7 +74,7 @@ export default function Order() {
     if (!userInfo) return setBilling(false);
     if (!name || !phone || !address1 || !address2 || !zipcode) {
       setBilling(false);
-      return alert("주문정보를 정확히 입력해 주세요.");
+      return setMessage("주문정보를 정확히 입력해 주세요.");
     }
     if (products?.length === 0) return setBilling(false);
     if (subtotal == null || shipping == null || total == null)
@@ -96,34 +97,40 @@ export default function Order() {
       });
     } catch (error: any) {
       if (error.digest === "get product error") {
-        alert("현재 존재하지 않거나 변경된 제품 사이즈가 포함되어 있습니다.");
+        setMessage(
+          "현재 존재하지 않거나 변경된 제품 사이즈가 포함되어 있습니다."
+        );
         setBilling(false);
         return router.push("/cart");
       } else if (error.digest === "get product size error") {
-        alert("현재 존재하지 않거나 변경된 제품 사이즈가 포함되어 있습니다.");
+        setMessage(
+          "현재 존재하지 않거나 변경된 제품 사이즈가 포함되어 있습니다."
+        );
         setBilling(false);
         return router.push("/cart");
       } else if (error.digest === "sold out") {
-        alert("현재 품절된 상품이 포함되어 있습니다.");
+        setMessage("현재 품절된 상품이 포함되어 있습니다.");
         setBilling(false);
         return router.push("/cart");
       } else if (error.digest === "not enough qty") {
-        alert("상품의 수량이 재고수량 보다 많은 제품이 포함되어 있습니다.");
+        setMessage(
+          "상품의 수량이 재고수량 보다 많은 제품이 포함되어 있습니다."
+        );
         setBilling(false);
         return router.push("/cart");
       } else if (error.digest) {
-        alert(error.digest);
+        setMessage(error.digest);
         setBilling(false);
         return router.push("/cart");
       } else {
-        alert("문제가 발생했습니다. 다시 시도하세요.");
+        setMessage("문제가 발생했습니다. 다시 시도하세요.");
         setBilling(false);
         return router.push("/cart");
       }
     }
     try {
       if (!payment) {
-        alert("문제가 발생했습니다. 다시 시도하세요.");
+        setMessage("문제가 발생했습니다. 다시 시도하세요.");
         return setBilling(false);
       }
       await payment.requestPayment({
@@ -147,7 +154,7 @@ export default function Order() {
       });
     } catch (error) {
       if (error) {
-        alert("문제가 발생했습니다. 다시 시도하세요.");
+        setMessage("문제가 발생했습니다. 다시 시도하세요.");
         setBilling(false);
       }
     }
@@ -209,7 +216,7 @@ export default function Order() {
   useEffect(() => {
     if (!isLoading) {
       if (!products || products?.length === 0) {
-        alert("문제가 발생했습니다.");
+        setMessage("문제가 발생했습니다.");
         return router.back();
       }
     }
@@ -368,6 +375,7 @@ export default function Order() {
         <button className={styles.button} onClick={() => requestPayment()}>
           결제하기
         </button>
+        {message && <span className={styles.message}>{message}</span>}
       </div>
       {addressModal && (
         <div className={styles.addressModal}>

@@ -126,10 +126,13 @@
   font-size: 0.7rem;
 }
 .checkOut {
+  display: flex;
+  flex-direction: column;
   max-width: 100%;
   width: 950px;
   margin: 40px auto;
   padding: 0 5%;
+  display: flex;
 }
 .checkOut button {
   cursor: pointer;
@@ -159,6 +162,12 @@
   top: -0.7%;
   right: -0.7%;
 }
+.message {
+  color: red;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
 @media (max-width: 768px) {
   .yourOrder {
     padding: 0 20px;
@@ -177,5 +186,8 @@
   }
   .subtotal {
     padding: 0 20px;
+  }
+  .checkOut {
+    width: 100%;
   }
 }

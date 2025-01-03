@@ -77,11 +77,25 @@
 .description span {
   white-space: pre-wrap;
 }
+
+.buttonDiv {
+  display: flex;
+  flex-direction: column;
+}
+.message {
+  color: red;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
 @media (max-width: 768px) {
   .main {
     flex-direction: column;
   }
   .right {
     padding: 40px 20px;
+  }
+  .buttonDiv {
+    width: 100%;
   }
 }

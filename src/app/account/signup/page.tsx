@@ -8,6 +8,7 @@ import { signup } from "@/actions/auth";
 import { useRouter } from "next/navigation";
 
 export default function Signup() {
+  const [message, setMessage] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,11 +23,11 @@ export default function Signup() {
     },
     onError: (error: any) => {
       if (error.digest === "registered user") {
-        alert("이미 가입된 계정입니다.");
+        setMessage("이미 가입된 계정입니다.");
       } else if (error.digest) {
-        alert(error.digest);
+        setMessage(error.digest);
       } else {
-        alert("문제가 발생했습니다. 다시 시도하세요.");
+        setMessage("문제가 발생했습니다. 다시 시도하세요.");
       }
     },
   });
@@ -88,9 +89,12 @@ export default function Signup() {
             }}
           />
         </div>
-        <button type="submit" className={styles.button}>
-          회원가입
-        </button>
+        <div className={styles.buttonDiv}>
+          <button type="submit" className={styles.button}>
+            회원가입
+          </button>
+          {message && <span className={styles.message}>{message}</span>}
+        </div>
         <div className={styles.menu}>
           <Link href={"/account/login"}>로그인</Link>
         </div>

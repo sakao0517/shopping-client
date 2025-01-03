@@ -9,6 +9,7 @@ import { mainColor } from "@/app/_config/ColorSetting";
 
 export default function CartCard({ product }: { product: CartProductType }) {
   const queryClient = useQueryClient();
+  const [message, setMessage] = useState("");
   const [width, setWidth] = useState<number | undefined>();
   const [total, setTotal] = useState<number>();
   useEffect(() => {
@@ -25,13 +26,13 @@ export default function CartCard({ product }: { product: CartProductType }) {
     },
     onError: (error: any) => {
       if (error.digest === "get product size error") {
-        alert("현재 존재하지 않거나 변경된 제품 사이즈입니다.");
+        setMessage("현재 존재하지 않거나 변경된 제품 사이즈입니다.");
       } else if (error.digest === "sold out") {
-        alert("현재 품절된 상품입니다.");
+        setMessage("현재 품절된 상품입니다.");
       } else if (error.digest === "not enough qty") {
-        alert("상품의 수량이 재고수량 보다 많습니다.");
+        setMessage("상품의 수량이 재고수량 보다 많습니다.");
       } else {
-        alert("문제가 발생했습니다. 다시 시도하세요.");
+        setMessage("문제가 발생했습니다. 다시 시도하세요.");
       }
     },
   });
@@ -44,7 +45,7 @@ export default function CartCard({ product }: { product: CartProductType }) {
       queryClient.invalidateQueries({ queryKey: ["cart"] });
     },
     onError: () => {
-      alert("문제가 발생했습니다. 다시 시도하세요.");
+      setMessage("문제가 발생했습니다. 다시 시도하세요.");
     },
   });
   const handleQtyClick = (qty: number) => {
@@ -63,62 +64,65 @@ export default function CartCard({ product }: { product: CartProductType }) {
   }, []);
   return (
     <div className={styles.mainCenter}>
-      <Link
-        href={`/collections/product/${product.id}`}
-        className={styles.image}
-      >
-        <img src={product.img[0]} />
-      </Link>
-      <div className={styles.product}>
-        <div className={styles.productDetail}>
-          <div>
-            <Link href={`/collections/product/${product.id}`}>
-              {product.name}
-            </Link>
+      <div className={styles.mainCenterCard}>
+        <Link
+          href={`/collections/product/${product.id}`}
+          className={styles.image}
+        >
+          <img src={product.img[0]} />
+        </Link>
+        <div className={styles.product}>
+          <div className={styles.productDetail}>
+            <div>
+              <Link href={`/collections/product/${product.id}`}>
+                {product.name}
+              </Link>
+            </div>
+            <p>{`size: ${product.cartStock.stock.size.toUpperCase()}`}</p>
           </div>
-          <p>{`size: ${product.cartStock.stock.size.toUpperCase()}`}</p>
-        </div>
-        <div className={styles.price}>
-          <span>{`₩${product?.price}`}</span>
-        </div>
-        <div className={styles.qtyAndRemove}>
-          <div className={styles.qty}>
-            <button
-              onClick={() => {
-                handleQtyClick(-1);
-              }}
-            >
-              -
-            </button>
-            <span>{product.cartStock.stock.qty}</span>
-            <button
-              onClick={() => {
-                handleQtyClick(1);
-              }}
-            >
-              +
-            </button>
+          <div className={styles.price}>
+            <span>{`₩${product?.price}`}</span>
           </div>
-          {width !== undefined ? (
-            width > 767 ? (
-              <div className={styles.remove}>
-                <span onClick={handleRemoveClick}>remove</span>
-              </div>
+          <div className={styles.qtyAndRemove}>
+            <div className={styles.qty}>
+              <button
+                onClick={() => {
+                  handleQtyClick(-1);
+                }}
+              >
+                -
+              </button>
+              <span>{product.cartStock.stock.qty}</span>
+              <button
+                onClick={() => {
+                  handleQtyClick(1);
+                }}
+              >
+                +
+              </button>
+            </div>
+            {width !== undefined ? (
+              width > 767 ? (
+                <div className={styles.remove}>
+                  <span onClick={handleRemoveClick}>remove</span>
+                </div>
+              ) : (
+                <div className={styles.remove}>
+                  <BsXLg
+                    size={18}
+                    color={`${mainColor}`}
+                    onClick={handleRemoveClick}
+                  />
+                </div>
+              )
             ) : (
-              <div className={styles.remove}>
-                <BsXLg
-                  size={18}
-                  color={`${mainColor}`}
-                  onClick={handleRemoveClick}
-                />
-              </div>
-            )
-          ) : (
-            <></>
-          )}
+              <></>
+            )}
+          </div>
+          <div className={styles.total}>{`₩${total}`}</div>
         </div>
-        <div className={styles.total}>{`₩${total}`}</div>
       </div>
+      {message && <span className={styles.message}>{message}</span>}
     </div>
   );
 }

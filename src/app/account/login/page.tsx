@@ -7,6 +7,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
+  const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
@@ -18,7 +19,7 @@ export default function Login() {
       redirect: false,
     });
     if (user?.error) {
-      alert(
+      setMessage(
         "이메일 또는 비밀번호를 잘못 입력하셨습니다. (비밀번호는 6자 이상 20자 이하)"
       );
     } else {
@@ -57,9 +58,12 @@ export default function Login() {
             }}
           />
         </div>
-        <button type="submit" className={styles.button}>
-          로그인
-        </button>
+        <div className={styles.buttonDiv}>
+          <button type="submit" className={styles.button}>
+            로그인
+          </button>
+          {message && <span className={styles.message}>{message}</span>}
+        </div>
         <div className={styles.menu}>
           <Link href={"/account/forgotPassword"}>비밀번호 찾기</Link>
           <Link href={"/account/signup"}>회원가입</Link>

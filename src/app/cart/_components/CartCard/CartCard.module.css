@@ -1,6 +1,10 @@
 .mainCenter {
   margin-top: 32px;
   display: flex;
+  flex-direction: column;
+}
+.mainCenterCard {
+  display: flex;
   text-align: right;
   width: 100%;
 }
@@ -81,6 +85,12 @@
   width: 100%;
   object-fit: cover;
   aspect-ratio: 200/300;
+}
+.message {
+  color: red;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 @media (max-width: 768px) {
   .product {

@@ -5,7 +5,9 @@ export default function Fail() {
   return (
     <div className={styles.fail}>
       <div className={styles.main}>
-        <span>주문에 문제가 발생했습니다.</span>
+        <div className={styles.top}>
+          <span>주문에 문제가 발생했습니다.</span>
+        </div>
         <div className={styles.goOrder}>
           <p>
             {"다시 시도해주세요. "}

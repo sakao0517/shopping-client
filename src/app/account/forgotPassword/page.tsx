@@ -3,9 +3,10 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { ChangeEvent, useState } from "react";
-import { forgotPassword } from "@/actions/auth";
+import { forgotPassword, me } from "@/actions/auth";
 
 export default function ForgotPassword() {
+  const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
   const [isSendEmail, setIsSendEmail] = useState(false);
   const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
@@ -15,11 +16,11 @@ export default function ForgotPassword() {
       setIsSendEmail(true);
     } catch (error: any) {
       if (error.digest === "unregistered user") {
-        alert("등록되지 않은 계정입니다.");
+        setMessage("등록되지 않은 계정입니다.");
       } else if (error.digest) {
-        alert(error.digest);
+        setMessage(error.digest);
       } else {
-        alert("문제가 발생했습니다. 다시 시도하세요.");
+        setMessage("문제가 발생했습니다. 다시 시도하세요.");
       }
     }
   };
@@ -41,15 +42,18 @@ export default function ForgotPassword() {
             disabled={isSendEmail}
           />
         </div>
-        <button
-          type="submit"
-          className={
-            isSendEmail ? `${styles.disabledButton}` : `${styles.button}`
-          }
-          disabled={isSendEmail}
-        >
-          비밀번호 찾기
-        </button>
+        <div className={styles.buttonDiv}>
+          <button
+            type="submit"
+            className={
+              isSendEmail ? `${styles.disabledButton}` : `${styles.button}`
+            }
+            disabled={isSendEmail}
+          >
+            비밀번호 찾기
+          </button>
+          {message && <span className={styles.message}>{message}</span>}
+        </div>
         <div className={styles.menu}>
           <Link href={"/account/login"}>로그인</Link>
         </div>

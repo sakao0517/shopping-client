@@ -91,14 +91,18 @@ function Success() {
     return (
       <div className={styles.success}>
         <div className={styles.main}>
-          <span>주문이 진행 중입니다.</span>
+          <div className={styles.top}>
+            <span>주문이 진행중입니다.</span>
+          </div>
         </div>
       </div>
     );
   return (
     <div className={styles.success}>
       <div className={styles.main}>
-        <span>고객님의 주문이 완료 되었습니다.</span>
+        <div className={styles.top}>
+          <span>고객님의 주문이 완료되었습니다.</span>
+        </div>
         <div className={styles.goOrder}>
           <p>
             {"주문번호 : "}

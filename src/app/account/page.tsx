@@ -19,6 +19,7 @@ export default function Account() {
     queryKey: ["account"],
     queryFn: () => getUserInfo(),
   });
+  const [message, setMessage] = useState("");
   const [width, setWidth] = useState<number | undefined>();
   const [addressModal, setAddressModal] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
@@ -60,17 +61,17 @@ export default function Account() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["account"] });
-      alert("회원 정보가 변경되었습니다.");
+      setMessage("회원 정보가 변경되었습니다.");
       setPassword("");
       setNewPassword("");
     },
     onError: (error: any) => {
       if (error.digest === "get user error") {
-        alert("로그인을 다시 한 후에 시도하세요.");
+        setMessage("로그인을 다시 한 후에 시도하세요.");
       } else if (error.digest) {
-        alert(error.digest);
+        setMessage(error.digest);
       } else {
-        alert("문제가 발생했습니다. 다시 시도하세요.");
+        setMessage("문제가 발생했습니다. 다시 시도하세요.");
       }
     },
   });
@@ -221,6 +222,7 @@ export default function Account() {
           <button className={styles.button} onClick={handleSubmit}>
             회원정보 수정
           </button>
+          {message && <span className={styles.message}>{message}</span>}
         </div>
         <div className={styles.bottom}>
           <LogoutButton />
