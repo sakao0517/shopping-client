@@ -31,7 +31,9 @@ export default function NavMenu() {
       const body: HTMLBodyElement =
         window.document.getElementsByTagName("body")[0];
       // body.style.overflowY = "hidden";
-      disableBodyScroll(body);
+      disableBodyScroll(body, {
+        allowTouchMove: (el: any) => el.tagName === "NAV",
+      });
     } else {
       const body: HTMLBodyElement =
         window.document.getElementsByTagName("body")[0];
