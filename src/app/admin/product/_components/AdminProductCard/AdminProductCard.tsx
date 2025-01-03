@@ -139,7 +139,9 @@ export default function AdminProductCard({
               )}
             </div>
             <div className={styles.createdAt}>
-              {dayjs(product?.createdAt).format("YYYY.MM.DD HH:mm")}
+              {product?.createdAt
+                ? dayjs(product.createdAt).format("YYYY.MM.DD HH:mm")
+                : ""}
             </div>
             <div className={styles.price}>
               {isClick ? (

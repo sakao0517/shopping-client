@@ -29,6 +29,17 @@
 .rightMenu > span {
   cursor: pointer;
 }
+.cart {
+  position: relative;
+  display: flex;
+}
+.heart {
+  z-index: 3333;
+  display: flex;
+  position: absolute;
+  right: 50%;
+  bottom: 6%;
+}
 /* 모바일 */
 @media (max-width: 768px) {
   .main {

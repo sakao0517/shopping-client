@@ -98,7 +98,9 @@ export default function OrderCard({ order }: { order: OrderType }) {
               <div className={styles.orderStatus}>{order.orderStatus}</div>
             )}
             <div className={styles.createdAt}>
-              {dayjs(order.createdAt).format("YYYY.MM.DD HH:mm")}
+              {order?.createdAt
+                ? dayjs(order.createdAt).format("YYYY.MM.DD HH:mm")
+                : ""}
             </div>
             <div className={styles.orderAmount}>{order.amount}</div>
           </div>

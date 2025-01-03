@@ -3,13 +3,19 @@
 import Link from "next/link";
 import styles from "./Nav.module.css";
 import { AiOutlineMenu } from "react-icons/ai";
-import { useNavStore, useSearchStore } from "@/store/store";
+import {
+  useCartIsChangeStore,
+  useNavStore,
+  useSearchStore,
+} from "@/store/store";
 import { useSession } from "next-auth/react";
 import { UserType } from "@/type/type";
 import { getUserInfo } from "@/actions/auth";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { mainColor } from "@/app/_config/ColorSetting";
+import { BsFillHeartFill } from "react-icons/bs";
+import { motion, useAnimate } from "motion/react";
 
 export default function Nav() {
   const [width, setWidth] = useState<number | undefined>();
@@ -18,8 +24,10 @@ export default function Nav() {
     queryKey: ["account"],
     queryFn: () => getUserInfo(),
   });
+  const [scope, animate] = useAnimate();
   const { setNavOn } = useNavStore();
   const { setSearchOn } = useSearchStore();
+  const { cartIsChange, setCartIsChange } = useCartIsChangeStore();
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
@@ -28,6 +36,17 @@ export default function Nav() {
     handleResize();
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  useEffect(() => {
+    const heartAnimation = async () => {
+      await animate(scope.current, { opacity: 1, y: 0 }, { duration: 1 });
+      await animate(scope.current, { opacity: 0 }, { duration: 0.8 });
+      await animate(scope.current, { y: -150 }, { duration: 0 });
+    };
+    if (cartIsChange) {
+      setCartIsChange(false);
+      heartAnimation();
+    }
+  }, [cartIsChange]);
   return (
     <div className={styles.nav}>
       <div className={styles.main}>
@@ -62,9 +81,18 @@ export default function Nav() {
           ) : (
             <Link href={"/account/login"}>LOGIN</Link>
           )}
-          <Link href={"/cart"}>{`CART(${
-            userInfo ? userInfo.cart.length : "0"
-          })`}</Link>
+          <div className={styles.cart}>
+            <Link href={"/cart"}>{`CART(${
+              userInfo ? userInfo.cart.length : "0"
+            })`}</Link>
+            <motion.span
+              ref={scope}
+              className={styles.heart}
+              initial={{ opacity: 0, y: -150 }}
+            >
+              <BsFillHeartFill color="red" />
+            </motion.span>
+          </div>
         </div>
       </div>
     </div>

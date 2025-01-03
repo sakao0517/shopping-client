@@ -111,9 +111,7 @@ export default function AdminAddProduct() {
                   })}
               </select>
             </div>
-            <div className={styles.createdAt}>
-              {dayjs(createdAt).format("YYYY.MM.DD HH:mm")}
-            </div>
+            <div className={styles.createdAt}>{createdAt}</div>
             <div className={styles.price}>
               <input
                 value={price ? String(price) : ""}
@@ -214,127 +212,5 @@ export default function AdminAddProduct() {
         </div>
       </div>
     </div>
-    // <div className={styles.adminAddProduct}>
-    //   <div className={styles.main}>
-    //     <div className={styles.left}>
-    //       <div className={styles.name}>
-    //         <div className={styles.nameIsClick}>
-    //           <input
-    //             value={name}
-    //             onChange={(e) => {
-    //               setName(e.target.value);
-    //             }}
-    //           />
-    //         </div>
-    //       </div>
-
-    //       <div className={styles.leftBottom}>
-    //         <textarea
-    //           value={description}
-    //           onChange={(e) => {
-    //             setDescription(e.target.value);
-    //           }}
-    //           className={styles.textarea}
-    //         ></textarea>
-    //       </div>
-    //     </div>
-    //     <div className={styles.right}>
-    //       <div className={styles.rightTop}>
-    //         <div className={styles.category}>
-    //           <select
-    //             value={category}
-    //             onChange={(e) => {
-    //               setCategory(e.target.value);
-    //             }}
-    //           >
-    //             {categoryData &&
-    //               categoryData?.category.map((category) => {
-    //                 if (category === "new") return;
-    //                 return (
-    //                   <option key={category} value={category}>
-    //                     {category}
-    //                   </option>
-    //                 );
-    //               })}
-    //           </select>
-    //         </div>
-    //         <div className={styles.createdAt}>
-    //           {dayjs(createdAt).format("YYYY.MM.DD HH:mm")}
-    //         </div>
-    //         <div className={styles.price}>
-    //           <input
-    //             value={price ? String(price) : ""}
-    //             type="text"
-    //             onChange={(e) => {
-    //               const value = e.target.value
-    //                 .replace(/[^0-9.]/g, "")
-    //                 .replace(/(\..*)\./g, "$1");
-    //               setPrice(Number(value));
-    //             }}
-    //           />
-    //         </div>
-    //       </div>
-
-    //       <div className={styles.rightBottom}>
-    //         <div className={styles.listTip}>
-    //           <p>이미지 파일은 최소 2개 이상으로 설정해주세요.</p>
-    //         </div>
-    //         <div className={styles.imageList}>
-    //           {img.map((image, index) => (
-    //             <ImageCard
-    //               key={`${image}${index}`}
-    //               index={index}
-    //               img={img}
-    //               setImg={setImg}
-    //             />
-    //           ))}
-    //           <div className={styles.addButton}>
-    //             <button onClick={handleImgButton}>이미지 추가</button>
-    //           </div>
-    //         </div>
-
-    //         <div className={styles.listTip}>
-    //           <p>사이즈는 최소 1개 이상으로 설정해주세요.</p>
-    //           <p>단일 사이즈인 경우에도 free나 os로 설정</p>
-    //         </div>
-    //         <div className={styles.stockList}>
-    //           {stock.map((sizeStock, index) => (
-    //             <StockCard
-    //               key={`${sizeStock.size}${index}`}
-    //               index={index}
-    //               stock={stock}
-    //               setStock={setStock}
-    //             />
-    //           ))}
-    //           <div className={styles.addButton}>
-    //             <button onClick={handleStockButton}>사이즈 추가</button>
-    //           </div>
-    //         </div>
-    //       </div>
-
-    //       <div className={styles.productCardButton}>
-    //         <div className={styles.isNew}>
-    //           <select
-    //             value={isNew ? "신상품" : "신상품x"}
-    //             onChange={(e) => {
-    //               setIsNew(e.target.value === "신상품" ? true : false);
-    //             }}
-    //           >
-    //             <option value={"신상품"}>신상품</option>
-    //             <option value={"신상품x"}>신상품x</option>
-    //           </select>
-    //         </div>
-    //         <button
-    //           type="submit"
-    //           onClick={() => {
-    //             addProductMutate.mutate();
-    //           }}
-    //         >
-    //           제품 등록
-    //         </button>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
   );
 }

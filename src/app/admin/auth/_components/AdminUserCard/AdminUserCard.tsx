@@ -89,7 +89,9 @@ export default function AdminUserCard({ user }: { user: UserType }) {
               {name}
             </div>
             <div className={styles.rightMenu}>
-              {dayjs(user.createdAt).format("YYYY.MM.DD HH:mm")}
+              {user?.createdAt
+                ? dayjs(user.createdAt).format("YYYY.MM.DD HH:mm")
+                : ""}
             </div>
             {isClick ? (
               <div className={`${styles.rightMenu} ${styles.adminSelect}`}>

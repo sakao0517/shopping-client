@@ -103,7 +103,7 @@
   margin: 40px 0;
 }
 .addressModal {
-  z-index: 3333;
+  z-index: 4444;
   border: 1px solid var(--main-color);
   position: fixed;
   left: 50%;

@@ -194,7 +194,11 @@ export default function Account() {
               autoComplete="off"
               value={password}
               onChange={(e) => {
-                setPassword(e.target.value);
+                const filteredValue = e.target.value.replace(
+                  /[^A-Za-z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>/?]/g,
+                  ""
+                );
+                setPassword(filteredValue);
               }}
             />
           </div>

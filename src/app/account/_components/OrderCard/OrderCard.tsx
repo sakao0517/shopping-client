@@ -12,7 +12,7 @@ export default function OrderCard({ order }: { order: OrderType }) {
         <Link href={`/account/order/${order.orderId}`}>{order.orderId}</Link>
       </span>
       <span className={styles.mainOrderCenterDate}>
-        {dayjs(order.createdAt).format("YY.MM.DD")}
+        {order?.createdAt ? dayjs(order.createdAt).format("YY.MM.DD") : ""}
       </span>
       <span className={styles.mainOrderCenterTotal}>{`₩${order.amount}`}</span>
     </div>

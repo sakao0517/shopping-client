@@ -7,11 +7,13 @@ import { getProduct } from "@/actions/product";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { addToCart } from "@/actions/auth";
+import { useCartIsChangeStore } from "@/store/store";
 
 export default function Product({ id }: { id: string }) {
   const queryClient = useQueryClient();
   const { data: session } = useSession();
   const [selectSize, setSelectSize] = useState<string>("");
+  const { setCartIsChange } = useCartIsChangeStore();
   const { data: product } = useQuery<ProductType>({
     queryKey: ["product", id],
     queryFn: () => getProduct(id),
@@ -23,6 +25,7 @@ export default function Product({ id }: { id: string }) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["product", id] });
       queryClient.invalidateQueries({ queryKey: ["account"] });
+      setCartIsChange(true);
     },
     onError: (error: any) => {
       if (error.digest === "sold out") {

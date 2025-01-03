@@ -48,7 +48,11 @@ export default function Order() {
           </div>
           <div>
             <label>주문날짜</label>
-            <span>{dayjs(order?.createdAt).format("YYYY.MM.DD HH:mm")}</span>
+            <span>
+              {order?.createdAt
+                ? dayjs(order?.createdAt).format("YYYY.MM.DD HH:mm")
+                : ""}
+            </span>
           </div>
           <div>
             <label>주문상태</label>

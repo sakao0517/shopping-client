@@ -120,6 +120,11 @@ export default function Admin() {
             cloudinary
           </a>
         </div>
+        <div>
+          <a href={"https://vercel.com/"} target="_blank">
+            vercel
+          </a>
+        </div>
       </div>
     </div>
   );
