@@ -11,7 +11,7 @@ import DaumPostcodeEmbed from "react-daum-postcode";
 import OrderCard from "./_components/OrderCard/OrderCard";
 import DeleteButton from "./_components/DeleteButton/DeleteButton";
 import { mainColor } from "@/app/_config/ColorSetting";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock-upgrade";
 
 export default function Account() {
   const queryClient = useQueryClient();

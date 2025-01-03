@@ -6,7 +6,7 @@ import { BsXLg } from "react-icons/bs";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { mainColor } from "@/app/_config/ColorSetting";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock-upgrade";
 
 export default function SearchMenu() {
   const { setNavOn } = useNavStore();

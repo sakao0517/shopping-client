@@ -16,7 +16,7 @@ import { tmpOrder } from "@/actions/order";
 import { useRouter } from "next/navigation";
 import dayjs from "dayjs";
 import { mainColor } from "@/app/_config/ColorSetting";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock-upgrade";
 
 dayjs.locale("ko");
 
