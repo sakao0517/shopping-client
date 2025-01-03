@@ -3,7 +3,7 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { ChangeEvent, useState } from "react";
-import { forgotPassword, me } from "@/actions/auth";
+import { forgotPassword } from "@/actions/auth";
 
 export default function ForgotPassword() {
   const [message, setMessage] = useState("");
