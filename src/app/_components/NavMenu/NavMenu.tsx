@@ -31,7 +31,9 @@ export default function NavMenu() {
       const body: HTMLBodyElement =
         window.document.getElementsByTagName("body")[0];
       // body.style.overflowY = "hidden";
-      disableBodyScroll(body);
+      disableBodyScroll(body, {
+        allowTouchMove: (el) => el.tagName === "nav",
+      });
     } else {
       const body: HTMLBodyElement =
         window.document.getElementsByTagName("body")[0];
@@ -48,7 +50,7 @@ export default function NavMenu() {
   return (
     <AnimatePresence>
       {navOn && (
-        <motion.div
+        <motion.nav
           className={styles.navOn}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -146,7 +148,7 @@ export default function NavMenu() {
               </>
             )}
           </div>
-        </motion.div>
+        </motion.nav>
       )}
     </AnimatePresence>
   );

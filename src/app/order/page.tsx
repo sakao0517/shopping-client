@@ -100,32 +100,26 @@ export default function Order() {
         setMessage(
           "현재 존재하지 않거나 변경된 제품 사이즈가 포함되어 있습니다."
         );
-        setBilling(false);
-        return router.push("/cart");
+        return setBilling(false);
       } else if (error.digest === "get product size error") {
         setMessage(
           "현재 존재하지 않거나 변경된 제품 사이즈가 포함되어 있습니다."
         );
-        setBilling(false);
-        return router.push("/cart");
+        return setBilling(false);
       } else if (error.digest === "sold out") {
         setMessage("현재 품절된 상품이 포함되어 있습니다.");
-        setBilling(false);
-        return router.push("/cart");
+        return setBilling(false);
       } else if (error.digest === "not enough qty") {
         setMessage(
           "상품의 수량이 재고수량 보다 많은 제품이 포함되어 있습니다."
         );
-        setBilling(false);
-        return router.push("/cart");
+        return setBilling(false);
       } else if (error.digest) {
         setMessage(error.digest);
-        setBilling(false);
-        return router.push("/cart");
+        return setBilling(false);
       } else {
         setMessage("문제가 발생했습니다. 다시 시도하세요.");
-        setBilling(false);
-        return router.push("/cart");
+        return setBilling(false);
       }
     }
     try {
@@ -216,7 +210,6 @@ export default function Order() {
   useEffect(() => {
     if (!isLoading) {
       if (!products || products?.length === 0) {
-        setMessage("문제가 발생했습니다.");
         return router.back();
       }
     }
