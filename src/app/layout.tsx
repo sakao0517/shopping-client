@@ -6,6 +6,7 @@ import Footer from "./_components/Footer/Footer";
 import AuthSession from "./_config/SessionProvider";
 import NavMenu from "./_components/NavMenu/NavMenu";
 import SearchMenu from "./_components/SearchMenu/SearchMenu";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Brand Name",
@@ -27,6 +28,7 @@ export default async function RootLayout({
             <Footer />
             <SearchMenu />
             <NavMenu />
+            <Analytics />
           </AuthSession>
         </ReactQueryClientProvider>
       </body>

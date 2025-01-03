@@ -61,6 +61,8 @@ export default function Account() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["account"] });
       alert("회원 정보가 변경되었습니다.");
+      setPassword("");
+      setNewPassword("");
     },
     onError: (error: any) => {
       if (error.digest === "get user error") {

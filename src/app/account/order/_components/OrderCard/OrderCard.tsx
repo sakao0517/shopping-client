@@ -4,7 +4,16 @@ import { CartProductType } from "@/type/type";
 import { useEffect, useState } from "react";
 
 export default function OrderCard({ product }: { product: CartProductType }) {
+  const [width, setWidth] = useState<number | undefined>();
   const [total, setTotal] = useState<number>();
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   useEffect(() => {
     const cal = Number(product.price) * Number(product.cartStock.stock.qty);
     setTotal(cal);
@@ -30,7 +39,13 @@ export default function OrderCard({ product }: { product: CartProductType }) {
           <span>{`₩${product?.price}`}</span>
         </div>
         <div className={styles.qtyAndRemove}>
-          <span>{`수량: ${product.cartStock.stock.qty}`}</span>
+          <span>
+            {width !== undefined
+              ? width > 767
+                ? product.cartStock.stock.qty
+                : `수량: ${product.cartStock.stock.qty}`
+              : product.cartStock.stock.qty}
+          </span>
         </div>
         <div className={styles.total}>{`₩${total}`}</div>
       </div>

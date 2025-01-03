@@ -31,7 +31,7 @@ export default function CartCard({ product }: { product: CartProductType }) {
       } else if (error.digest === "not enough qty") {
         alert("상품의 수량이 재고수량 보다 많습니다.");
       } else {
-        alert("상품의 수량이 재고수량 보다 많습니다.");
+        alert("문제가 발생했습니다. 다시 시도하세요.");
       }
     },
   });

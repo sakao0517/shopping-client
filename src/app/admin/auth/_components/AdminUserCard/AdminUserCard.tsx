@@ -30,7 +30,7 @@ export default function AdminUserCard({ user }: { user: UserType }) {
     mutationFn: async () => {
       if (newPassword) {
         if (newPassword.length < 6 || newPassword.length > 20) {
-          alert("비밀번호는 반드시 6자 이상 20자 이하로 설정해주세요.");
+          alert("비밀번호는 6자 이상 20자 이하로 설정해주세요.");
           return;
         }
       }
@@ -157,7 +157,7 @@ export default function AdminUserCard({ user }: { user: UserType }) {
                 />
               </div>
               <div className={styles.orderInfoTip}>
-                <p>비밀번호는 반드시 6자 이상 20자 이하로 설정해주세요.</p>
+                <p>비밀번호는 6자 이상 20자 이하로 설정해주세요.</p>
                 <p>
                   비밀번호가 6자 이상 20자 이하가 아닐경우 사용자가 로그인
                   불가능
