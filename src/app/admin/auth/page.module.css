@@ -21,7 +21,6 @@
   text-align: center;
   cursor: pointer;
   flex-basis: 10%;
-  border: none;
   background-color: transparent;
   padding: 5px;
 }
@@ -39,10 +38,13 @@
 .searchBar > input:focus {
   outline: none;
 }
-
-.searchBar > button {
-  cursor: pointer;
+.button {
+  display: flex;
   flex-basis: 10%;
+  justify-content: center;
+}
+.button > button {
+  cursor: pointer;
   border: none;
   background-color: transparent;
   padding: 5px;
@@ -120,7 +122,7 @@
   .searchBar > select {
     flex-basis: 20%;
   }
-  .searchBar > button {
+  .button {
     flex-basis: 20%;
   }
   .topMenu {

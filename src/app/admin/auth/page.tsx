@@ -125,7 +125,9 @@ export default function Auth() {
               setSearch(e.target.value);
             }}
           />
-          <button>검색</button>
+          <div className={styles.button}>
+            <button>검색</button>
+          </div>
         </form>
         <div className={styles.top}>
           <div className={styles.topUser}>

@@ -181,9 +181,13 @@ export default function AdminUserCard({ user }: { user: UserType }) {
                   <span>구매가격</span>
                 </div>
               </div>
-              {orders.map((order) => (
-                <OrderCard key={order.orderId} order={order} />
-              ))}
+              {!orders || orders.length === 0 ? (
+                <span className={styles.orderNull}>주문내역이 없습니다.</span>
+              ) : (
+                orders.map((order) => (
+                  <OrderCard key={order.orderId} order={order} />
+                ))
+              )}
             </div>
             <div className={styles.userInfoButton}>
               {isClick && (

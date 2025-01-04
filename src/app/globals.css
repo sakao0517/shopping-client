@@ -41,3 +41,15 @@ a {
   color: var(--font-color);
   text-decoration: none;
 }
+select {
+  border: 1px solid var(--main-color);
+  color: var(--font-color);
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 5px;
+}
+searchBar > select:focus {
+  outline: none;
+}

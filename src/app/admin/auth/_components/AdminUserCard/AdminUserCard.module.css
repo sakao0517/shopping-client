@@ -76,7 +76,6 @@
   align-items: center;
   padding: 5px;
   display: flex;
-  cursor: pointer;
   word-wrap: break-word; /* 긴 단어를 줄바꿈 */
   word-break: break-all; /* 모든 문자에서 줄바꿈 가능 */
   overflow-wrap: break-word;
@@ -109,7 +108,6 @@
 .orderInfoTip {
   display: flex;
   flex-direction: column;
-  padding-left: 5px;
   margin: 10px 0;
 }
 .top {
@@ -132,6 +130,11 @@
   align-items: center;
   gap: 10px;
   padding: 5px;
+}
+.orderNull {
+  display: flex;
+  margin: 10px 0;
+  padding: 0 5px;
 }
 .userInfoButton {
   display: flex;

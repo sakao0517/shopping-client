@@ -22,7 +22,6 @@
   flex-basis: 10%;
   border: none;
   background-color: transparent;
-  padding: 5px;
 }
 .searchBar > select:focus {
   outline: none;
@@ -30,7 +29,6 @@
 .searchBar > input {
   flex: 1;
   border: none;
-  padding: 10px;
 }
 .searchBar > input:focus {
   outline: none;
