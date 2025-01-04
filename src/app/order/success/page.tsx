@@ -87,9 +87,7 @@ function Success() {
       return router.push("/");
     }
   }, [orderId, paymentKey]);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
   if (!isComplete)
     return (
       <div className={styles.success}>

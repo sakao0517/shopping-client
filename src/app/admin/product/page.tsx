@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { getCategory } from "@/actions/category";
 import { mainColor } from "@/app/_config/ColorSetting";
+import Loading from "@/app/_components/Loading/Loading";
 
 interface ProductResponse {
   products: ProductType[];
@@ -110,6 +111,7 @@ export default function Product() {
     if (!productsResponse) return;
     setMaxPage(Math.ceil(productsResponse.totalLength / 10));
   }, [productsResponse]);
+  if (isLoading) return <Loading />;
   if (!userIsAdmin) return <div className={styles.product}></div>;
   return (
     <div className={styles.product}>

@@ -5,9 +5,10 @@ import styles from "./Product.module.css";
 import { ProductType } from "@/type/type";
 import { getProduct } from "@/actions/product";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { addToCart } from "@/actions/auth";
 import { useCartIsChangeStore } from "@/store/store";
+import Loading from "@/app/_components/Loading/Loading";
 
 export default function Product({ id }: { id: string }) {
   const queryClient = useQueryClient();
@@ -15,7 +16,7 @@ export default function Product({ id }: { id: string }) {
   const [message, setMessage] = useState("");
   const [selectSize, setSelectSize] = useState<string>("");
   const { setCartIsChange } = useCartIsChangeStore();
-  const { data: product } = useQuery<ProductType>({
+  const { data: product, isLoading } = useQuery<ProductType>({
     queryKey: ["product", id],
     queryFn: () => getProduct(id),
   });
@@ -47,9 +48,8 @@ export default function Product({ id }: { id: string }) {
     }
     addToCartMutate.mutate();
   };
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
+  if (isLoading) return <Loading />;
   return (
     <div className={styles.main}>
       <div className={styles.left}>

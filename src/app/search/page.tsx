@@ -7,6 +7,7 @@ import { getProductBySearch } from "@/actions/product";
 import ProductCard from "../_components/ProductCard/ProductCart";
 import { ProductType } from "@/type/type";
 import { ChangeEvent, Suspense, useEffect, useState } from "react";
+import Loading from "../_components/Loading/Loading";
 
 function Search() {
   const router = useRouter();
@@ -17,16 +18,15 @@ function Search() {
     e.preventDefault();
     router.push(`/search?q=${search}`);
   };
-  const { data: products } = useQuery<ProductType[]>({
+  const { data: products, isLoading } = useQuery<ProductType[]>({
     queryKey: ["search", q],
     queryFn: () => getProductBySearch(q),
   });
   useEffect(() => {
     setSearch(q);
   }, [q]);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
+  if (isLoading) return <Loading />;
   return (
     <div className={styles.search}>
       <div className={styles.main}>

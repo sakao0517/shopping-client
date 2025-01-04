@@ -12,10 +12,11 @@ import OrderCard from "./_components/OrderCard/OrderCard";
 import DeleteButton from "./_components/DeleteButton/DeleteButton";
 import { mainColor } from "@/app/_config/ColorSetting";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock-upgrade";
+import Loading from "../_components/Loading/Loading";
 
 export default function Account() {
   const queryClient = useQueryClient();
-  const { data: userInfo } = useQuery<UserType>({
+  const { data: userInfo, isLoading } = useQuery<UserType>({
     queryKey: ["account"],
     queryFn: () => getUserInfo(),
   });
@@ -107,9 +108,8 @@ export default function Account() {
       enableBodyScroll(body);
     }
   }, [addressModal]);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
+  if (isLoading) return <Loading />;
   return (
     <div className={styles.account}>
       <div className={styles.myAccount}>My Account</div>

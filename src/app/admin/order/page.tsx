@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { getUserInfo } from "@/actions/auth";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { mainColor } from "@/app/_config/ColorSetting";
+import Loading from "@/app/_components/Loading/Loading";
 
 interface OrderResponse {
   orders: OrderType[];
@@ -94,6 +95,7 @@ export default function Order() {
     if (!ordersResponse) return;
     setMaxPage(Math.ceil(ordersResponse.totalLength / 10));
   }, [ordersResponse]);
+  if (isLoading) return <Loading />;
   if (!userIsAdmin) return <div className={styles.order}></div>;
   return (
     <div className={styles.order}>

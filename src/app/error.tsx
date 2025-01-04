@@ -2,12 +2,8 @@
 
 import Link from "next/link";
 import styles from "./error.module.css";
-import { useEffect } from "react";
 
 export default function Error() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   return (
     <div className={styles.error}>
       <div className={styles.main}>

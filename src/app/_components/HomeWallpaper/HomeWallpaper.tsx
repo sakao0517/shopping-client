@@ -18,9 +18,7 @@ export default function HomeWallpaper({
     handleResize();
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
   return (
     <>
       {width !== undefined ? (

@@ -8,6 +8,7 @@ import { getUserInfo } from "@/actions/auth";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getAdminAllOrder } from "@/actions/admin";
+import Loading from "../_components/Loading/Loading";
 
 export default function Admin() {
   const {
@@ -68,10 +69,8 @@ export default function Admin() {
       }
     });
   }, [orders]);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
+  if (isLoading) return <Loading />;
   if (!userIsAdmin) return <div className={styles.admin}></div>;
   return (
     <div className={styles.admin}>

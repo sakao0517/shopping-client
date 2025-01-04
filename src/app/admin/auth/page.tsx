@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { getUserInfo } from "@/actions/auth";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { mainColor } from "@/app/_config/ColorSetting";
+import Loading from "@/app/_components/Loading/Loading";
 
 interface UserResponse {
   users: UserType[];
@@ -103,6 +104,7 @@ export default function Auth() {
     setMaxPage(Math.ceil(usersResponse.totalLength / 10));
   }, [usersResponse]);
 
+  if (isLoading) return <Loading />;
   if (!userIsAdmin) return <div className={styles.auth}></div>;
 
   return (

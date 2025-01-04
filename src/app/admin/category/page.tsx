@@ -6,10 +6,11 @@ import { useEffect, useState } from "react";
 import { getCategory, updateCategory } from "@/actions/category";
 import { CategoryType } from "@/type/type";
 import InputCard from "./_components/InputCard/InputCard";
+import Loading from "@/app/_components/Loading/Loading";
 
 export default function Category() {
   const queryClient = useQueryClient();
-  const { data } = useQuery<CategoryType>({
+  const { data, isLoading } = useQuery<CategoryType>({
     queryKey: ["category"],
     queryFn: () => getCategory(),
   });
@@ -39,6 +40,7 @@ export default function Category() {
       alert("문제가 발생했습니다. 다시 시도하세요.");
     },
   });
+  if (isLoading) return <Loading />;
   return (
     <div className={styles.category}>
       <div className={`${styles.main} ${isUpdate ? styles.isUpdate : ""}`}>

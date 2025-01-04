@@ -2,12 +2,8 @@
 
 import Link from "next/link";
 import styles from "./not-found.module.css";
-import { useEffect } from "react";
 
 export default function NotFound() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   return (
     <div className={styles.notFound}>
       <div className={styles.main}>

@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 import dayjs from "dayjs";
 import { mainColor } from "@/app/_config/ColorSetting";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock-upgrade";
+import Loading from "../_components/Loading/Loading";
 
 dayjs.locale("ko");
 
@@ -235,9 +236,8 @@ export default function Order() {
       enableBodyScroll(body);
     }
   }, [addressModal]);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
+  if (isLoading) return <Loading />;
   return (
     <div className={styles.order}>
       <div className={styles.yourOrder}>

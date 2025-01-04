@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import CartCard from "./_components/CartCard/CartCard";
 import { BsQuestionCircle } from "react-icons/bs";
 import { mainColor } from "@/app/_config/ColorSetting";
-import LoadingCart from "./_components/LoadingCart/LoadingCart";
+import Loading from "../_components/Loading/Loading";
 
 export default function Cart() {
   const { data: products, isLoading } = useQuery({
@@ -39,10 +39,8 @@ export default function Cart() {
     if (subtotal == null || shipping == null) return;
     setTotal(subtotal + shipping);
   }, [shipping, subtotal, products]);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-  if (isLoading) return <LoadingCart />;
+
+  if (isLoading) return <Loading />;
   if (!products || products?.length === 0) return <EmptyCart />;
   return (
     <div className={styles.cart}>

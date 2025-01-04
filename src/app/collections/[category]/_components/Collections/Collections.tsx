@@ -10,6 +10,7 @@ import ProductCard from "@/app/_components/ProductCard/ProductCart";
 import { useRouter } from "next/navigation";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { mainColor } from "@/app/_config/ColorSetting";
+import Loading from "@/app/_components/Loading/Loading";
 
 interface CollectionsResponse {
   products: ProductType[];
@@ -30,7 +31,7 @@ export default function Collections({
   const [currentCategory] = useState(category);
   const [maxPage, setMaxPage] = useState(1);
   const router = useRouter();
-  const { data: productsResponse } = useQuery<CollectionsResponse>({
+  const { data: productsResponse, isLoading } = useQuery<CollectionsResponse>({
     queryKey: ["collections", category, currentPage],
     queryFn: () => getProducts(category, currentPage),
   });
@@ -45,6 +46,7 @@ export default function Collections({
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [category, currentPage]);
+  if (isLoading) return <Loading />;
   return (
     <div className={styles.main}>
       {categories && (
