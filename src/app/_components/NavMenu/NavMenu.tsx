@@ -82,10 +82,10 @@ export default function NavMenu() {
                 <div className={styles.menu} key={index}>
                   <span
                     onClick={() => {
+                      router.push(`/collections/${category}?page=1`);
                       if (pathname === `/collections/${category}?page=1`) {
                         return setNavOn(false);
                       }
-                      router.push(`/collections/${category}?page=1`);
                     }}
                   >
                     {category}

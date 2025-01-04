@@ -10,7 +10,7 @@ import ProductCard from "@/app/_components/ProductCard/ProductCart";
 import { useRouter } from "next/navigation";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { mainColor } from "@/app/_config/ColorSetting";
-import Loading from "@/app/_components/Loading/Loading";
+import LoadingWithoutPadding from "@/app/_components/LoadingWithoutPadding/LoadingWithoutPadding";
 
 interface CollectionsResponse {
   products: ProductType[];
@@ -46,7 +46,7 @@ export default function Collections({
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [category, currentPage]);
-  if (isLoading) return <Loading />;
+  if (isLoading) return <LoadingWithoutPadding />;
   return (
     <div className={styles.main}>
       {categories && (

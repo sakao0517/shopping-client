@@ -8,7 +8,7 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { addToCart } from "@/actions/auth";
 import { useCartIsChangeStore } from "@/store/store";
-import Loading from "@/app/_components/Loading/Loading";
+import LoadingWithoutPadding from "@/app/_components/LoadingWithoutPadding/LoadingWithoutPadding";
 
 export default function Product({ id }: { id: string }) {
   const queryClient = useQueryClient();
@@ -49,7 +49,7 @@ export default function Product({ id }: { id: string }) {
     addToCartMutate.mutate();
   };
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <LoadingWithoutPadding />;
   return (
     <div className={styles.main}>
       <div className={styles.left}>
