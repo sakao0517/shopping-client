@@ -42,6 +42,9 @@ export default function Collections({
     );
     setMaxPage(totalPages);
   }, [productsResponse, productMaxLength]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className={styles.main}>
       {categories && (
