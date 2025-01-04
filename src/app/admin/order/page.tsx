@@ -99,25 +99,31 @@ export default function Order() {
     <div className={styles.order}>
       <div className={styles.main}>
         <form className={styles.searchBar} onSubmit={handleSearch}>
-          <select
-            value={searchFilter}
-            onChange={(e) => {
-              setSearchFilter(e.target.value);
-            }}
-          >
-            <option value={"orderId"}>주문번호</option>
-            <option value={"amount"}>구매가격</option>
-            <option value={"name"}>이름</option>
-            <option value={"email"}>이메일</option>
-            <option value={"phone"}>휴대전화</option>
-          </select>
-          <input
-            value={search}
-            onChange={(e) => {
-              setSearch(e.target.value);
-            }}
-          />
-          <button>검색</button>
+          <div className={styles.searchSelect}>
+            <select
+              value={searchFilter}
+              onChange={(e) => {
+                setSearchFilter(e.target.value);
+              }}
+            >
+              <option value={"orderId"}>주문번호</option>
+              <option value={"amount"}>구매가격</option>
+              <option value={"name"}>이름</option>
+              <option value={"email"}>이메일</option>
+              <option value={"phone"}>휴대전화</option>
+            </select>
+          </div>
+          <div className={styles.searchInput}>
+            <input
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+            />
+          </div>
+          <div className={styles.searchButton}>
+            <button>검색</button>
+          </div>
         </form>
         <div className={styles.top}>
           <div className={styles.topOrder}>

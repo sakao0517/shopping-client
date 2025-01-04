@@ -17,28 +17,31 @@
   flex-direction: row;
   border-bottom: 1px solid var(--main-color);
 }
-.searchBar > select {
-  text-align: center;
-  cursor: pointer;
+.searchSelect {
   flex-basis: 10%;
-  border: none;
-  background-color: transparent;
-  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.searchBar > select:focus {
-  outline: none;
-}
-.searchBar > input {
+.searchInput {
   flex: 1;
-  border: none;
-  padding: 10px;
 }
-.searchBar > input:focus {
+.searchInput > input {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.searchInput > input:focus {
   outline: none;
 }
-.searchBar > button {
-  cursor: pointer;
+.searchButton {
   flex-basis: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchButton > button {
+  cursor: pointer;
   border: none;
   background-color: transparent;
   padding: 5px;
@@ -69,19 +72,13 @@
   gap: 10px;
   padding: 5px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 .topName > span {
   cursor: pointer;
 }
 
-.topName > select {
-  text-align: center;
-  cursor: pointer;
-  background-color: transparent;
-  padding: 1px;
-}
 .topCategory {
   border-left: 1px solid var(--main-color);
   flex-basis: 20%;
@@ -104,13 +101,6 @@
 }
 .topMenu > span {
   cursor: pointer;
-}
-
-.topMenu > select {
-  text-align: center;
-  cursor: pointer;
-  background-color: transparent;
-  padding: 1px;
 }
 .selected {
   color: red;
@@ -148,10 +138,10 @@
   .main {
     padding: 0 20px;
   }
-  .searchBar > select {
+  .searchSelect {
     flex-basis: 20%;
   }
-  .searchBar > button {
+  .searchButton {
     flex-basis: 20%;
   }
   .topPrice {

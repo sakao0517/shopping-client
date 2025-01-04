@@ -115,22 +115,28 @@ export default function Product() {
     <div className={styles.product}>
       <div className={styles.main}>
         <form className={styles.searchBar} onSubmit={handleSearch}>
-          <select
-            value={searchFilter}
-            onChange={(e) => {
-              setSearchFilter(e.target.value);
-            }}
-          >
-            <option value={"name"}>제품명</option>
-            <option value={"price"}>가격</option>
-          </select>
-          <input
-            value={search}
-            onChange={(e) => {
-              setSearch(e.target.value);
-            }}
-          />
-          <button>검색</button>
+          <div className={styles.searchSelect}>
+            <select
+              value={searchFilter}
+              onChange={(e) => {
+                setSearchFilter(e.target.value);
+              }}
+            >
+              <option value={"name"}>제품명</option>
+              <option value={"price"}>가격</option>
+            </select>
+          </div>
+          <div className={styles.searchInput}>
+            <input
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+            />
+          </div>
+          <div className={styles.searchButton}>
+            <button>검색</button>
+          </div>
         </form>
         <div className={styles.addProductButton}>
           {isAdd ? (

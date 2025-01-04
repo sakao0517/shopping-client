@@ -70,13 +70,6 @@
   justify-content: center;
   padding: 5px;
 }
-.orderStatus > select {
-  font-size: 1rem;
-  text-align: center;
-  cursor: pointer;
-  background-color: transparent;
-  padding: 1px;
-}
 .orderStatusSelect {
   flex-basis: calc(100% / 3);
   display: flex;

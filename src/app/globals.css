@@ -49,6 +49,7 @@ select {
   -moz-appearance: none;
   appearance: none;
   padding: 5px;
+  background-color: transparent;
 }
 searchBar > select:focus {
   outline: none;

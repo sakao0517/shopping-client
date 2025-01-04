@@ -16,34 +16,30 @@
   flex-direction: row;
   border-bottom: 1px solid var(--main-color);
 }
-
-.searchBar > select {
-  text-align: center;
-  cursor: pointer;
+.searchSelect {
   flex-basis: 10%;
-  background-color: transparent;
-  padding: 5px;
-}
-
-.searchBar > select:focus {
-  outline: none;
-}
-
-.searchBar > input {
-  flex: 1;
-  border: none;
-  padding: 10px;
-}
-
-.searchBar > input:focus {
-  outline: none;
-}
-.button {
   display: flex;
-  flex-basis: 10%;
   justify-content: center;
+  align-items: center;
 }
-.button > button {
+.searchInput {
+  flex: 1;
+}
+.searchInput > input {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.searchInput > input:focus {
+  outline: none;
+}
+.searchButton {
+  flex-basis: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchButton > button {
   cursor: pointer;
   border: none;
   background-color: transparent;
@@ -76,13 +72,6 @@
 
 .topMenu > span {
   cursor: pointer;
-}
-
-.topMenu > select {
-  text-align: center;
-  cursor: pointer;
-  background-color: transparent;
-  padding: 1px;
 }
 
 .selected {
@@ -119,10 +108,10 @@
   .main {
     padding: 0 20px;
   }
-  .searchBar > select {
+  .searchSelect {
     flex-basis: 20%;
   }
-  .button {
+  .searchButton {
     flex-basis: 20%;
   }
   .topMenu {
