@@ -33,6 +33,7 @@
   justify-content: center;
   align-items: center;
   padding: 5px;
+  text-align: center;
 }
 
 .userInfoLeft > span {
@@ -79,6 +80,7 @@
   word-wrap: break-word; /* 긴 단어를 줄바꿈 */
   word-break: break-all; /* 모든 문자에서 줄바꿈 가능 */
   overflow-wrap: break-word;
+  text-align: center;
 }
 .rightMenuName {
   border-left: 1px solid var(--main-color);
