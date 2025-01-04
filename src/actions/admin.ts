@@ -34,8 +34,9 @@ export async function addAdminProduct(
   img: string[],
   stock: Stock[],
   description: string,
+  createdAt: string,
   isNew: boolean,
-  createdAt: string
+  isVisible: boolean
 ) {
   const session = await auth();
   if (!session) return null;
@@ -54,8 +55,9 @@ export async function addAdminProduct(
       img,
       stock,
       description,
-      isNew,
       createdAt,
+      isNew,
+      isVisible,
     }),
     cache: "no-store",
   });
@@ -102,7 +104,8 @@ export async function updateAdminProduct(
   img: string[],
   stock: Stock[],
   description: string,
-  isNew: boolean
+  isNew: boolean,
+  isVisible: boolean
 ) {
   const session = await auth();
   if (!session) return null;
@@ -123,6 +126,7 @@ export async function updateAdminProduct(
       stock,
       description,
       isNew,
+      isVisible,
     }),
     cache: "no-store",
   });

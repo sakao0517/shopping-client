@@ -1,6 +1,12 @@
+"use client";
+
+import { useEffect } from "react";
 import styles from "./page.module.css";
 
 export default function ShippingAndReturns() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className={styles.legal}>
       <div className={styles.main}>

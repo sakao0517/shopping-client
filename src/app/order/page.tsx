@@ -235,6 +235,9 @@ export default function Order() {
       enableBodyScroll(body);
     }
   }, [addressModal]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className={styles.order}>
       <div className={styles.yourOrder}>

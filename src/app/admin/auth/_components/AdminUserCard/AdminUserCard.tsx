@@ -21,7 +21,8 @@ export default function AdminUserCard({ user }: { user: UserType }) {
   const [isAdmin, setIsAdmin] = useState(user.isAdmin);
   const [newPassword, setNewPassword] = useState("");
   const [orders, setOrders] = useState<OrderType[]>([]);
-
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [timeOut, setTimeOut] = useState<any>();
   useEffect(() => {
     setOrders(user.orders);
   }, [user]);
@@ -46,7 +47,17 @@ export default function AdminUserCard({ user }: { user: UserType }) {
       );
     },
     onSuccess: () => {
+      clearTimeout(timeOut);
       queryClient.invalidateQueries({ queryKey: ["admin", "user"] });
+      setIsUpdate(true);
+      setTimeOut(
+        setTimeout(() => {
+          setIsUpdate(false);
+        }, 500)
+      );
+    },
+    onError: () => {
+      alert("문제가 발생했습니다. 다시 시도하세요.");
     },
   });
 
@@ -57,10 +68,17 @@ export default function AdminUserCard({ user }: { user: UserType }) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin", "user"] });
     },
+    onError: () => {
+      alert("문제가 발생했습니다. 다시 시도하세요.");
+    },
   });
 
   return (
-    <div className={`${styles.adminUserCard} ${isClick ? styles.isClick : ""}`}>
+    <div
+      className={`${styles.adminUserCard} ${isClick ? styles.isClick : ""} ${
+        isUpdate ? styles.isUpdate : ""
+      }`}
+    >
       <div className={styles.main}>
         <div className={isClick ? styles.userInfoClick : styles.userInfo}>
           <div className={styles.userInfoLeft}>

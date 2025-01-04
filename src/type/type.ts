@@ -43,6 +43,7 @@ export interface ProductType {
   img: string[];
   description: string;
   isNew: boolean;
+  isVisible: boolean;
   createdAt: string;
 }
 

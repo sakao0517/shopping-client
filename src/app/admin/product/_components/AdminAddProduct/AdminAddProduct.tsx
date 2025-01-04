@@ -20,6 +20,8 @@ export default function AdminAddProduct() {
   const [stock, setStock] = useState<Stock[]>([]);
   const [img, setImg] = useState<string[]>([]);
   const [isNew, setIsNew] = useState<boolean>(true);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+
   const [createdAt, setCreatedAt] = useState(
     dayjs(Date.now()).format("YYYY-MM-DDTHH:mm:ss")
   );
@@ -49,8 +51,7 @@ export default function AdminAddProduct() {
         !img ||
         !stock ||
         !description ||
-        !createdAt ||
-        !isNew
+        !createdAt
       )
         return alert("제품 정보를 입력하세요.");
       await addAdminProduct(
@@ -60,8 +61,9 @@ export default function AdminAddProduct() {
         img,
         stock,
         description,
+        createdAt,
         isNew,
-        createdAt
+        isVisible
       );
     },
     onSuccess: () => {
@@ -75,6 +77,11 @@ export default function AdminAddProduct() {
       queryClient.invalidateQueries({
         queryKey: ["admin", "collections"],
       });
+      setIsNew(true);
+      setIsVisible(false);
+    },
+    onError: () => {
+      alert("문제가 발생했습니다. 다시 시도하세요.");
     },
   });
 
@@ -186,27 +193,42 @@ export default function AdminAddProduct() {
                   <button onClick={handleStockButton}>사이즈 추가</button>
                 </div>
               </div>
-            </div>
+            </div>{" "}
             <div className={styles.productCardButton}>
-              <div className={styles.isNew}>
-                <select
-                  value={isNew ? "신상품" : "신상품x"}
-                  onChange={(e) => {
-                    setIsNew(e.target.value === "신상품" ? true : false);
+              <div className={styles.buttonMain}>
+                <div className={styles.buttonSelect}>
+                  <select
+                    value={isNew ? "신상품o" : "신상품x"}
+                    onChange={(e) => {
+                      setIsNew(e.target.value === "신상품o" ? true : false);
+                    }}
+                  >
+                    <option value={"신상품o"}>신상품o</option>
+                    <option value={"신상품x"}>신상품x</option>
+                  </select>
+                </div>
+                <div className={styles.buttonSelect}>
+                  <select
+                    value={isVisible ? "숨기기o" : "숨기기x"}
+                    onChange={(e) => {
+                      setIsVisible(e.target.value === "숨기기o" ? true : false);
+                    }}
+                  >
+                    <option value={"숨기기o"}>숨기기o</option>
+                    <option value={"숨기기x"}>숨기기x</option>
+                  </select>
+                </div>
+              </div>
+              <div className={styles.buttonMain}>
+                <button
+                  type="submit"
+                  onClick={() => {
+                    addProductMutate.mutate();
                   }}
                 >
-                  <option value={"신상품"}>신상품</option>
-                  <option value={"신상품x"}>신상품x</option>
-                </select>
+                  제품 등록
+                </button>
               </div>
-              <button
-                type="submit"
-                onClick={() => {
-                  addProductMutate.mutate();
-                }}
-              >
-                제품 등록
-              </button>
             </div>
           </div>
         </div>

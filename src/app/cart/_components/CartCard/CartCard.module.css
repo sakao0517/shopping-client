@@ -87,6 +87,7 @@
   aspect-ratio: 200/300;
 }
 .message {
+  align-self: flex-start;
   color: red;
   word-break: break-all;
   overflow-wrap: break-word;

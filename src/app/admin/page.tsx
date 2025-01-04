@@ -68,6 +68,9 @@ export default function Admin() {
       }
     });
   }, [orders]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!userIsAdmin) return <div className={styles.admin}></div>;
   return (

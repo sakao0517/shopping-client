@@ -7,6 +7,7 @@ import { useState } from "react";
 
 export default function ProductCard({ product }: { product: ProductType }) {
   const [onMouse, setOnMouse] = useState(false);
+  if (product.isVisible) return null;
   return (
     <div className={stlyes.productCard}>
       <Link

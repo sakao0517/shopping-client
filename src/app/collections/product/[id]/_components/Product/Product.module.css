@@ -81,8 +81,10 @@
 .buttonDiv {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .message {
+  align-self: flex-start;
   color: red;
   word-break: break-all;
   overflow-wrap: break-word;

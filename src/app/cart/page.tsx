@@ -39,6 +39,9 @@ export default function Cart() {
     if (subtotal == null || shipping == null) return;
     setTotal(subtotal + shipping);
   }, [shipping, subtotal, products]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   if (isLoading) return <LoadingCart />;
   if (!products || products?.length === 0) return <EmptyCart />;
   return (
@@ -55,7 +58,10 @@ export default function Cart() {
         </div>
         {products &&
           products.map((product: CartProductType, index: number) => (
-            <CartCard product={product} key={index} />
+            <CartCard
+              product={product}
+              key={`${index}${product.name}${product.cartStock.stock.size}`}
+            />
           ))}
       </div>
       <div className={styles.total}>

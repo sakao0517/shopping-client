@@ -10,6 +10,9 @@
   display: flex;
   flex-direction: column;
 }
+.isUpdate {
+  border: 5px solid yellow;
+}
 .mainMenu {
   display: flex;
   flex-direction: column;
@@ -62,7 +65,9 @@
   background-color: #f9f9f9;
   color: var(--font-color);
 }
-
+.bottomButton {
+  margin-bottom: 20px;
+}
 @media (max-width: 768px) {
   .main {
     padding: 0 20px;

@@ -14,6 +14,8 @@ export default function Home() {
   });
   const [pc, setPc] = useState("");
   const [mobile, setMobile] = useState("");
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [timeOut, setTimeOut] = useState<any>();
   useEffect(() => {
     if (!wallpaper) return;
     setPc(wallpaper?.pc);
@@ -25,12 +27,22 @@ export default function Home() {
       await updateHomeWallpaper(wallpaper.id, pc, mobile);
     },
     onSuccess: () => {
+      clearTimeout(timeOut);
       queryClient.invalidateQueries({ queryKey: ["admin", "home"] });
+      setIsUpdate(true);
+      setTimeOut(
+        setTimeout(() => {
+          setIsUpdate(false);
+        }, 500)
+      );
+    },
+    onError: () => {
+      alert("문제가 발생했습니다. 다시 시도하세요.");
     },
   });
   return (
     <div className={styles.home}>
-      <div className={styles.main}>
+      <div className={`${styles.main} ${isUpdate ? styles.isUpdate : ""}`}>
         <div className={styles.mainMenu}>
           <p>PC 메인페이지 설정</p>
           {wallpaper && (
@@ -75,6 +87,7 @@ export default function Home() {
               }}
             />
             <button
+              className={styles.bottomButton}
               onClick={() => {
                 updateMutate.mutate();
               }}

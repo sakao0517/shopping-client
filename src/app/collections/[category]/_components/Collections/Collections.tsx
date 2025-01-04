@@ -44,7 +44,7 @@ export default function Collections({
   }, [productsResponse, productMaxLength]);
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [category, currentPage]);
   return (
     <div className={styles.main}>
       {categories && (

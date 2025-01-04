@@ -1,7 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import styles from "./page.module.css";
+import { useEffect } from "react";
 
 export default function Fail() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className={styles.fail}>
       <div className={styles.main}>

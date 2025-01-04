@@ -14,6 +14,9 @@ export default function DeleteButton() {
     onSuccess: () => {
       signOut({ redirectTo: "/" });
     },
+    onError: () => {
+      alert("문제가 발생했습니다. 다시 시도하세요.");
+    },
   });
   const handleLogout = async () => {
     const check = confirm("정말로 탈퇴하시겠습니까?");

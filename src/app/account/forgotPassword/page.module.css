@@ -29,6 +29,7 @@
 .buttonDiv {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .button {
   width: 400px;
@@ -61,6 +62,7 @@
   border-bottom: 1px solid var(--main-color);
 }
 .message {
+  align-self: flex-start;
   color: red;
   word-break: break-all;
   overflow-wrap: break-word;

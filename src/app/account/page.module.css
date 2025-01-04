@@ -119,6 +119,7 @@
   right: -0.7%;
 }
 .message {
+  align-self: flex-start;
   color: red;
   word-break: break-all;
   overflow-wrap: break-word;

@@ -14,6 +14,8 @@ export default function Category() {
     queryFn: () => getCategory(),
   });
   const [category, setCategory] = useState<string[]>([]);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [timeOut, setTimeOut] = useState<any>();
   useEffect(() => {
     if (!data) return;
     setCategory(data.category);
@@ -24,12 +26,22 @@ export default function Category() {
       await updateCategory(data?.id, category);
     },
     onSuccess: () => {
+      clearTimeout(timeOut);
       queryClient.invalidateQueries({ queryKey: ["category"] });
+      setIsUpdate(true);
+      setTimeOut(
+        setTimeout(() => {
+          setIsUpdate(false);
+        }, 500)
+      );
+    },
+    onError: () => {
+      alert("문제가 발생했습니다. 다시 시도하세요.");
     },
   });
   return (
     <div className={styles.category}>
-      <div className={styles.main}>
+      <div className={`${styles.main} ${isUpdate ? styles.isUpdate : ""}`}>
         <p>카테고리</p>
         {category &&
           category.map((cate, index) => (

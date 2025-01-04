@@ -7,6 +7,9 @@
 .isClick {
   border: 5px solid red;
 }
+.isUpdate {
+  border: 5px solid yellow;
+}
 .main {
   display: flex;
   flex-direction: row;

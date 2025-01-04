@@ -5,7 +5,7 @@ import styles from "./Product.module.css";
 import { ProductType } from "@/type/type";
 import { getProduct } from "@/actions/product";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addToCart } from "@/actions/auth";
 import { useCartIsChangeStore } from "@/store/store";
 
@@ -47,6 +47,9 @@ export default function Product({ id }: { id: string }) {
     }
     addToCartMutate.mutate();
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className={styles.main}>
       <div className={styles.left}>

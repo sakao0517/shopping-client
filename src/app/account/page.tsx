@@ -107,6 +107,9 @@ export default function Account() {
       enableBodyScroll(body);
     }
   }, [addressModal]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className={styles.account}>
       <div className={styles.myAccount}>My Account</div>

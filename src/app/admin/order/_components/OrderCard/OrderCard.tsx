@@ -20,6 +20,8 @@ export default function OrderCard({ order }: { order: OrderType }) {
   const [orderStatus, setOrderStatus] = useState<string>(order.orderStatus);
   const [trackingNumber, setTrackingNumber] = useState(order.trackingNumber);
   const [sortCart, setSortCart] = useState<CartProductType[] | null>(null);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [timeOut, setTimeOut] = useState<any>();
   const updateOrderMutate = useMutation({
     mutationFn: async () => {
       await updateAdminUserOrder({
@@ -34,9 +36,19 @@ export default function OrderCard({ order }: { order: OrderType }) {
       });
     },
     onSuccess: () => {
+      clearTimeout(timeOut);
       queryClient.invalidateQueries({
         queryKey: ["admin", "order"],
       });
+      setIsUpdate(true);
+      setTimeOut(
+        setTimeout(() => {
+          setIsUpdate(false);
+        }, 500)
+      );
+    },
+    onError: () => {
+      alert("문제가 발생했습니다. 다시 시도하세요.");
     },
   });
   const deleteOrderMutate = useMutation({
@@ -46,6 +58,9 @@ export default function OrderCard({ order }: { order: OrderType }) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin", "order"] });
     },
+    onError: () => {
+      alert("문제가 발생했습니다. 다시 시도하세요.");
+    },
   });
   useEffect(() => {
     if (!order) return;
@@ -53,7 +68,11 @@ export default function OrderCard({ order }: { order: OrderType }) {
     setSortCart(sortCart);
   }, [order]);
   return (
-    <div className={`${styles.orderCard} ${isClick ? styles.isClick : ""}`}>
+    <div
+      className={`${styles.orderCard} ${isClick ? styles.isClick : ""} ${
+        isUpdate ? styles.isUpdate : ""
+      }`}
+    >
       <div className={styles.main}>
         <div className={isClick ? styles.productCardClick : styles.productCard}>
           {sortCart &&

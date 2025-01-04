@@ -38,6 +38,9 @@ export default function OrderCard({ order }: { order: OrderType }) {
         queryKey: ["admin", "order"],
       });
     },
+    onError: () => {
+      alert("문제가 발생했습니다. 다시 시도하세요.");
+    },
   });
   const deleteOrderMutate = useMutation({
     mutationFn: async () => {
@@ -45,6 +48,9 @@ export default function OrderCard({ order }: { order: OrderType }) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin", "order"] });
+    },
+    onError: () => {
+      alert("문제가 발생했습니다. 다시 시도하세요.");
     },
   });
   useEffect(() => {

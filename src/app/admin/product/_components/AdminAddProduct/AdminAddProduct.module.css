@@ -89,7 +89,7 @@
 }
 .textarea {
   width: 100%;
-  min-height: 410px;
+  min-height: 460px;
   height: auto;
   resize: none;
   padding: 5px;
@@ -147,26 +147,32 @@
 }
 .productCardButton {
   display: flex;
+  flex-direction: column;
 }
-.isNew {
-  width: 50%;
+.buttonMain {
+  display: flex;
+  height: 50px;
+  min-height: 50px;
+}
+.buttonSelect {
+  flex-basis: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--main-color);
 }
-.isNew > select {
+.buttonSelect > select {
   background-color: white;
 }
-.productCardButton > button {
+.buttonMain > button {
   cursor: pointer;
-  width: 50%;
+  width: 100%;
   height: 50px;
   border: none;
   background: var(--main-color);
   color: #f9f9f9;
 }
-.productCardButton button:hover {
+.buttonMain > button:hover {
   cursor: pointer;
   border: 3px solid var(--main-color);
   background-color: #f9f9f9;

@@ -32,6 +32,9 @@ export default function AdminProductCard({
   const [stock, setStock] = useState(product.stock);
   const [img, setImg] = useState(product.img);
   const [isNew, setIsNew] = useState<boolean>(product.isNew);
+  const [isVisible, setIsVisible] = useState<boolean>(product.isVisible);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [timeOut, setTimeOut] = useState<any>();
   const handleStockButton = () => {
     const newStock = stock.slice();
     newStock.push({ size: "size", qty: 0 });
@@ -53,7 +56,17 @@ export default function AdminProductCard({
       await updateDateAdminProduct(product.id);
     },
     onSuccess: () => {
+      clearTimeout(timeOut);
       queryClient.invalidateQueries({ queryKey: ["admin", "collections"] });
+      setIsUpdate(true);
+      setTimeOut(
+        setTimeout(() => {
+          setIsUpdate(false);
+        }, 500)
+      );
+    },
+    onError: () => {
+      alert("문제가 발생했습니다. 다시 시도하세요.");
     },
   });
   const updateProductMutate = useMutation({
@@ -66,11 +79,22 @@ export default function AdminProductCard({
         img,
         stock,
         description,
-        isNew
+        isNew,
+        isVisible
       );
     },
     onSuccess: () => {
+      clearTimeout(timeOut);
       queryClient.invalidateQueries({ queryKey: ["admin", "collections"] });
+      setIsUpdate(true);
+      setTimeOut(
+        setTimeout(() => {
+          setIsUpdate(false);
+        }, 500)
+      );
+    },
+    onError: () => {
+      alert("문제가 발생했습니다. 다시 시도하세요.");
     },
   });
   const deleteProductMutate = useMutation({
@@ -80,10 +104,15 @@ export default function AdminProductCard({
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin", "collections"] });
     },
+    onError: () => {
+      alert("문제가 발생했습니다. 다시 시도하세요.");
+    },
   });
   return (
     <div
-      className={`${styles.adminProductcard} ${isClick ? styles.isClick : ""}`}
+      className={`${styles.adminProductcard} ${isClick ? styles.isClick : ""} ${
+        isUpdate ? styles.isUpdate : ""
+      }`}
     >
       <div className={isClick ? styles.mainIsClick : styles.main}>
         <div className={styles.top}>
@@ -225,42 +254,59 @@ export default function AdminProductCard({
                 </div>
               </div>
               <div className={styles.productCardButton}>
-                <div className={styles.isNew}>
-                  <select
-                    value={isNew ? "신상품" : "신상품x"}
-                    onChange={(e) => {
-                      setIsNew(e.target.value === "신상품" ? true : false);
+                <div className={styles.buttonMain}>
+                  <div className={styles.buttonSelect}>
+                    <select
+                      value={isNew ? "신상품o" : "신상품x"}
+                      onChange={(e) => {
+                        setIsNew(e.target.value === "신상품o" ? true : false);
+                      }}
+                    >
+                      <option value={"신상품o"}>신상품o</option>
+                      <option value={"신상품x"}>신상품x</option>
+                    </select>
+                  </div>
+                  <div className={styles.buttonSelect}>
+                    <select
+                      value={isVisible ? "숨기기o" : "숨기기x"}
+                      onChange={(e) => {
+                        setIsVisible(
+                          e.target.value === "숨기기o" ? true : false
+                        );
+                      }}
+                    >
+                      <option value={"숨기기o"}>숨기기o</option>
+                      <option value={"숨기기x"}>숨기기x</option>
+                    </select>
+                  </div>
+                </div>
+                <div className={styles.buttonMain}>
+                  <button
+                    type="submit"
+                    onClick={() => {
+                      const check = confirm("정말로 삭제하시겠습니까?");
+                      if (check) deleteProductMutate.mutate();
                     }}
                   >
-                    <option value={"신상품"}>신상품</option>
-                    <option value={"신상품x"}>신상품x</option>
-                  </select>
+                    제품 삭제
+                  </button>
+                  <button
+                    type="submit"
+                    onClick={() => {
+                      updateDateMutate.mutate();
+                    }}
+                  >
+                    등록일 최신으로
+                  </button>
+                  <button
+                    type="submit"
+                    onClick={() => {
+                      updateProductMutate.mutate();
+                    }}
+                  >
+                    제품 업데이트
+                  </button>
                 </div>
-                <button
-                  type="submit"
-                  onClick={() => {
-                    const check = confirm("정말로 삭제하시겠습니까?");
-                    if (check) deleteProductMutate.mutate();
-                  }}
-                >
-                  제품 삭제
-                </button>
-                <button
-                  type="submit"
-                  onClick={() => {
-                    updateDateMutate.mutate();
-                  }}
-                >
-                  등록일 최신으로
-                </button>
-                <button
-                  type="submit"
-                  onClick={() => {
-                    updateProductMutate.mutate();
-                  }}
-                >
-                  제품 업데이트
-                </button>
               </div>
             </div>
           </div>
