@@ -1,6 +1,6 @@
 "use client";
 
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./NavMenu.module.css";
 import { useNavStore, useSearchStore } from "@/store/store";
 import { BsXLg } from "react-icons/bs";
@@ -24,7 +24,7 @@ export default function NavMenu() {
   const { navOn, setNavOn } = useNavStore();
   const { setSearchOn } = useSearchStore();
   const pathname = usePathname();
-  // const [currentPathname, setCurrentPathname] = useState(pathname);
+  const [currentPathname, setCurrentPathname] = useState(pathname);
 
   // useEffect(() => {
   //   if (navOn) {
@@ -39,12 +39,12 @@ export default function NavMenu() {
   //     enableBodyScroll(body);
   //   }
   // }, [navOn]);
-  // useEffect(() => {
-  //   if (currentPathname !== pathname) {
-  //     setCurrentPathname(pathname);
-  //     setNavOn(false);
-  //   }
-  // }, [pathname]);
+  useEffect(() => {
+    if (currentPathname !== pathname) {
+      setCurrentPathname(pathname);
+      setNavOn(false);
+    }
+  }, [pathname]);
   return (
     <AnimatePresence>
       {navOn && (
