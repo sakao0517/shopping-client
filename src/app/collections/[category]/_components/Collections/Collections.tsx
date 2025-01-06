@@ -94,7 +94,9 @@ export default function Collections({
             className={page === currentPage ? `${styles.selectPage}` : ``}
             key={page}
             onClick={() => {
-              router.push(`/collections/${category}?page=${page}`);
+              router.push(`/collections/${category}?page=${page}`, {
+                scroll: false,
+              });
             }}
           >
             {page}

@@ -71,7 +71,9 @@ export default function NavMenu() {
                   if (pathname === `/`) {
                     return setNavOn(false);
                   }
-                  router.push(`/`);
+                  router.push(`/`, {
+                    scroll: false,
+                  });
                 }}
               >
                 브랜드이름
@@ -83,7 +85,7 @@ export default function NavMenu() {
                   <span
                     onClick={() => {
                       router.push(`/collections/${category}?page=1`, {
-                        scroll: true,
+                        scroll: false,
                       });
                       if (pathname === `/collections/${category}?page=1`) {
                         return setNavOn(false);

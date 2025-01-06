@@ -121,7 +121,7 @@ export default function OrderCard({ order }: { order: OrderType }) {
                 ? dayjs(order.createdAt).format("YYYY.MM.DD HH:mm")
                 : ""}
             </div>
-            <div className={styles.orderAmount}>{order.amount}</div>
+            <div className={styles.orderAmount}>{`₩${order.amount}`}</div>
           </div>
           {isClick && (
             <div className={styles.orderInfoBottom}>

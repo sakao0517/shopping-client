@@ -10,7 +10,7 @@
   flex-direction: column;
 }
 .searchBar {
-  margin: 25px 5%;
+  margin: 24px 5%;
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid var(--main-color);
@@ -51,7 +51,7 @@
 }
 @media (max-width: 768px) {
   .searchBar {
-    margin: 25px 20px;
+    margin: 24px 20px;
   }
   .products {
     padding: 0 20px;

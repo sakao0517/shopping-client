@@ -1,22 +1,32 @@
-.legal {
+.sales {
   width: 100%;
   min-height: 100svh;
   padding: 96px 0;
+  display: flex;
+  flex-direction: column;
 }
 .main {
   padding: 0 5%;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 .top {
   margin: 24px 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 .center {
-  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+.bottom {
+  display: flex;
+  flex-direction: column;
+}
+.day {
+  margin: 24px 0;
 }
 @media (max-width: 768px) {
   .main {

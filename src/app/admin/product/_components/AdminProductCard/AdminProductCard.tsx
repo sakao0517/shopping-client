@@ -185,7 +185,7 @@ export default function AdminProductCard({
                   }}
                 />
               ) : (
-                price
+                <span>{`₩${price}`}</span>
               )}
             </div>
           </div>

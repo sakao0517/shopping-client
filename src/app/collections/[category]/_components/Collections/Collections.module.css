@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 25px 5%;
+  margin: 24px 5%;
   gap: 10px;
 }
 .category > a {
@@ -24,7 +24,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 25px 5%;
+  margin: 24px 5%;
   gap: 10px;
 }
 .selectPage {
@@ -46,14 +46,15 @@
 }
 @media (max-width: 768px) {
   .category {
-    display: flex;
+    /* display: flex;
     justify-content: flex-start;
     flex-wrap: nowrap;
-    margin: 25px 0;
+    margin: 24px 0;
     overflow-x: auto;
     height: 48px;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 20px; */
+    display: none;
   }
   .products {
     /* padding: 0 10px; */
