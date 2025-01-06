@@ -9,8 +9,10 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 body {
+  height: 100%;
   line-height: 1.5em;
   color: var(--font-color);
   font-family: "Noto Sans KR", sans-serif;

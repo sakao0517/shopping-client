@@ -84,12 +84,12 @@ export default function NavMenu() {
                 <div className={styles.menu} key={index}>
                   <span
                     onClick={() => {
+                      if (pathname === `/collections/${category}`) {
+                        return setNavOn(false);
+                      }
                       router.push(`/collections/${category}?page=1`, {
                         scroll: false,
                       });
-                      if (pathname === `/collections/${category}?page=1`) {
-                        return setNavOn(false);
-                      }
                     }}
                   >
                     {category}
