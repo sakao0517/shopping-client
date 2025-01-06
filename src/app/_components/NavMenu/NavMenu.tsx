@@ -33,7 +33,10 @@ export default function NavMenu() {
       const children: HTMLElement | null =
         window.document.getElementById("children");
       body.style.overflow = "hidden";
-      if (children) children.style.zIndex = "-9999";
+      if (children) {
+        children.style.overflow = "hidden";
+        children.style.zIndex = "-9999";
+      }
     } else {
       const body: HTMLBodyElement =
         window.document.getElementsByTagName("body")[0];
