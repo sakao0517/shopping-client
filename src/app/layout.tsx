@@ -24,7 +24,7 @@ export default async function RootLayout({
         <ReactQueryClientProvider>
           <AuthSession>
             <Nav />
-            {children}
+            <div id="children">{children}</div>
             <Footer />
             <SearchMenu />
             <NavMenu />

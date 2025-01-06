@@ -28,10 +28,12 @@ export default function NavMenu() {
 
   useEffect(() => {
     if (navOn) {
-      console.log("hi");
       const body: HTMLBodyElement =
         window.document.getElementsByTagName("body")[0];
+      const children: HTMLElement | null =
+        window.document.getElementById("children");
       body.style.overflow = "hidden";
+      if (children) children.style.zIndex = "-9999";
     } else {
       const body: HTMLBodyElement =
         window.document.getElementsByTagName("body")[0];
