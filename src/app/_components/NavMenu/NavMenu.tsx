@@ -43,6 +43,7 @@ export default function NavMenu() {
     if (currentPathname !== pathname) {
       setCurrentPathname(pathname);
       setNavOn(false);
+      window.scrollTo(0, 0);
     }
   }, [pathname]);
   return (
@@ -71,9 +72,7 @@ export default function NavMenu() {
                   if (pathname === `/`) {
                     return setNavOn(false);
                   }
-                  router.push(`/`, {
-                    scroll: false,
-                  });
+                  router.push(`/`);
                 }}
               >
                 브랜드이름
@@ -87,9 +86,7 @@ export default function NavMenu() {
                       if (pathname === `/collections/${category}`) {
                         return setNavOn(false);
                       }
-                      router.push(`/collections/${category}?page=1`, {
-                        scroll: false,
-                      });
+                      router.push(`/collections/${category}?page=1`);
                     }}
                   >
                     {category}
