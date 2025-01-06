@@ -26,19 +26,18 @@ export default function NavMenu() {
   const pathname = usePathname();
   const [currentPathname, setCurrentPathname] = useState(pathname);
 
-  // useEffect(() => {
-  //   if (navOn) {
-  //     const body: HTMLBodyElement =
-  //       window.document.getElementsByTagName("body")[0];
-  //     // body.style.overflowY = "hidden";
-  //     disableBodyScroll(body);
-  //   } else {
-  //     const body: HTMLBodyElement =
-  //       window.document.getElementsByTagName("body")[0];
-  //     // body.style.overflowY = "auto";
-  //     enableBodyScroll(body);
-  //   }
-  // }, [navOn]);
+  useEffect(() => {
+    if (navOn) {
+      console.log("hi");
+      const body: HTMLBodyElement =
+        window.document.getElementsByTagName("body")[0];
+      body.style.overflow = "hidden";
+    } else {
+      const body: HTMLBodyElement =
+        window.document.getElementsByTagName("body")[0];
+      body.style.overflowY = "auto";
+    }
+  }, [navOn]);
   useEffect(() => {
     if (currentPathname !== pathname) {
       setCurrentPathname(pathname);
