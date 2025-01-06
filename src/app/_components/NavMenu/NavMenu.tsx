@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import styles from "./NavMenu.module.css";
 import { useNavStore, useSearchStore } from "@/store/store";
 import { BsXLg } from "react-icons/bs";
@@ -12,7 +12,7 @@ import { CategoryType } from "@/type/type";
 import { getCategory } from "@/actions/category";
 import { AnimatePresence, motion } from "motion/react";
 import { mainColor } from "@/app/_config/ColorSetting";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock-upgrade";
+// import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock-upgrade";
 
 export default function NavMenu() {
   const { data: categoryData } = useQuery<CategoryType>({
@@ -24,28 +24,27 @@ export default function NavMenu() {
   const { navOn, setNavOn } = useNavStore();
   const { setSearchOn } = useSearchStore();
   const pathname = usePathname();
-  const [currentPathname, setCurrentPathname] = useState(pathname);
+  // const [currentPathname, setCurrentPathname] = useState(pathname);
 
-  useEffect(() => {
-    if (navOn) {
-      const body: HTMLBodyElement =
-        window.document.getElementsByTagName("body")[0];
-      // body.style.overflowY = "hidden";
-      disableBodyScroll(body);
-    } else {
-      const body: HTMLBodyElement =
-        window.document.getElementsByTagName("body")[0];
-      // body.style.overflowY = "auto";
-      enableBodyScroll(body);
-    }
-  }, [navOn]);
-  useEffect(() => {
-    if (currentPathname !== pathname) {
-      setCurrentPathname(pathname);
-      setNavOn(false);
-      window.scrollTo(0, 0);
-    }
-  }, [pathname]);
+  // useEffect(() => {
+  //   if (navOn) {
+  //     const body: HTMLBodyElement =
+  //       window.document.getElementsByTagName("body")[0];
+  //     // body.style.overflowY = "hidden";
+  //     disableBodyScroll(body);
+  //   } else {
+  //     const body: HTMLBodyElement =
+  //       window.document.getElementsByTagName("body")[0];
+  //     // body.style.overflowY = "auto";
+  //     enableBodyScroll(body);
+  //   }
+  // }, [navOn]);
+  // useEffect(() => {
+  //   if (currentPathname !== pathname) {
+  //     setCurrentPathname(pathname);
+  //     setNavOn(false);
+  //   }
+  // }, [pathname]);
   return (
     <AnimatePresence>
       {navOn && (
