@@ -1,0 +1,51 @@
+.productCard {
+  width: 100%;
+  display: flex;
+  margin-top: 32px;
+}
+.index {
+  flex-basis: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+.image {
+  display: flex;
+  text-align: left;
+  width: 66px;
+  min-width: 66px;
+  margin-right: 24px;
+  flex: 0 0 auto;
+}
+.image img {
+  z-index: -1;
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 200/300;
+}
+.sales {
+  flex-basis: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.productDetail {
+  flex: 1;
+  text-align: left;
+  margin-right: 24px;
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 768px) {
+  .index {
+    flex-basis: 20%;
+  }
+  .sales {
+    flex-basis: 20%;
+  }
+}

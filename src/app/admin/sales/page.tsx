@@ -8,10 +8,19 @@ import { useEffect, useState } from "react";
 import Loading from "@/app/_components/Loading/Loading";
 import dayjs from "dayjs";
 import Calendar from "react-calendar";
+import ProductCard from "./_components/ProductCard/ProductCard";
 
 type ValuePiece = Date | null;
 
 type Value = ValuePiece | [ValuePiece, ValuePiece];
+
+export type RankingProduct = {
+  id: string;
+  name: string;
+  img: string[];
+  price: number;
+  sales: number;
+};
 
 export default function Sales() {
   const { data: orders, isLoading } = useQuery<OrderType[]>({
@@ -25,6 +34,7 @@ export default function Sales() {
   const [salesThisMonth, setSalesThisMonth] = useState<number>(0);
   const [salesAll, setSalesAll] = useState<number>(0);
   const [salesCalendar, setSalesCalendar] = useState<number>(0);
+  const [rankingArray, setRankingArray] = useState<RankingProduct[]>([]);
   useEffect(() => {
     if (!orders) return;
     function getMonday(d: Date) {
@@ -76,6 +86,42 @@ export default function Sales() {
     });
     setSalesCalendar(tmpSalesCalendar);
   }, [value, orders]);
+  useEffect(() => {
+    if (!orders) return;
+    const calendarDay = dayjs(value?.toString()).format("YYYY-MM-DD");
+    const tmpRankingArray: RankingProduct[] = [];
+
+    orders.forEach((order) => {
+      if (order.createdAt.split("T")[0] !== calendarDay) return;
+      order.cart.forEach((item) => {
+        // 동일한 제품이 있는지 찾기
+        const findProductIndex = tmpRankingArray.findIndex(
+          (product) =>
+            product.name === item.name &&
+            product.price === item.price &&
+            JSON.stringify(product.img) === JSON.stringify(item.img)
+        );
+
+        if (findProductIndex !== -1) {
+          tmpRankingArray[findProductIndex].sales += item.cartStock.stock.qty;
+        } else {
+          // 새로운 제품 추가
+          tmpRankingArray.push({
+            id: item.id,
+            name: item.name,
+            img: item.img,
+            price: item.price,
+            sales: item.cartStock.stock.qty,
+          });
+        }
+      });
+    });
+    tmpRankingArray.sort((a, b) => b.sales - a.sales);
+    setRankingArray(tmpRankingArray);
+  }, [orders, value]);
+  useEffect(() => {
+    console.log(rankingArray);
+  }, [rankingArray, value]);
   if (isLoading) return <Loading />;
   return (
     <div className={styles.sales}>
@@ -102,11 +148,27 @@ export default function Sales() {
           <Calendar onChange={onChange} value={value} />
         </div>
         <div className={styles.bottom}>
-          <div className={styles.day}>
-            <span>
-              {dayjs(value?.toString()).format("YYYY년MM월DD일 매출 ")}
-            </span>
-            <span style={{ color: "red" }}>{`₩${salesCalendar}`}</span>
+          <div className={styles.ranking}>
+            <div className={styles.rankingTop}>
+              <div className={styles.rankingTopRanking}>판매순위</div>
+              <div className={styles.day}>
+                <span>
+                  {dayjs(value?.toString()).format("YYYY년MM월DD일 매출")}
+                </span>
+                <span className={styles.dayAir}>&nbsp;</span>
+                <span style={{ color: "red" }}>{`₩${salesCalendar}`}</span>
+              </div>
+              <div className={styles.rankingTopQty}>판매수</div>
+            </div>
+            <div className={styles.rankingMain}>
+              {rankingArray.map((product, index) => (
+                <ProductCard
+                  key={`${product.name}${index}`}
+                  product={product}
+                  index={index}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
