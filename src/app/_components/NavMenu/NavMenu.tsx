@@ -39,7 +39,6 @@ export default function NavMenu() {
         setScrollY(tmpScrollY);
         body.style.position = "fixed";
         body.style.top = `-${tmpScrollY}px`;
-        body.style.overscrollBehavior = "none";
       } else {
         body.style.overflow = "hidden";
       }
@@ -47,7 +46,6 @@ export default function NavMenu() {
       if (isIos) {
         body.style.removeProperty("position");
         body.style.removeProperty("top");
-        body.style.removeProperty("overscroll-behavior");
         window.scrollTo(0, scrollY);
       } else {
         body.style.removeProperty("overflow");
@@ -57,6 +55,7 @@ export default function NavMenu() {
   useEffect(() => {
     if (currentPathname !== pathname) {
       setCurrentPathname(pathname);
+      setScrollY(0);
       setNavOn(false);
     }
   }, [pathname]);
