@@ -11,7 +11,6 @@ import DaumPostcodeEmbed from "react-daum-postcode";
 import OrderCard from "./_components/OrderCard/OrderCard";
 import DeleteButton from "./_components/DeleteButton/DeleteButton";
 import { mainColor } from "@/app/_config/ColorSetting";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock-upgrade";
 import Loading from "../_components/Loading/Loading";
 
 export default function Account() {
@@ -30,6 +29,8 @@ export default function Account() {
   const [zipcode, setZipcode] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [newPassword, setNewPassword] = useState<string>("");
+  const [scrollY, setScrollY] = useState<number>(0);
+
   const handleAddressComplete = (data: any) => {
     let fullAddress = data.address;
     let extraAddress = "";
@@ -96,16 +97,31 @@ export default function Account() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   useEffect(() => {
+    const body: HTMLBodyElement =
+      window.document.getElementsByTagName("body")[0];
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    const isIos =
+      userAgent.indexOf("iphone") > -1 ||
+      (userAgent.indexOf("ipad") > -1 && "ontouchend" in document);
     if (addressModal) {
       if (window.innerWidth <= 767) {
-        const body: HTMLBodyElement =
-          window.document.getElementsByTagName("body")[0];
-        disableBodyScroll(body);
+        if (isIos) {
+          const tmpScrollY = window.scrollY;
+          setScrollY(tmpScrollY);
+          body.style.position = "fixed";
+          body.style.top = `-${tmpScrollY}px`;
+        } else {
+          body.style.overflow = "hidden";
+        }
       }
     } else {
-      const body: HTMLBodyElement =
-        window.document.getElementsByTagName("body")[0];
-      enableBodyScroll(body);
+      if (isIos) {
+        body.style.removeProperty("position");
+        body.style.removeProperty("top");
+        window.scrollTo(0, scrollY);
+      } else {
+        body.style.removeProperty("overflow");
+      }
     }
   }, [addressModal]);
 
