@@ -12,7 +12,6 @@ import { CategoryType } from "@/type/type";
 import { getCategory } from "@/actions/category";
 import { AnimatePresence, motion } from "motion/react";
 import { mainColor } from "@/app/_config/ColorSetting";
-// import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock-upgrade";
 
 export default function NavMenu() {
   const { data: categoryData } = useQuery<CategoryType>({
@@ -25,18 +24,32 @@ export default function NavMenu() {
   const { setSearchOn } = useSearchStore();
   const pathname = usePathname();
   const [currentPathname, setCurrentPathname] = useState(pathname);
+  const [scrollY, setScrollY] = useState<number>(0);
 
   useEffect(() => {
+    const body: HTMLBodyElement =
+      window.document.getElementsByTagName("body")[0];
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    const isIos =
+      userAgent.indexOf("iphone") > -1 ||
+      (userAgent.indexOf("ipad") > -1 && "ontouchend" in document);
     if (navOn) {
-      const body: HTMLBodyElement =
-        window.document.getElementsByTagName("body")[0];
-      body.style.overflow = "hidden";
-      body.style.touchAction = "none";
+      if (isIos) {
+        const tmpScrollY = window.scrollY;
+        setScrollY(tmpScrollY);
+        body.style.position = "fixed";
+        body.style.top = `-${tmpScrollY}px`;
+      } else {
+        body.style.overflow = "hidden";
+      }
     } else {
-      const body: HTMLBodyElement =
-        window.document.getElementsByTagName("body")[0];
-      body.style.overflowY = "auto";
-      body.style.touchAction = "auto";
+      if (isIos) {
+        body.style.removeProperty("position");
+        body.style.removeProperty("top");
+        window.scrollTo(0, scrollY);
+      } else {
+        body.style.removeProperty("overflow");
+      }
     }
   }, [navOn]);
   useEffect(() => {
