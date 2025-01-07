@@ -6,6 +6,7 @@ import { BsXLg } from "react-icons/bs";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { mainColor } from "@/app/_config/ColorSetting";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock-upgrade";
 
 export default function SearchMenu() {
   const { setNavOn } = useNavStore();
@@ -20,17 +21,17 @@ export default function SearchMenu() {
     setNavOn(false);
     setSearch("");
   };
-  // useEffect(() => {
-  //   if (searchOn) {
-  //     const body: HTMLBodyElement =
-  //       window.document.getElementsByTagName("body")[0];
-  //     disableBodyScroll(body);
-  //   } else {
-  //     const body: HTMLBodyElement =
-  //       window.document.getElementsByTagName("body")[0];
-  //     enableBodyScroll(body);
-  //   }
-  // }, [searchOn]);
+  useEffect(() => {
+    if (searchOn) {
+      const body: HTMLBodyElement =
+        window.document.getElementsByTagName("body")[0];
+      disableBodyScroll(body);
+    } else {
+      const body: HTMLBodyElement =
+        window.document.getElementsByTagName("body")[0];
+      enableBodyScroll(body);
+    }
+  }, [searchOn]);
   return (
     <div className={searchOn ? `${styles.searchOn}` : `${styles.searchOff}`}>
       <div className={styles.top}>
