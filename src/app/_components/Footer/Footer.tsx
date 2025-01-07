@@ -2,10 +2,13 @@
 
 import Link from "next/link";
 import styles from "./Footer.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Footer() {
   const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    if (isOpen) window.scrollTo(0, 9999999);
+  }, [isOpen]);
   return (
     <div className={styles.footer}>
       <div className={styles.main}>
