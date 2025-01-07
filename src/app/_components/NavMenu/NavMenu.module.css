@@ -29,6 +29,7 @@
   flex-direction: column;
   overflow-y: scroll;
   /* touch-action: auto; */
+  overscroll-behavior: none;
 }
 .main span {
   font-size: 1rem;
