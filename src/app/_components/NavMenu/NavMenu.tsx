@@ -30,17 +30,13 @@ export default function NavMenu() {
     if (navOn) {
       const body: HTMLBodyElement =
         window.document.getElementsByTagName("body")[0];
-      const children: HTMLElement | null =
-        window.document.getElementById("children");
       body.style.overflow = "hidden";
-      if (children) {
-        children.style.overflow = "hidden";
-        children.style.zIndex = "-9999";
-      }
+      body.style.touchAction = "none";
     } else {
       const body: HTMLBodyElement =
         window.document.getElementsByTagName("body")[0];
       body.style.overflowY = "auto";
+      body.style.touchAction = "auto";
     }
   }, [navOn]);
   useEffect(() => {
