@@ -102,7 +102,7 @@
   gap: 1rem;
 }
 .nullOrder {
-  margin: 40px 0;
+  margin: 32px 0;
 }
 .addressModal {
   z-index: 4444;
@@ -125,6 +125,24 @@
   overflow-wrap: break-word;
   max-width: 100%;
 }
+.page {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 24px 5%;
+  gap: 10px;
+}
+.selectPage {
+  border-bottom: 1px solid var(--main-color);
+}
+.page span {
+  cursor: pointer;
+}
+.arrow {
+  display: flex;
+  align-items: center;
+}
+
 @media (max-width: 768px) {
   .myAccount {
     padding: 0 20px;

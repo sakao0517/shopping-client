@@ -76,7 +76,7 @@ export default function OrderCard({
     setSortCart(sortCart);
   }, [order]);
   return (
-    <div className={styles.orderCard}>
+    <div className={isClick ? styles.orderCardIsClick : styles.orderCard}>
       <div className={styles.main}>
         <div className={isClick ? styles.productCardClick : styles.productCard}>
           {sortCart &&

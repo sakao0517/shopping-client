@@ -33,6 +33,10 @@
 .page span {
   cursor: pointer;
 }
+.arrow {
+  display: flex;
+  align-items: center;
+}
 
 .products {
   display: flex;
@@ -46,17 +50,6 @@
 }
 @media (max-width: 768px) {
   .category {
-    /* display: flex;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    margin: 24px 0;
-    overflow-x: auto;
-    height: 48px;
-    align-items: center;
-    padding: 0 20px; */
     display: none;
-  }
-  .products {
-    /* padding: 0 10px; */
   }
 }

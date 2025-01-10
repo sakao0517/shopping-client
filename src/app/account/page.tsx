@@ -12,6 +12,7 @@ import OrderCard from "./_components/OrderCard/OrderCard";
 import DeleteButton from "./_components/DeleteButton/DeleteButton";
 import { mainColor } from "@/app/_config/ColorSetting";
 import Loading from "../_components/Loading/Loading";
+import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 export default function Account() {
   const queryClient = useQueryClient();
@@ -30,6 +31,9 @@ export default function Account() {
   const [password, setPassword] = useState<string>("");
   const [newPassword, setNewPassword] = useState<string>("");
   const [scrollY, setScrollY] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [ordersPerPage] = useState(5);
+  const [maxPage, setMaxPage] = useState(1);
 
   const handleAddressComplete = (data: any) => {
     let fullAddress = data.address;
@@ -124,6 +128,11 @@ export default function Account() {
       }
     }
   }, [addressModal]);
+  useEffect(() => {
+    if (!userInfo) return;
+    const totalPages = Math.ceil(userInfo.orders.length / ordersPerPage);
+    setMaxPage(totalPages);
+  }, [userInfo, ordersPerPage]);
 
   if (isLoading) return <Loading />;
   return (
@@ -255,9 +264,61 @@ export default function Account() {
           <span className={styles.mainTopTotal}>가격</span>
         </div>
         {userInfo && userInfo?.orders.length > 0 ? (
-          userInfo?.orders.map((order: OrderType) => (
-            <OrderCard key={order.orderId} order={order} />
-          ))
+          <>
+            {userInfo.orders
+              .slice(
+                (currentPage - 1) * ordersPerPage,
+                currentPage * ordersPerPage
+              )
+              .map((order: OrderType) => (
+                <OrderCard key={order.orderId} order={order} />
+              ))}
+            <div className={styles.page}>
+              {currentPage > 10 && (
+                <span
+                  className={styles.arrow}
+                  onClick={() => {
+                    const prevFirstPage =
+                      Math.floor((currentPage - 1) / 10) * 10 - 9;
+                    setCurrentPage(prevFirstPage);
+                  }}
+                >
+                  <AiOutlineLeft size={12} color={`${mainColor}`} />
+                </span>
+              )}
+              {Array.from(
+                {
+                  length: Math.min(
+                    10,
+                    maxPage - Math.floor((currentPage - 1) / 10) * 10
+                  ),
+                },
+                (v, i) => Math.floor((currentPage - 1) / 10) * 10 + i + 1
+              ).map((page) => (
+                <span
+                  className={page === currentPage ? `${styles.selectPage}` : ``}
+                  key={page}
+                  onClick={() => {
+                    setCurrentPage(page);
+                  }}
+                >
+                  {page}
+                </span>
+              ))}
+              {Math.floor((currentPage - 1) / 10) * 10 + 10 < maxPage && (
+                <span
+                  className={styles.arrow}
+                  onClick={() => {
+                    const nextFirstPage =
+                      Math.floor((currentPage - 1) / 10) * 10 + 11;
+                    setCurrentPage(nextFirstPage);
+                  }}
+                >
+                  <AiOutlineRight size={12} color={`${mainColor}`} />
+                </span>
+              )}
+            </div>
+          </>
         ) : (
           <div className={styles.nullOrder}>주문내역이 없습니다.</div>
         )}

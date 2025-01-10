@@ -98,7 +98,7 @@
 }
 .textarea {
   width: 100%;
-  min-height: 460px;
+  min-height: 200px;
   height: auto;
   resize: none;
 }
@@ -122,8 +122,6 @@
 .imageList {
   display: flex;
   flex-direction: column;
-  height: 270px;
-  min-height: 270px;
   overflow: auto;
   width: 100%;
 }
@@ -148,8 +146,6 @@
 .stockList {
   display: flex;
   flex-direction: column;
-  height: 140px;
-  min-height: 140px;
   overflow: auto;
   width: 100%;
 }

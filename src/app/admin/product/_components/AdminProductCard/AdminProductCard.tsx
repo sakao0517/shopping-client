@@ -71,6 +71,11 @@ export default function AdminProductCard({
   });
   const updateProductMutate = useMutation({
     mutationFn: async () => {
+      if (!name || !price || !category || !img || !stock || !description)
+        return alert("상품 정보를 입력하세요.");
+      if (img.length < 2) return alert("이미지는 최소 2개 이상이어야 합니다.");
+      if (stock.length < 1)
+        return alert("사이즈는 최소 1개 이상이어야 합니다.");
       await updateAdminProduct(
         product.id,
         name,
@@ -218,6 +223,9 @@ export default function AdminProductCard({
             </div>
             <div className={styles.bottomRight}>
               <div className={styles.list}>
+                <div className={styles.addButton}>
+                  <button onClick={handleImgButton}>이미지 추가</button>
+                </div>
                 <div className={styles.listTip}>
                   <p>이미지 파일은 최소 2개 이상으로 설정해주세요.</p>
                 </div>
@@ -230,28 +238,24 @@ export default function AdminProductCard({
                       setImg={setImg}
                     />
                   ))}
-                  <div className={styles.addButton}>
-                    <button onClick={handleImgButton}>이미지 추가</button>
-                  </div>
                 </div>
-
+                <div className={styles.addButton}>
+                  <button onClick={handleStockButton}>사이즈 추가</button>
+                </div>
                 <div className={styles.listTip}>
                   <p>사이즈는 최소 1개 이상으로 설정해주세요.</p>
                   <p>단일 사이즈인 경우에도 free나 os로 설정</p>
                 </div>
-                <div className={styles.stockList}>
-                  {stock.map((sizeStock, index) => (
-                    <StockCard
-                      key={`${sizeStock.size}${index}`}
-                      index={index}
-                      stock={stock}
-                      setStock={setStock}
-                    />
-                  ))}
-                  <div className={styles.addButton}>
-                    <button onClick={handleStockButton}>사이즈 추가</button>
-                  </div>
-                </div>
+              </div>
+              <div className={styles.stockList}>
+                {stock.map((sizeStock, index) => (
+                  <StockCard
+                    key={`${sizeStock.size}${index}`}
+                    index={index}
+                    stock={stock}
+                    setStock={setStock}
+                  />
+                ))}
               </div>
               <div className={styles.productCardButton}>
                 <div className={styles.buttonMain}>

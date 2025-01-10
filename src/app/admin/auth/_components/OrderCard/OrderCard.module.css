@@ -1,6 +1,10 @@
 .orderCard {
   width: 100%;
 }
+.orderCardIsClick {
+  width: 100%;
+  border: 3px solid blue;
+}
 .main {
   display: flex;
   flex-direction: row;

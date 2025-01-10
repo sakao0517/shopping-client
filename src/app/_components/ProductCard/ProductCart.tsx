@@ -16,15 +16,19 @@ export default function ProductCard({ product }: { product: ProductType }) {
       >
         <img
           onMouseEnter={() => {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            const isIos =
+              userAgent.indexOf("iphone") > -1 ||
+              (userAgent.indexOf("ipad") > -1 && "ontouchend" in document);
+            if (isIos) return;
             setOnMouse(true);
           }}
           onMouseLeave={() => {
-            setOnMouse(false);
-          }}
-          onTouchStart={() => {
-            setOnMouse(true);
-          }}
-          onTouchEnd={() => {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            const isIos =
+              userAgent.indexOf("iphone") > -1 ||
+              (userAgent.indexOf("ipad") > -1 && "ontouchend" in document);
+            if (isIos) return;
             setOnMouse(false);
           }}
           src={onMouse ? product.img[1] : product.img[0]}
