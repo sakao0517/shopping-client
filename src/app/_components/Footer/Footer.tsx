@@ -18,7 +18,7 @@ export default function Footer() {
               setIsOpen((prev) => !prev);
             }}
           >
-            브랜드이름
+            Star Spray {/* 브랜드 이름 */}
           </span>
           <div className={styles.topMenu}>
             <Link href="/legal">Legal</Link>
@@ -38,13 +38,45 @@ export default function Footer() {
         {isOpen && (
           <div className={styles.bottom}>
             <p>
-              법인명 : 브랜드이름 | 대표 : 김대표 | 이메일 : brand@brand.com
+              법인명 : 스타스프레이 | 대표 : 이건호 | 이메일 :
+              help.starspray@gmail.com
             </p>
             <p>
-              사업자 등록번호 : 123-12-12345 | 통신판매업 신고 :
-              2024-서울강남-1234
+              사업자 등록번호 : 568-03-02882 | 통신판매업 신고 :
+              2024-서울송파-0871 |{" "}
+              <span
+                className={styles.safePurchase}
+                onClick={() => {
+                  window.open(
+                    "",
+                    "KB_AUTHMARK",
+                    "height=604, width=648, status=yes, toolbar=no, menubar=no,location=no"
+                  );
+                  const form = document.forms.namedItem("KB_AUTHMARK_FORM");
+                  if (form instanceof HTMLFormElement) {
+                    form.action = "https://okbfex.kbstar.com/quics";
+                    form.target = "KB_AUTHMARK";
+                    form.submit();
+                  }
+                }}
+              >
+                안전구매(에스크로)
+              </span>
             </p>
-            <p>주소 : 서울시 강남구 테헤란로 123 123호</p>
+            <p>
+              주소 : 43, SONGPA-DAERO 28-GIL, SONGPA-GU, SEOUL, REPUBLIC OF
+              KOREA
+            </p>
+            {/* 브랜드 이름 */}
+            <form name="KB_AUTHMARK_FORM" method="get">
+              <input type="hidden" name="page" value="C021590" />
+              <input type="hidden" name="cc" value="b034066:b035526" />
+              <input
+                type="hidden"
+                name="mHValue"
+                value="b844d1bb91c80ab7cbc49bfbe146a8f7"
+              />
+            </form>
           </div>
         )}
       </div>

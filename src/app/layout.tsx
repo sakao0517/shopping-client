@@ -9,8 +9,8 @@ import SearchMenu from "./_components/SearchMenu/SearchMenu";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  title: "Brand Name",
-  description: "Brand Name",
+  title: `Star Spray`, // 브랜드 이름
+  description: `Star Spray`, // 브랜드 이름
 };
 
 export default async function RootLayout({

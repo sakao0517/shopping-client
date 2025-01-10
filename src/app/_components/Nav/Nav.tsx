@@ -53,7 +53,7 @@ export default function Nav() {
         <div className={styles.leftMenu}>
           {width !== undefined ? (
             width > 767 ? (
-              <Link href={"/"}>브랜드이름</Link>
+              <Link href={"/"}>Star Spray</Link> // 브랜드 이름
             ) : (
               <span
                 onClick={() => {

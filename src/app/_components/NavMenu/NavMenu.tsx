@@ -88,7 +88,7 @@ export default function NavMenu() {
                   router.push(`/`);
                 }}
               >
-                브랜드이름
+                Star Spray {/* 브랜드 이름 */}
               </span>
             </div>
             {categoryData &&

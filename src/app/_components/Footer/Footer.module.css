@@ -34,6 +34,9 @@
   font-size: 0.7rem;
   align-self: flex-start;
 }
+.safePurchase {
+  cursor: pointer;
+}
 @media (max-width: 768px) {
   .main {
     gap: 12px;
