@@ -187,13 +187,13 @@ export default function AdminUserCard({ user }: { user: UserType }) {
             <div className={styles.orderList}>
               <div className={styles.top}>
                 <div className={styles.topOrder}>
-                  <p>주문내역</p>
+                  <span>주문 내역</span>
                 </div>
                 <div className={styles.topMenu}>
                   <span>주문상태</span>
                 </div>
                 <div className={styles.topMenu}>
-                  <span>구매일</span>
+                  <span>주문일자</span>
                 </div>
                 <div className={styles.topMenu}>
                   <span>구매가격</span>
@@ -203,7 +203,13 @@ export default function AdminUserCard({ user }: { user: UserType }) {
                 <span className={styles.orderNull}>주문내역이 없습니다.</span>
               ) : (
                 orders.map((order) => (
-                  <OrderCard key={order.orderId} order={order} />
+                  <OrderCard
+                    key={order.orderId}
+                    order={order}
+                    setIsUpdate={setIsUpdate}
+                    timeOut={timeOut}
+                    setTimeOut={setTimeOut}
+                  />
                 ))
               )}
             </div>

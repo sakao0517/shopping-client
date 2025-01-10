@@ -1,6 +1,6 @@
 import { CartProductType, OrderType } from "@/type/type";
 import styles from "./OrderCard.module.css";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteAdminOrder, updateAdminUserOrder } from "@/actions/admin";
@@ -9,7 +9,17 @@ import { BsChevronUp } from "react-icons/bs";
 import { mainColor } from "@/app/_config/ColorSetting";
 dayjs.locale("ko");
 
-export default function OrderCard({ order }: { order: OrderType }) {
+export default function OrderCard({
+  order,
+  setIsUpdate,
+  timeOut,
+  setTimeOut,
+}: {
+  order: OrderType;
+  setIsUpdate: Dispatch<SetStateAction<boolean>>;
+  timeOut: NodeJS.Timeout;
+  setTimeOut: Dispatch<SetStateAction<NodeJS.Timeout>>;
+}) {
   const queryClient = useQueryClient();
   const [isClick, setIsClick] = useState(false);
   const [name, setName] = useState(order.name);
@@ -34,9 +44,16 @@ export default function OrderCard({ order }: { order: OrderType }) {
       });
     },
     onSuccess: () => {
+      clearTimeout(timeOut);
       queryClient.invalidateQueries({
         queryKey: ["admin", "order"],
       });
+      setIsUpdate(true);
+      setTimeOut(
+        setTimeout(() => {
+          setIsUpdate(false);
+        }, 500)
+      );
     },
     onError: () => {
       alert("문제가 발생했습니다. 다시 시도하세요.");
@@ -118,7 +135,7 @@ export default function OrderCard({ order }: { order: OrderType }) {
                   <input value={order.orderId} disabled={true} />
                 </div>
                 <div className={styles.detailRow}>
-                  <label>제품 총 가격</label>
+                  <label>상품 총 가격</label>
                   <input value={order.subtotal} disabled={true} />
                 </div>
                 <div className={styles.detailRow}>

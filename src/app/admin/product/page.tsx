@@ -124,7 +124,7 @@ export default function Product() {
                 setSearchFilter(e.target.value);
               }}
             >
-              <option value={"name"}>제품명</option>
+              <option value={"name"}>상품명</option>
               <option value={"price"}>가격</option>
             </select>
           </div>
@@ -155,7 +155,7 @@ export default function Product() {
                 setIsAdd(true);
               }}
             >
-              제품 추가하기
+              상품 추가하기
             </button>
           )}
         </div>
@@ -175,7 +175,7 @@ export default function Product() {
                 setFilter("name");
               }}
             >
-              제품명
+              상품명
             </span>
             <select
               value={nameFilter}

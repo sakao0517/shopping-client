@@ -53,7 +53,7 @@ export default function AdminAddProduct() {
         !description ||
         !createdAt
       )
-        return alert("제품 정보를 입력하세요.");
+        return alert("상품 정보를 입력하세요.");
       await addAdminProduct(
         name,
         price,
@@ -226,7 +226,7 @@ export default function AdminAddProduct() {
                     addProductMutate.mutate();
                   }}
                 >
-                  제품 등록
+                  상품 등록
                 </button>
               </div>
             </div>

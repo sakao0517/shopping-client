@@ -129,7 +129,7 @@ export default function Order() {
         </form>
         <div className={styles.top}>
           <div className={styles.topOrder}>
-            <span>주문</span>
+            <span>주문상품</span>
           </div>
           <div className={styles.topOrderStatus}>
             <span>주문상태</span>
@@ -157,7 +157,7 @@ export default function Order() {
                 setFilter("createdAt");
               }}
             >
-              구매일
+              주문일자
             </span>
             <select
               value={createdAtFilter}

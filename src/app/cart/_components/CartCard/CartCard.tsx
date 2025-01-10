@@ -26,7 +26,7 @@ export default function CartCard({ product }: { product: CartProductType }) {
     },
     onError: (error: any) => {
       if (error.digest === "get product size error") {
-        setMessage("현재 존재하지 않거나 변경된 제품 사이즈입니다.");
+        setMessage("현재 존재하지 않거나 변경된 상품 사이즈입니다.");
       } else if (error.digest === "sold out") {
         setMessage("현재 품절된 상품입니다.");
       } else if (error.digest === "not enough qty") {

@@ -131,7 +131,7 @@ export default function OrderCard({ order }: { order: OrderType }) {
                   <input value={order.orderId} disabled={true} />
                 </div>
                 <div className={styles.detailRow}>
-                  <label>제품 총 가격</label>
+                  <label>상품 총 가격</label>
                   <input value={order.subtotal} disabled={true} />
                 </div>
                 <div className={styles.detailRow}>

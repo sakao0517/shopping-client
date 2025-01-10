@@ -168,7 +168,7 @@ export default function Admin() {
           <Link href={"/admin/category"}>카테고리 관리</Link>
         </div>
         <div>
-          <Link href={"/admin/product"}>제품 관리</Link>
+          <Link href={"/admin/product"}>상품 관리</Link>
         </div>
         <div>
           <Link href={"/admin/auth"}>사용자 관리</Link>

@@ -21,6 +21,12 @@ export default function ProductCard({ product }: { product: ProductType }) {
           onMouseLeave={() => {
             setOnMouse(false);
           }}
+          onTouchStart={() => {
+            setOnMouse(true);
+          }}
+          onTouchEnd={() => {
+            setOnMouse(false);
+          }}
           src={onMouse ? product.img[1] : product.img[0]}
         />
       </Link>

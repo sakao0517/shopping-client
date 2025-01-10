@@ -21,7 +21,7 @@ function ResetPassword() {
       setIsResetPassword(true);
     } catch (error: any) {
       if (error.digest === "expired token") {
-        setMessage("비밀번호 변경은 메일을 받은 후 10분 안에 가능합니다.");
+        setMessage("비밀번호 변경은 메일을 받은 후 5분 안에 가능합니다.");
       } else if (error.digest === "token error") {
         setMessage("잘못된 경로로 접근했습니다.");
       } else if (error.digest) {
@@ -60,7 +60,7 @@ function ResetPassword() {
             }
             disabled={isResetPassword}
           >
-            Submit
+            비밀번호 변경
           </button>
           {message && <span className={styles.message}>{message}</span>}
         </div>

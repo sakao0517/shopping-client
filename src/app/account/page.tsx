@@ -251,8 +251,8 @@ export default function Account() {
       <div className={styles.main}>
         <div className={styles.maintop}>
           <span className={styles.mainTopOrder}>주문 내역</span>
-          <span className={styles.mainTopDate}>Date</span>
-          <span className={styles.mainTopTotal}>Total</span>
+          <span className={styles.mainTopDate}>일자</span>
+          <span className={styles.mainTopTotal}>가격</span>
         </div>
         {userInfo && userInfo?.orders.length > 0 ? (
           userInfo?.orders.map((order: OrderType) => (

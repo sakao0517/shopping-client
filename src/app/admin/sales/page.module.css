@@ -60,6 +60,14 @@
   flex-basis: 15%;
   border-left: 1px solid var(--main-color);
 }
+.rankingMain {
+  display: flex;
+  flex-direction: column;
+}
+.rankingArrayNull {
+  margin-top: 32px;
+  padding-left: 5px;
+}
 @media (max-width: 768px) {
   .main {
     padding: 0 20px;

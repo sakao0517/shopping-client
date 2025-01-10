@@ -49,10 +49,10 @@ export default function Cart() {
       </div>
       <div className={styles.main}>
         <div className={styles.maintop}>
-          <span className={styles.mainTopProduct}>Product</span>
-          <span className={styles.mainTopPrice}>Price</span>
-          <span className={styles.mainTopQty}>Quantity</span>
-          <span className={styles.mainTopTotal}>Total</span>
+          <span className={styles.mainTopProduct}>상품 정보</span>
+          <span className={styles.mainTopPrice}>가격</span>
+          <span className={styles.mainTopQty}>수량</span>
+          <span className={styles.mainTopTotal}>총 가격</span>
         </div>
         {products &&
           products.map((product: CartProductType, index: number) => (
@@ -65,12 +65,12 @@ export default function Cart() {
       <div className={styles.total}>
         <div className={styles.totalMain}>
           <div className={styles.totalMenu}>
-            <span>Subtotal</span>
+            <span>상품합계 금액</span>
             {subtotal && <span>{`₩${subtotal == null ? "" : subtotal}`}</span>}
           </div>
           <div className={styles.shipping}>
             <div className={styles.shippingMain}>
-              <span>Shipping</span>
+              <span>배송비</span>
               <BsQuestionCircle
                 color={`${mainColor}`}
                 size={12}
@@ -90,7 +90,7 @@ export default function Cart() {
             </div>
           )}
           <div className={styles.totalMenu}>
-            <span>Total</span>
+            <span>총 결제 금액</span>
             {total && <span>{`₩${total == null ? "" : total}`}</span>}
           </div>
         </div>

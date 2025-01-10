@@ -47,7 +47,7 @@ export default function Order() {
             <span>{order?.address2}</span>
           </div>
           <div>
-            <label>주문날짜</label>
+            <label>주문일자</label>
             <span>
               {order?.createdAt
                 ? dayjs(order?.createdAt).format("YYYY.MM.DD HH:mm")
@@ -79,10 +79,10 @@ export default function Order() {
       </div>
       <div className={styles.main}>
         <div className={styles.maintop}>
-          <span className={styles.mainTopProduct}>Product</span>
-          <span className={styles.mainTopPrice}>Price</span>
-          <span className={styles.mainTopQty}>Quantity</span>
-          <span className={styles.mainTopTotal}>Total</span>
+          <span className={styles.mainTopProduct}>상품 정보</span>
+          <span className={styles.mainTopPrice}>가격</span>
+          <span className={styles.mainTopQty}>수량</span>
+          <span className={styles.mainTopTotal}>총 가격</span>
         </div>
         {order &&
           order.cart.map((product: CartProductType, index: number) => (
@@ -92,19 +92,19 @@ export default function Order() {
       <div className={styles.total}>
         <div className={styles.totalMain}>
           <div className={styles.totalMenu}>
-            <span>Subtotal</span>
+            <span>상품합계 금액</span>
             {order && (
               <span>{`₩${order.subtotal == null ? "" : order.subtotal}`}</span>
             )}
           </div>
           <div className={styles.totalMenu}>
-            <span>Shipping</span>
+            <span>배송비</span>
             {order && (
               <span>{`₩${order.shipping == null ? "" : order.shipping}`}</span>
             )}
           </div>
           <div className={styles.totalMenu}>
-            <span>Total</span>
+            <span>총 결제 금액</span>
             {order && (
               <span>{`₩${order.amount == null ? "" : order.amount}`}</span>
             )}

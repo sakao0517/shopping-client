@@ -18,8 +18,8 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  --font-color: #2b3072;
-  --main-color: #2b3072;
+  --font-color: #000000;
+  --main-color: #000000;
   --gray-color: #cacbdc;
   --graygray-color: rgba(18, 17, 16, 0.6);
 }

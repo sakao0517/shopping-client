@@ -94,7 +94,6 @@ export default function Sales() {
     orders.forEach((order) => {
       if (order.createdAt.split("T")[0] !== calendarDay) return;
       order.cart.forEach((item) => {
-        // 동일한 제품이 있는지 찾기
         const findProductIndex = tmpRankingArray.findIndex(
           (product) =>
             product.name === item.name &&
@@ -105,7 +104,6 @@ export default function Sales() {
         if (findProductIndex !== -1) {
           tmpRankingArray[findProductIndex].sales += item.cartStock.stock.qty;
         } else {
-          // 새로운 제품 추가
           tmpRankingArray.push({
             id: item.id,
             name: item.name,
@@ -161,13 +159,19 @@ export default function Sales() {
               <div className={styles.rankingTopQty}>판매수</div>
             </div>
             <div className={styles.rankingMain}>
-              {rankingArray.map((product, index) => (
-                <ProductCard
-                  key={`${product.name}${index}`}
-                  product={product}
-                  index={index}
-                />
-              ))}
+              {!rankingArray || rankingArray?.length === 0 ? (
+                <span className={styles.rankingArrayNull}>
+                  주문내역이 없습니다.
+                </span>
+              ) : (
+                rankingArray.map((product, index) => (
+                  <ProductCard
+                    key={`${product.name}${index}`}
+                    product={product}
+                    index={index}
+                  />
+                ))
+              )}
             </div>
           </div>
         </div>

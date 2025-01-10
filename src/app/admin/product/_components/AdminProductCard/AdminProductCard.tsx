@@ -288,7 +288,7 @@ export default function AdminProductCard({
                       if (check) deleteProductMutate.mutate();
                     }}
                   >
-                    제품 삭제
+                    상품 삭제
                   </button>
                   <button
                     type="submit"
@@ -304,7 +304,7 @@ export default function AdminProductCard({
                       updateProductMutate.mutate();
                     }}
                   >
-                    제품 업데이트
+                    상품 업데이트
                   </button>
                 </div>
               </div>
