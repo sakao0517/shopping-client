@@ -86,4 +86,7 @@
   .button {
     width: 100%;
   }
+  .disabledButton {
+    width: 100%;
+  }
 }

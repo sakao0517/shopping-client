@@ -47,7 +47,7 @@ export default function Order() {
             <span>{order?.address2}</span>
           </div>
           <div>
-            <label>주문일자</label>
+            <label>주문 일자</label>
             <span>
               {order?.createdAt
                 ? dayjs(order?.createdAt).format("YYYY.MM.DD HH:mm")
@@ -55,7 +55,7 @@ export default function Order() {
             </span>
           </div>
           <div>
-            <label>주문상태</label>
+            <label>주문 상태</label>
             <span>{order?.orderStatus || "-"}</span>
           </div>
           <div>

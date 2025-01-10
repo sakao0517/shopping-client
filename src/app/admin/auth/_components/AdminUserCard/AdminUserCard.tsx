@@ -190,10 +190,10 @@ export default function AdminUserCard({ user }: { user: UserType }) {
                   <span>주문 내역</span>
                 </div>
                 <div className={styles.topMenu}>
-                  <span>주문상태</span>
+                  <span>주문 상태</span>
                 </div>
                 <div className={styles.topMenu}>
-                  <span>주문일자</span>
+                  <span>주문 일자</span>
                 </div>
                 <div className={styles.topMenu}>
                   <span>구매가격</span>

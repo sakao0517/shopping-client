@@ -132,7 +132,7 @@ export default function Order() {
             <span>주문상품</span>
           </div>
           <div className={styles.topOrderStatus}>
-            <span>주문상태</span>
+            <span>주문 상태</span>
             <select
               value={orderStatusFilter}
               onChange={(e) => {
@@ -157,7 +157,7 @@ export default function Order() {
                 setFilter("createdAt");
               }}
             >
-              주문일자
+              주문 일자
             </span>
             <select
               value={createdAtFilter}
