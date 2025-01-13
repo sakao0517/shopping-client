@@ -1,3 +1,1 @@
-hi
-hihi
-hihihi
+shopping sample client

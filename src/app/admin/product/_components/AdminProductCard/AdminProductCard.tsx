@@ -2,7 +2,7 @@
 
 import { CategoryType, ProductType } from "@/type/type";
 import styles from "./AdminProductCard.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import StockCard from "../StockCard/StockCard";
 import ImageCard from "../ImageCard/ImageCard";
@@ -113,6 +113,23 @@ export default function AdminProductCard({
       alert("문제가 발생했습니다. 다시 시도하세요.");
     },
   });
+  useEffect(() => {
+    if (!isClick) return;
+    if (!product) return;
+    if (!categoryData) return;
+    if (
+      categoryData?.category.find((category) => {
+        if (category === "new") return false;
+        if (category === product.category) return true;
+        return false;
+      })
+    )
+      setCategory(product.category);
+    else setCategory(categoryData.category[1]);
+  }, [product, categoryData, isClick]);
+  useEffect(() => {
+    console.log(category);
+  }, [category]);
   return (
     <div
       className={`${styles.adminProductcard} ${isClick ? styles.isClick : ""} ${
