@@ -39,7 +39,7 @@ export default function Footer() {
           <div className={styles.bottom}>
             <p>
               법인명 : 스타스프레이 | 대표 : 이건호 | 이메일 :
-              help.starspray@gmail.com
+              help.starspray@gmail.com | 전화 : 010-6272-6828
             </p>
             <p>
               사업자 등록번호 : 568-03-02882 | 통신판매업 신고 :
