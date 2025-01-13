@@ -340,3 +340,51 @@ export async function deleteAdminOrder(orderId: string) {
     throw new CustomError();
   }
 }
+
+export async function cancelOrder(
+  orderId: string,
+  paymentKey: string,
+  cancelAmount: number,
+  cancelReason: string
+) {
+  const session = await auth();
+  if (!session) return;
+  const cookie = await cookies();
+  const token = cookie.get("token");
+  const url = `https://api.tosspayments.com/v1/payments/${paymentKey}/cancel`;
+  const base64 = Buffer.from(`${process.env.TOSS_SECRET}:`, "utf8").toString(
+    "base64"
+  );
+  const options = {
+    method: "POST",
+    headers: {
+      Authorization: `Basic ${base64}`,
+      "Content-Type": "application/json",
+    },
+    body: `{"cancelReason":"${cancelReason}","cancelAmount":${cancelAmount}}`,
+  };
+  const res = await fetch(url, options);
+  if (!res.ok) {
+    const errorMessage = await res.json();
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
+  }
+  const res2 = await fetch(`${process.env.SERVER_URL}/admin/order/cancel`, {
+    headers: {
+      Authorization: `Bearer ${token?.value}`,
+      "Content-Type": "application/json",
+    },
+    method: "PUT",
+    body: JSON.stringify({ orderId, cancelReason, cancelAmount }),
+    cache: "no-store",
+  });
+  if (!res2.ok) {
+    const errorMessage = await res2.json();
+    class CustomError extends Error {
+      digest = errorMessage.message;
+    }
+    throw new CustomError();
+  }
+}

@@ -9,6 +9,7 @@ import StockCard from "../StockCard/StockCard";
 import ImageCard from "../ImageCard/ImageCard";
 import { addAdminProduct } from "@/actions/admin";
 import { getCategory } from "@/actions/category";
+import { koreaTimeNow } from "@/app/_config/KoreaTimeNow";
 
 dayjs.locale("ko");
 
@@ -23,7 +24,7 @@ export default function AdminAddProduct() {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const [createdAt, setCreatedAt] = useState(
-    dayjs(Date.now()).format("YYYY-MM-DDTHH:mm:ss")
+    dayjs(koreaTimeNow()).format("YYYY-MM-DDTHH:mm:ss")
   );
   const { data: categoryData } = useQuery<CategoryType>({
     queryKey: ["category"],
@@ -76,7 +77,7 @@ export default function AdminAddProduct() {
       setDescription("description");
       setStock([]);
       setImg([]);
-      setCreatedAt(dayjs(Date.now()).format("YYYY-MM-DDTHH:mm:ss"));
+      setCreatedAt(dayjs(koreaTimeNow()).format("YYYY-MM-DDTHH:mm:ss"));
       queryClient.invalidateQueries({
         queryKey: ["admin", "collections"],
       });

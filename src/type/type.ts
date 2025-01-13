@@ -20,6 +20,12 @@ export interface Cart {
   createdAt: string;
 }
 
+export interface CancelType {
+  createdAt: string;
+  cancelReason: string;
+  cancelAmount: number;
+}
+
 export interface UserType {
   id: string;
   name: string;
@@ -74,6 +80,8 @@ export interface TmpOrderType {
     | "반품 완료";
   trackingNumber: string;
   createdAt: string;
+  isCancel: boolean;
+  cancels: CancelType[];
 }
 export interface OrderType {
   id: string;
@@ -101,4 +109,6 @@ export interface OrderType {
   trackingNumber: string;
   createdAt: string;
   succeedAt: string;
+  isCancel: boolean;
+  cancels: CancelType[];
 }

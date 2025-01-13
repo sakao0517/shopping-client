@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 import dayjs from "dayjs";
 import { mainColor } from "@/app/_config/ColorSetting";
 import Loading from "../_components/Loading/Loading";
+import { koreaTimeNow } from "../_config/KoreaTimeNow";
 
 dayjs.locale("ko");
 
@@ -67,7 +68,7 @@ export default function Order() {
     setAddress1(fullAddress);
   };
   async function requestPayment() {
-    const orderId = dayjs(Date.now()).format(`YYMMDDHHmm`);
+    const orderId = dayjs(koreaTimeNow()).format(`YYMMDDHHmm`);
     const random = String(Math.floor(Math.random() * 1000000)).padStart(6, "0");
     setBilling(true);
     // 결제를 요청하기 전에 orderId, amount를 서버에 저장하세요.
