@@ -9,8 +9,8 @@ import SearchMenu from "./_components/SearchMenu/SearchMenu";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  title: `Star Spray`, // 브랜드 이름
-  description: `Star Spray`, // 브랜드 이름
+  title: `스타스프레이`, // 브랜드 이름
+  description: `스타스프레이`, // 브랜드 이름
   other: {
     "google-site-verification": "z51t_yEWb2JkWC3tHdtTJOowpAhKeiiEdLAfcK2kJrk",
     "naver-site-verification": "3e6288a5a45db0b37299ef3b4859b4f466b98192",
