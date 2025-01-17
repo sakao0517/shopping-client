@@ -11,6 +11,10 @@ import { Analytics } from "@vercel/analytics/next";
 export const metadata: Metadata = {
   title: `Star Spray`, // 브랜드 이름
   description: `Star Spray`, // 브랜드 이름
+  other: {
+    "google-site-verification": "z51t_yEWb2JkWC3tHdtTJOowpAhKeiiEdLAfcK2kJrk",
+    "naver-site-verification": "3e6288a5a45db0b37299ef3b4859b4f466b98192",
+  },
 };
 
 export default async function RootLayout({
@@ -20,10 +24,6 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <meta
-        name="google-site-verification"
-        content="z51t_yEWb2JkWC3tHdtTJOowpAhKeiiEdLAfcK2kJrk"
-      />
       <body>
         <ReactQueryClientProvider>
           <AuthSession>
