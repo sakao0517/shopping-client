@@ -64,7 +64,14 @@ export default function Order() {
   async function requestPayment() {
     const tmpOrderId = dayjs(koreaTimeNow()).format(`YYMMDDHHmm`);
     const random = String(Math.floor(Math.random() * 1000000)).padStart(6, "0");
-    setBilling(true);
+
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    const isIos =
+      userAgent.indexOf("iphone") > -1 ||
+      (userAgent.indexOf("ipad") > -1 && "ontouchend" in document);
+    if (isIos) setBilling(false);
+    else setBilling(true);
+
     const orderId = tmpOrderId + random;
     // 결제를 요청하기 전에 orderId, amount를 서버에 저장하세요.
     // 결제 과정에서 악의적으로 결제 금액이 바뀌는 것을 확인하는 용도입니다.
@@ -125,6 +132,7 @@ export default function Order() {
       !process.env.NEXT_PUBLIC_CHANNEL_KEY
     )
       return setBilling(false);
+
     const payment = await PortOne.requestPayment({
       storeId: process.env.NEXT_PUBLIC_STORE_ID,
       channelKey: process.env.NEXT_PUBLIC_CHANNEL_KEY,
@@ -145,6 +153,7 @@ export default function Order() {
         zipcode: zipcode,
       },
     });
+    console.log(payment);
     if (!payment) return;
     if (payment.code !== undefined) {
       setBilling(false);
