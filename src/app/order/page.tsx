@@ -120,10 +120,6 @@ export default function Order() {
         return setBilling(false);
       }
     }
-    console.log(
-      process.env.NEXT_PUBLIC_STORE_ID,
-      process.env.NEXT_PUBLIC_CHANNEL_KEY
-    );
     if (
       !process.env.NEXT_PUBLIC_STORE_ID ||
       !process.env.NEXT_PUBLIC_CHANNEL_KEY

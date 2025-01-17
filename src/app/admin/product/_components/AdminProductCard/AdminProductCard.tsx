@@ -127,9 +127,6 @@ export default function AdminProductCard({
       setCategory(product.category);
     else setCategory(categoryData.category[1]);
   }, [product, categoryData, isClick]);
-  useEffect(() => {
-    console.log(category);
-  }, [category]);
   return (
     <div
       className={`${styles.adminProductcard} ${isClick ? styles.isClick : ""} ${

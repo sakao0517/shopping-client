@@ -120,9 +120,6 @@ export default function Sales() {
     tmpRankingArray.sort((a, b) => b.sales - a.sales);
     setRankingArray(tmpRankingArray);
   }, [orders, value]);
-  useEffect(() => {
-    console.log(rankingArray);
-  }, [rankingArray, value]);
   if (isLoading) return <Loading />;
   return (
     <div className={styles.sales}>
