@@ -20,6 +20,10 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <meta
+        name="google-site-verification"
+        content="z51t_yEWb2JkWC3tHdtTJOowpAhKeiiEdLAfcK2kJrk"
+      />
       <body>
         <ReactQueryClientProvider>
           <AuthSession>
