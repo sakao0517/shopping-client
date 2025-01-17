@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+ 
+Host: https://star-spray.com
+Sitemap: https://star-spray.com/sitemap.xml
