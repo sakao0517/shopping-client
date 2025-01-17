@@ -16,8 +16,10 @@
 .main p {
   margin-bottom: 20px;
 }
-.button {
-  margin-top: 20px;
+.tip {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
 }
 .button > button {
   cursor: pointer;

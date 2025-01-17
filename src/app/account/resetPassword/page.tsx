@@ -38,7 +38,7 @@ function ResetPassword() {
     <div className={styles.resetPassword}>
       <form onSubmit={handleSubmit} className={styles.main}>
         <div className={styles.info}>
-          <span>Reset your password</span>
+          <span>비밀번호 재설정</span>
         </div>
         <div className={styles.inputSection}>
           <input

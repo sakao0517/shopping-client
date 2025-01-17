@@ -157,7 +157,7 @@ export default function Admin() {
             <span>{returnOrdering}</span>
           </div>
           <div>
-            <span>반품 완료</span>
+            <span>반품 완료 </span>
             <span>{returnComplete}</span>
           </div>
         </div>
@@ -179,17 +179,17 @@ export default function Admin() {
             target="_blank"
             style={{ color: "red" }}
           >
-            상점관리자
+            PG상점관리자
           </a>
         </div>
         <div>
           <a href={"https://console.cloudinary.com/console"} target="_blank">
-            cloudinary
+            cloudinary (이미지 관리)
           </a>
         </div>
         <div>
           <a href={"https://vercel.com/"} target="_blank">
-            vercel
+            vercel (방문자 통계)
           </a>
         </div>
       </div>

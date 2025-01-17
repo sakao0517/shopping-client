@@ -43,7 +43,7 @@ export default function AdminProductCard({
   const handleImgButton = () => {
     const newImg = img.slice();
     newImg.push(
-      "https://02.cdn37.se/ak1/images/2.820508/hope-rush-relaxed-bootcut-jeans-washed-black.jpeg"
+      "https://res.cloudinary.com/hoyahoya/image/upload/v1702882191/letter/tile_vkvmea.png"
     );
     setImg(newImg);
   };
@@ -257,7 +257,7 @@ export default function AdminProductCard({
                   <button onClick={handleStockButton}>사이즈 추가</button>
                 </div>
                 <div className={styles.listTip}>
-                  <p>사이즈는 최소 1개 이상으로 설정해주세요.</p>
+                  <p>카테고리가 중복되지 않게 주의해 주세요.</p>
                   <p>단일 사이즈인 경우에도 free나 os로 설정</p>
                 </div>
               </div>

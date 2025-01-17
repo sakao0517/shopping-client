@@ -178,10 +178,7 @@ export default function AdminUserCard({ user }: { user: UserType }) {
               </div>
               <div className={styles.orderInfoTip}>
                 <p>비밀번호는 6자 이상 20자 이하로 설정해주세요.</p>
-                <p>
-                  비밀번호가 6자 이상 20자 이하가 아닐경우 사용자가 로그인
-                  불가능
-                </p>
+                <p>비밀번호를 잘못 입력할 경우 사용자가 로그인 불가능합니다.</p>
               </div>
             </div>
             <div className={styles.orderList}>

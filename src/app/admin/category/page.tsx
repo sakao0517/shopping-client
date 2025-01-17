@@ -54,11 +54,15 @@ export default function Category() {
               setCategory={setCategory}
             />
           ))}
+        <div className={styles.tip}>
+          <span>카테고리가 중복되지 않게 주의해 주세요.</span>
+          <span>new 카테고리는 삭제되지 않습니다.</span>
+        </div>
         <div className={styles.button}>
           <button
             onClick={() => {
               const tmpCategory = category.slice();
-              tmpCategory.push("");
+              tmpCategory.push("new category");
               setCategory(tmpCategory);
             }}
           >

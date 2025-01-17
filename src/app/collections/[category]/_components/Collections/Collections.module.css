@@ -55,4 +55,7 @@
   .page {
     margin: 24px 20px;
   }
+  .products {
+    margin-top: 0;
+  }
 }

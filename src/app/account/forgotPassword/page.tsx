@@ -9,18 +9,24 @@ export default function ForgotPassword() {
   const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
   const [isSendEmail, setIsSendEmail] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSending(true);
     try {
       await forgotPassword(email);
+      setIsSending(false);
       setIsSendEmail(true);
     } catch (error: any) {
       if (error.digest === "unregistered user") {
         setMessage("등록되지 않은 계정입니다.");
+        setIsSending(false);
       } else if (error.digest) {
         setMessage(error.digest);
+        setIsSending(false);
       } else {
         setMessage("문제가 발생했습니다. 다시 시도하세요.");
+        setIsSending(false);
       }
     }
   };
@@ -45,12 +51,12 @@ export default function ForgotPassword() {
         <div className={styles.buttonDiv}>
           <button
             type="submit"
-            className={
-              isSendEmail ? `${styles.disabledButton}` : `${styles.button}`
-            }
-            disabled={isSendEmail}
+            className={`${
+              isSendEmail || isSending ? styles.disabledButton : styles.button
+            }`}
+            disabled={isSendEmail || isSending}
           >
-            비밀번호 찾기
+            {isSending ? "전송 중..." : "비밀번호 찾기"}
           </button>
           {message && <span className={styles.message}>{message}</span>}
         </div>
