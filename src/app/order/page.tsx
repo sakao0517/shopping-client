@@ -8,10 +8,7 @@ import { CartProductType, UserType } from "@/type/type";
 import OrderCard from "./_components/OrderCard/OrderCard";
 import DaumPostcodeEmbed from "react-daum-postcode";
 import { BsQuestionCircle, BsX } from "react-icons/bs";
-import {
-  loadTossPayments,
-  TossPaymentsPayment,
-} from "@tosspayments/tosspayments-sdk";
+import PortOne from "@portone/browser-sdk/v2";
 import { tmpOrder } from "@/actions/order";
 import { useRouter } from "next/navigation";
 import dayjs from "dayjs";
@@ -20,8 +17,6 @@ import Loading from "../_components/Loading/Loading";
 import { koreaTimeNow } from "../_config/KoreaTimeNow";
 
 dayjs.locale("ko");
-
-const clientKey = "test_ck_LlDJaYngro5qdYGjEL5K3ezGdRpX";
 
 export default function Order() {
   const { data: products, isLoading } = useQuery<CartProductType[]>({
@@ -36,7 +31,6 @@ export default function Order() {
   const [message, setMessage] = useState("");
   const [width, setWidth] = useState<number | undefined>();
   const [billing, setBilling] = useState(false);
-  const [payment, setPayment] = useState<TossPaymentsPayment>();
   const [subtotal, setSubTotal] = useState<number | null>(null);
   const [shipping, setShipping] = useState<number | null>(null);
   const [total, setTotal] = useState<number | null>(null);
@@ -68,9 +62,10 @@ export default function Order() {
     setAddress1(fullAddress);
   };
   async function requestPayment() {
-    const orderId = dayjs(koreaTimeNow()).format(`YYMMDDHHmm`);
+    const tmpOrderId = dayjs(koreaTimeNow()).format(`YYMMDDHHmm`);
     const random = String(Math.floor(Math.random() * 1000000)).padStart(6, "0");
     setBilling(true);
+    const orderId = tmpOrderId + random;
     // 결제를 요청하기 전에 orderId, amount를 서버에 저장하세요.
     // 결제 과정에서 악의적으로 결제 금액이 바뀌는 것을 확인하는 용도입니다.
     if (!products) return setBilling(false);
@@ -85,11 +80,11 @@ export default function Order() {
     try {
       await tmpOrder({
         userId: userInfo?.id,
-        orderId: orderId + random,
+        orderId,
         shipping: shipping,
         subtotal: subtotal,
         amount: total,
-        orderName: "상점이름",
+        orderName: "상점이름", // 브랜드 이름
         email: userInfo?.email,
         name,
         phone,
@@ -125,37 +120,42 @@ export default function Order() {
         return setBilling(false);
       }
     }
-    try {
-      if (!payment) {
-        setMessage("문제가 발생했습니다. 다시 시도하세요.");
-        return setBilling(false);
-      }
-      await payment.requestPayment({
-        method: "CARD",
-        amount: {
-          currency: "KRW",
-          value: total,
+    console.log(
+      process.env.NEXT_PUBLIC_STORE_ID,
+      process.env.NEXT_PUBLIC_CHANNEL_KEY
+    );
+    if (
+      !process.env.NEXT_PUBLIC_STORE_ID ||
+      !process.env.NEXT_PUBLIC_CHANNEL_KEY
+    )
+      return setBilling(false);
+    const payment = await PortOne.requestPayment({
+      storeId: process.env.NEXT_PUBLIC_STORE_ID,
+      channelKey: process.env.NEXT_PUBLIC_CHANNEL_KEY,
+      paymentId: orderId,
+      orderName: "상점이름", //브랜드 이름
+      totalAmount: total,
+      currency: "CURRENCY_KRW",
+      payMethod: "CARD",
+      redirectUrl: window.location.origin + `/order/success`,
+      customer: {
+        fullName: name,
+        phoneNumber: phone,
+        email: userInfo?.email,
+        address: {
+          addressLine1: address1,
+          addressLine2: address2,
         },
-        orderId: orderId + random,
-        orderName: "상점이름",
-        successUrl: window.location.origin + "/order/success",
-        failUrl: window.location.origin + "/order/fail",
-        customerEmail: userInfo?.email,
-        customerName: name,
-        card: {
-          useEscrow: false,
-          flowMode: "DEFAULT",
-          useCardPoint: false,
-          useAppCardOnly: false,
-        },
-      });
-    } catch (error) {
-      if (error) {
-        setMessage("문제가 발생했습니다. 다시 시도하세요.");
-        setBilling(false);
-      }
+        zipcode: zipcode,
+      },
+    });
+    if (!payment) return;
+    if (payment.code !== undefined) {
+      setBilling(false);
+      return router.push("/order/fail");
     }
     setBilling(false);
+    return router.push(`/order/success?paymentId=${payment.paymentId}`);
   }
   useEffect(() => {
     if (!userInfo) return;
@@ -182,23 +182,7 @@ export default function Order() {
     if (subtotal == null || shipping == null) return;
     setTotal(subtotal + shipping);
   }, [shipping, subtotal, products]);
-  useEffect(() => {
-    if (!userInfo || !clientKey) return;
-    async function fetchPayment() {
-      try {
-        const tossPayments = await loadTossPayments(clientKey);
-        const payment = tossPayments.payment({
-          customerKey: userInfo!.id,
-        });
 
-        setPayment(payment);
-      } catch (error) {
-        console.error("Error fetching payment:", error);
-      }
-    }
-
-    fetchPayment();
-  }, [clientKey, userInfo]);
   useEffect(() => {
     const body: HTMLBodyElement =
       window.document.getElementsByTagName("body")[0];

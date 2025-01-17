@@ -30,6 +30,7 @@ export default function ProductCard({
             </Link>
           </div>
           <p>{`₩${product.price}`}</p>
+          <p>{`size: ${product.size}`}</p>
         </div>
       </div>
       <div className={styles.sales}>

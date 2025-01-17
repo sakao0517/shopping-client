@@ -116,4 +116,11 @@
   .subtotal {
     padding: 0 20px;
   }
+  .checkOut {
+    width: 100%;
+    padding: 0 20px;
+  }
+  .total {
+    padding: 0 20px;
+  }
 }

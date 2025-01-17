@@ -174,8 +174,12 @@ export default function Admin() {
           <Link href={"/admin/auth"}>사용자 관리</Link>
         </div>
         <div>
-          <a href={"https://naver.com"} target="_blank">
-            토스 상점관리자
+          <a
+            href={"https://naver.com"}
+            target="_blank"
+            style={{ color: "red" }}
+          >
+            상점관리자
           </a>
         </div>
         <div>

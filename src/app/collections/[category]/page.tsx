@@ -31,7 +31,7 @@ export default async function CollectionsPage({
         category={category}
         currentPage={Number(page) || 1}
         // productMaxLength={productPageSetting.productMaxLength}
-        productMaxLength={12}
+        productMaxLength={12} //product 개수
       />
     </div>
   );

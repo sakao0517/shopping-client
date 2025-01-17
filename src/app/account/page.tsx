@@ -32,7 +32,7 @@ export default function Account() {
   const [newPassword, setNewPassword] = useState<string>("");
   const [scrollY, setScrollY] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [ordersPerPage] = useState(5);
+  const [ordersPerPage] = useState(5); //order 개수
   const [maxPage, setMaxPage] = useState(1);
 
   const handleAddressComplete = (data: any) => {

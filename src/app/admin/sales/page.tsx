@@ -20,6 +20,7 @@ export type RankingProduct = {
   img: string[];
   price: number;
   sales: number;
+  size: string;
 };
 
 export default function Sales() {
@@ -98,7 +99,8 @@ export default function Sales() {
           (product) =>
             product.name === item.name &&
             product.price === item.price &&
-            JSON.stringify(product.img) === JSON.stringify(item.img)
+            JSON.stringify(product.img) === JSON.stringify(item.img) &&
+            product.size === item.cartStock.stock.size
         );
 
         if (findProductIndex !== -1) {
@@ -110,6 +112,7 @@ export default function Sales() {
             img: item.img,
             price: item.price,
             sales: item.cartStock.stock.qty,
+            size: item.cartStock.stock.size,
           });
         }
       });
@@ -125,6 +128,7 @@ export default function Sales() {
     <div className={styles.sales}>
       <div className={styles.main}>
         <div className={styles.top}>
+          <span>매출</span>
           <div>
             <span style={{ color: "red" }}>오늘 매출 </span>
             <span style={{ color: "red" }}>{`₩${salesToday}`}</span>

@@ -18,7 +18,7 @@
   flex-direction: column;
 }
 .mainMenu > p {
-  margin: 24px 0;
+  margin-bottom: 24px;
 }
 .pcImg {
   display: flex;
@@ -35,12 +35,16 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  aspect-ratio: 9/16;
 }
 .mobileImg img {
-  width: 39%;
-  height: 18%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
+}
+.pcInput {
+  margin-bottom: 40px;
 }
 .input {
   width: 100%;
@@ -49,7 +53,7 @@
 }
 .input input {
   flex: 1;
-  margin: 20px 0;
+  margin: 24px 0;
 }
 .input > button {
   cursor: pointer;
@@ -64,9 +68,6 @@
   border: 3px solid var(--main-color);
   background-color: #f9f9f9;
   color: var(--font-color);
-}
-.bottomButton {
-  margin-bottom: 20px;
 }
 @media (max-width: 768px) {
   .main {

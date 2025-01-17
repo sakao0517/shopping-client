@@ -77,12 +77,7 @@ export default function OrderCard({ order }: { order: OrderType }) {
       cancelAmount: number;
       cancelReason: string;
     }) => {
-      await cancelOrder(
-        order.orderId,
-        order.paymentKey,
-        cancelAmount,
-        cancelReason
-      );
+      await cancelOrder(order.orderId, cancelAmount, cancelReason);
     },
     onSuccess: () => {
       clearTimeout(timeOut);

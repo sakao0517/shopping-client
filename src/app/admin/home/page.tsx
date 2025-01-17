@@ -56,7 +56,7 @@ export default function Home() {
               )}
             </div>
           )}
-          <div className={styles.input}>
+          <div className={`${styles.input} ${styles.pcInput}`}>
             <input
               value={pc}
               onChange={(e) => {

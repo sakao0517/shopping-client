@@ -85,7 +85,6 @@ export interface TmpOrderType {
 }
 export interface OrderType {
   id: string;
-  paymentKey: string;
   userId: string;
   orderId: string;
   method: string;

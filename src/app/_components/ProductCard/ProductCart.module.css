@@ -1,6 +1,5 @@
 .productCard {
   width: 25%;
-  /* padding: 0 2.5%; */
   margin-bottom: 40px;
   display: flex;
   flex-direction: column;
@@ -19,6 +18,5 @@
 @media (max-width: 768px) {
   .productCard {
     width: 50%;
-    /* padding: 0 10px; */
   }
 }

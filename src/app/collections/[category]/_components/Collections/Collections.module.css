@@ -9,7 +9,7 @@
   justify-content: center;
   flex-wrap: wrap;
   margin: 24px 5%;
-  gap: 10px;
+  gap: 1rem;
 }
 .category > a {
   text-transform: uppercase;
@@ -51,5 +51,8 @@
 @media (max-width: 768px) {
   .category {
     display: none;
+  }
+  .page {
+    margin: 24px 20px;
   }
 }

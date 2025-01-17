@@ -9,7 +9,7 @@
   padding: 0 5%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1rem;
 }
 .orderMenu {
   display: flex;

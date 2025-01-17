@@ -41,7 +41,7 @@ export async function tmpOrder(order: {
   }
 }
 
-export async function verifyOrder(orderId: string, amount: number) {
+export async function verifyOrder(orderId: string) {
   const session = await auth();
   if (!session) return;
   const cookie = await cookies();
@@ -52,7 +52,7 @@ export async function verifyOrder(orderId: string, amount: number) {
       "Content-Type": "application/json",
     },
     method: "POST",
-    body: JSON.stringify({ orderId, amount }),
+    body: JSON.stringify({ orderId }),
   });
   if (!res.ok) {
     const errorMessage = await res.json();
@@ -63,38 +63,7 @@ export async function verifyOrder(orderId: string, amount: number) {
   }
 }
 
-export async function confirmOrder(
-  orderId: string,
-  paymentKey: string,
-  amount: string
-) {
-  const session = await auth();
-  if (!session) return;
-  const url = "https://api.tosspayments.com/v1/payments/confirm";
-  const base64 = Buffer.from(`${process.env.TOSS_SECRET}:`, "utf8").toString(
-    "base64"
-  );
-  const options = {
-    method: "POST",
-    headers: {
-      Authorization: `Basic ${base64}`,
-      "Content-Type": "application/json",
-    },
-    body: `{"paymentKey":"${paymentKey}","amount":${amount},"orderId":"${orderId}"}`,
-  };
-  const res = await fetch(url, options);
-  if (!res.ok) {
-    const errorMessage = await res.json();
-    class CustomError extends Error {
-      digest = errorMessage.message;
-    }
-    throw new CustomError();
-  }
-  const data = await res.json();
-  return data;
-}
-
-export async function successOrder(orderId: string, paymentKey: string) {
+export async function successOrder(orderId: string) {
   const session = await auth();
   if (!session) return;
   const cookie = await cookies();
@@ -105,7 +74,7 @@ export async function successOrder(orderId: string, paymentKey: string) {
       "Content-Type": "application/json",
     },
     method: "POST",
-    body: JSON.stringify({ orderId, paymentKey }),
+    body: JSON.stringify({ orderId }),
   });
   if (!res.ok) {
     const errorMessage = await res.json();
