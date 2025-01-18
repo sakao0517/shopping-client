@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import styles from "./HomeWallpaper.module.css";
 import { HomeWallpaperType } from "@/type/type";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function HomeWallpaper({
   homeWallpaper,
@@ -10,6 +13,7 @@ export default function HomeWallpaper({
   homeWallpaper: HomeWallpaperType;
 }) {
   const [width, setWidth] = useState<number | undefined>();
+  const router = useRouter();
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
@@ -20,15 +24,46 @@ export default function HomeWallpaper({
   }, []);
   return (
     <>
-      {width !== undefined ? (
-        width > 767 ? (
-          <img className={styles.img} src={homeWallpaper.pc} />
-        ) : (
-          <img className={styles.img} src={homeWallpaper.mobile} />
-        )
-      ) : (
-        <></>
+      <video
+        className={styles.video}
+        src={
+          "https://res.cloudinary.com/hoyahoya/video/upload/v1708061295/letter/video22_vhm7v7.mp4"
+        }
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
+      {width && (
+        <motion.div
+          initial={{
+            transform: `translate(-50%, -50%) scale(${width > 767 ? 6 : 4})`,
+          }}
+          animate={{ transform: "translate(-50%, -50%) scale(0)" }}
+          transition={{ duration: 5, ease: "easeIn", delay: 0.3 }}
+          className={styles.starspray}
+        >
+          <img
+            onClick={() => router.push("/collections/new?page=1")}
+            src={
+              "https://res.cloudinary.com/hoyahoya/image/upload/v1737178217/letter/logo/logo_cut_chyue2.png"
+            }
+          />
+        </motion.div>
       )}
     </>
   );
+  // return (
+  //   <>
+  //     {width !== undefined ? (
+  //       width > 767 ? (
+  //         <img className={styles.img} src={homeWallpaper.pc} />
+  //       ) : (
+  //         <img className={styles.img} src={homeWallpaper.mobile} />
+  //       )
+  //     ) : (
+  //       <></>
+  //     )}
+  //   </>
+  // );
 }
