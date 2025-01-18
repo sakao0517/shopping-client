@@ -37,7 +37,7 @@ export default function HomeWallpaper({
       {width && (
         <motion.div
           initial={{
-            transform: `translate(-50%, -50%) scale(${width > 767 ? 6 : 4})`,
+            transform: `translate(-50%, -50%) scale(${width > 767 ? 3.5 : 2})`,
           }}
           animate={{ transform: "translate(-50%, -50%) scale(0)" }}
           transition={{ duration: 5, ease: "easeIn", delay: 0.3 }}
@@ -46,7 +46,7 @@ export default function HomeWallpaper({
           <img
             onClick={() => router.push("/collections/new?page=1")}
             src={
-              "https://res.cloudinary.com/hoyahoya/image/upload/v1737178217/letter/logo/logo_cut_chyue2.png"
+              "https://res.cloudinary.com/hoyahoya/image/upload/v1708402276/letter/%EC%9D%B4%EC%B9%B4%EB%A6%AC%EC%8B%A0%EC%A7%80%EB%A8%B8%EA%B7%B8%EC%BB%B5/cup_1_uup0zo.png"
             }
           />
         </motion.div>
