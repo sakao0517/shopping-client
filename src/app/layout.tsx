@@ -10,11 +10,11 @@ import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: `스타스프레이`, // 브랜드 이름
-  description: `항상 귀여운 것을 찾는 당신을 위한 숍`, // 브랜드 설명
+  description: `항상 귀여운 것을 찾는 당신을 위한 샵`, // 브랜드 설명
   other: {
     "google-site-verification": "z51t_yEWb2JkWC3tHdtTJOowpAhKeiiEdLAfcK2kJrk",
     "naver-site-verification": "3e6288a5a45db0b37299ef3b4859b4f466b98192",
-    keywords: ["스타스프레이", "star spray", "소품샵"],
+    keywords: "스타스프레이,star spray,소품,소품샵",
     authors: "STAR SPRAY",
   },
 };
