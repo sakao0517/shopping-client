@@ -113,6 +113,9 @@
 .detailRow > label {
   flex-basis: 20%;
 }
+.detailRow2 > label {
+  flex-basis: 25%;
+}
 .detailRow > input {
   flex: 1;
   width: 100%;

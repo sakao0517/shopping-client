@@ -30,7 +30,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Instagram
+              Instagram {/* 브랜드 인스타그램 링크 */}
             </Link>
           </div>
           <span></span>

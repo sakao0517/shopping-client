@@ -188,21 +188,27 @@ export default function OrderCard({ order }: { order: OrderType }) {
                     <div className={styles.cancelList}>
                       {cancels.map((cancel, index) => (
                         <div key={index}>
-                          <div className={styles.detailRow}>
+                          <div
+                            className={`${styles.detailRow} ${styles.detailRow2}`}
+                          >
                             <label>취소 금액</label>
                             <input
                               value={cancel.cancelAmount}
                               disabled={true}
                             />
                           </div>
-                          <div className={styles.detailRow}>
+                          <div
+                            className={`${styles.detailRow} ${styles.detailRow2}`}
+                          >
                             <label>취소 사유</label>
                             <input
                               value={cancel.cancelReason}
                               disabled={true}
                             />
                           </div>
-                          <div className={styles.detailRow}>
+                          <div
+                            className={`${styles.detailRow} ${styles.detailRow2}`}
+                          >
                             <label>취소 일자</label>
                             <input
                               value={dayjs(cancel.createdAt).format(
