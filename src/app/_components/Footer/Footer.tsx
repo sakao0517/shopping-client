@@ -18,7 +18,7 @@ export default function Footer() {
               setIsOpen((prev) => !prev);
             }}
           >
-            Star Spray {/* 브랜드 이름 */}
+            STAR SPRAY {/* 브랜드 이름 */}
           </span>
           <div className={styles.topMenu}>
             <Link href="/legal">Legal</Link>

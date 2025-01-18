@@ -24,8 +24,8 @@ body {
   -ms-user-select: none;
   user-select: none;
 
-  --font-color: #000000;
-  --main-color: #000000;
+  --font-color: #7c1b25;
+  --main-color: #7c1b25;
   --gray-color: #cacbdc;
   --graygray-color: rgba(18, 17, 16, 0.6);
 }

@@ -43,12 +43,7 @@ export default function HomeWallpaper({
           transition={{ duration: 5, ease: "easeIn", delay: 0.3 }}
           className={styles.starspray}
         >
-          <img
-            onClick={() => router.push("/collections/new?page=1")}
-            src={
-              "https://res.cloudinary.com/hoyahoya/image/upload/v1708402276/letter/%EC%9D%B4%EC%B9%B4%EB%A6%AC%EC%8B%A0%EC%A7%80%EB%A8%B8%EA%B7%B8%EC%BB%B5/cup_1_uup0zo.png"
-            }
-          />
+          <img src="https://res.cloudinary.com/hoyahoya/image/upload/v1708402276/letter/%EC%9D%B4%EC%B9%B4%EB%A6%AC%EC%8B%A0%EC%A7%80%EB%A8%B8%EA%B7%B8%EC%BB%B5/cup_1_uup0zo.png" />
         </motion.div>
       )}
     </>
