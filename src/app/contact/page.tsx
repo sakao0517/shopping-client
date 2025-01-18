@@ -8,7 +8,11 @@ export default function Contact() {
           <span>Contact</span>
         </div>
         <div className={styles.center}>
-          <p>안녕하세요 :{")"} brand@brand.com으로 이메일을 통해 문의주세요.</p>
+          <p>
+            안녕하세요 :{")"} help.starspray@gmail.com으로 이메일을 통해
+            문의주세요.
+          </p>
+          {/* 브랜드 이메일 입력 */}
           <br />
           <p>
             고객 서비스 팀은 월요일부터 금요일 오전 10시부터 오후 2시까지

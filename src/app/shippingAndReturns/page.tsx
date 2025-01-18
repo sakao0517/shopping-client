@@ -29,7 +29,7 @@ export default function ShippingAndReturns() {
           <p>
             상품 수령 후 7일 이내 하단 양식대로 메일 접수 부탁드립니다.
             <br />
-            brand@brand.com
+            help.starspray@gmail.com
             <br />
             <br />
             -교환/반품 양식-
@@ -46,7 +46,9 @@ export default function ShippingAndReturns() {
             단순 변심의 교환/반품은 왕복 배송료 (8,000원) 를 고객님께서 부담해
             주셔야 합니다.
             <br />
-            반품주소 / 브랜드주소
+            <br />
+            반품주소 / 서울시 송파구 가락동77-4 305
+            {/* 반품주소 브랜드주소 입력 */}
           </p>
           <br />
           <br />
