@@ -26,6 +26,12 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <link rel="icon" href="/images/favicon.ico" sizes="48x48" />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/images/apple-icon.png"
+      />
       <body>
         <ReactQueryClientProvider>
           <AuthSession>
