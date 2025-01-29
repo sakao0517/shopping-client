@@ -41,9 +41,9 @@ export default function InputCard({
       ) : (
         <div className={styles.inputCardButton}>
           <button
-            disabled={category[index] === "new"}
+            disabled={category[index] === "new" || category[index] === "x"}
             onClick={() => {
-              if (category[index] === "new") return;
+              if (category[index] === "new" || category[index] === "x") return;
               setIsUpdate(true);
             }}
           >
@@ -53,9 +53,9 @@ export default function InputCard({
       )}
       <div className={styles.inputCardButton}>
         <button
-          disabled={category[index] === "new"}
+          disabled={category[index] === "new" || category[index] === "x"}
           onClick={() => {
-            if (category[index] === "new") return;
+            if (category[index] === "new" || category[index] === "x") return;
             const tmpCategory = category.slice();
             tmpCategory.splice(index, 1);
             setCategory(tmpCategory);

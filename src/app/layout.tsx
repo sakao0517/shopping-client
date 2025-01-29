@@ -9,13 +9,13 @@ import SearchMenu from "./_components/SearchMenu/SearchMenu";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  title: `스타스프레이`, // 브랜드 이름
-  description: `항상 귀여운 것을 찾는 당신을 위한 샵`, // 브랜드 설명
+  title: `사카오샵`, // 브랜드 이름, 구글 표시
+  description: `다양하고 귀여운 일본소품을 만나보세요!`, // 브랜드 설명, 구글 표시
   other: {
     "google-site-verification": "z51t_yEWb2JkWC3tHdtTJOowpAhKeiiEdLAfcK2kJrk",
     "naver-site-verification": "3e6288a5a45db0b37299ef3b4859b4f466b98192",
-    keywords: "스타스프레이,star spray,소품,소품샵",
-    authors: "STAR SPRAY",
+    keywords: "사카오,사카오샵,소품,소품샵",
+    authors: "SAKAO",
   },
 };
 

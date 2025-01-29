@@ -18,7 +18,7 @@ export default function Footer() {
               setIsOpen((prev) => !prev);
             }}
           >
-            STAR SPRAY {/* 브랜드 이름 */}
+            SAKAOSHOP {/* 브랜드 이름 */}
           </span>
           <div className={styles.topMenu}>
             <Link href="/legal">Legal</Link>
@@ -39,26 +39,26 @@ export default function Footer() {
           <div className={styles.bottom}>
             <p>
               법인명 : 스타스프레이 | 대표 : 이건호 | 이메일 :
-              help.starspray@gmail.com | 전화 : 010-6272-6828
+              help.starspray@gmail.com | 전화 : 02-6486-6828
             </p>
             <p>
               사업자 등록번호 : 568-03-02882 | 통신판매업 신고 :
               2024-서울송파-0871 |{" "}
               <span
                 className={styles.safePurchase}
-                onClick={() => {
-                  window.open(
-                    "",
-                    "KB_AUTHMARK",
-                    "height=604, width=648, status=yes, toolbar=no, menubar=no,location=no"
-                  );
-                  const form = document.forms.namedItem("KB_AUTHMARK_FORM");
-                  if (form instanceof HTMLFormElement) {
-                    form.action = "https://okbfex.kbstar.com/quics";
-                    form.target = "KB_AUTHMARK";
-                    form.submit();
-                  }
-                }}
+                // onClick={() => {
+                //   window.open(
+                //     "",
+                //     "KB_AUTHMARK",
+                //     "height=604, width=648, status=yes, toolbar=no, menubar=no,location=no"
+                //   );
+                //   const form = document.forms.namedItem("KB_AUTHMARK_FORM");
+                //   if (form instanceof HTMLFormElement) {
+                //     form.action = "https://okbfex.kbstar.com/quics";
+                //     form.target = "KB_AUTHMARK";
+                //     form.submit();
+                //   }
+                // }}
               >
                 안전구매(에스크로)
               </span>

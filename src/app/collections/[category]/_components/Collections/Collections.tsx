@@ -51,17 +51,20 @@ export default function Collections({
     <div className={styles.main}>
       {categories && (
         <div className={styles.category}>
-          {categories.map((category, index) => (
-            <Link
-              key={index}
-              className={
-                category === currentCategory ? `${styles.selectCategory}` : ``
-              }
-              href={`/collections/${category}?page=1`}
-            >
-              {category}
-            </Link>
-          ))}
+          {categories.map((category, index) => {
+            if (category === "x") return;
+            return (
+              <Link
+                key={index}
+                className={
+                  category === currentCategory ? `${styles.selectCategory}` : ``
+                }
+                href={`/collections/${category}?page=1`}
+              >
+                {category}
+              </Link>
+            );
+          })}
         </div>
       )}
       <div className={styles.products}>

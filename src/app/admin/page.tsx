@@ -174,8 +174,9 @@ export default function Admin() {
           <Link href={"/admin/auth"}>사용자 관리</Link>
         </div>
         <div>
+          {/* 브랜드 pg상점 관리 */}
           <a
-            href={"https://naver.com"}
+            href={"https://admin.portone.io/payments"}
             target="_blank"
             style={{ color: "red" }}
           >
@@ -183,11 +184,13 @@ export default function Admin() {
           </a>
         </div>
         <div>
+          {/* 브랜드 이미지 관리 */}
           <a href={"https://console.cloudinary.com/console"} target="_blank">
             cloudinary (이미지 관리)
           </a>
         </div>
         <div>
+          {/* 브랜드 방문자 통계 */}
           <a href={"https://vercel.com/"} target="_blank">
             vercel (방문자 통계)
           </a>

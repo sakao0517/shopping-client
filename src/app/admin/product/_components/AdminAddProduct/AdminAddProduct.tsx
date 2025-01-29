@@ -30,7 +30,7 @@ export default function AdminAddProduct() {
     queryKey: ["category"],
     queryFn: () => getCategory(),
   });
-  const [category, setCategory] = useState(categoryData?.category[1] || "");
+  const [category, setCategory] = useState("x");
   const handleStockButton = () => {
     const newStock = stock.slice();
     newStock.push({ size: "size", qty: 0 });
@@ -45,6 +45,7 @@ export default function AdminAddProduct() {
   };
   const addProductMutate = useMutation({
     mutationFn: async () => {
+      console.log("dd", category);
       if (
         !name ||
         !price ||
@@ -72,7 +73,7 @@ export default function AdminAddProduct() {
     },
     onSuccess: () => {
       setName("name");
-      setCategory("new");
+      setCategory("x");
       setPrice(99999);
       setDescription("description");
       setStock([]);

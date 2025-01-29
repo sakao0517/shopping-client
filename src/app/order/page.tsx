@@ -91,7 +91,7 @@ export default function Order() {
         shipping: shipping,
         subtotal: subtotal,
         amount: total,
-        orderName: "스타스프레이", // 브랜드 이름
+        orderName: "사카오샵", // 브랜드 이름
         email: userInfo?.email,
         name,
         phone,
@@ -137,7 +137,7 @@ export default function Order() {
       storeId: process.env.NEXT_PUBLIC_STORE_ID,
       channelKey: process.env.NEXT_PUBLIC_CHANNEL_KEY,
       paymentId: orderId,
-      orderName: "스타스프레이", //브랜드 이름
+      orderName: "사카오샵", //브랜드 이름
       totalAmount: total,
       currency: "CURRENCY_KRW",
       payMethod: "CARD",
